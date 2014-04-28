@@ -18,6 +18,61 @@ Tribler has been developed at Delft University of Technology, by the Parallel an
 In this report we outline the details of the assignment. We will describe the approach we will use and how we will structure this project. Finally a quality assurance is given.
 
 \section{Assignment (Laurens)}
+In this section we will describe our assignment, client, contacts, the problem we will address and sketch out what product we will eventually deliver. This section will also contain some of the critical requirements that we will have to meet along with the risk involved.
+
+\subsection{Assignment}
+Our assignment is to implement a new feature of Tribler into a mobile android application. This new feature allows the creation and usage of so called Tor-tunnels. These tunnels allow anonymous download within a Peer-to-Peer network between devices, in our case mobile devices.
+As these tunnels run on Python code, we will have to port Python to Android, along with all the libraries it depends on.
+
+\subsection{The client}
+Our client is Dr. Ir. Johan Pouwelse, the head of the Tribler group and Assistant Professor at the Parallel and Distributed Systems Group of the Faculty of EEMCS, Delft University of Technology. Pouwelse has measured and researched Peer-to-Peer networks for years and has been working for eighteen years on Tribler.
+
+\subsection{Contacts}
+
+\emph{The Client / Project Coach:}\\\\
+\textbf{Dr. Ir. Johan Pouwelse}\\
+J.A.Pouwelse@tudelft.nl\\
++31 (0)15 27 82539\\
+Room: HB 07.290\\
+Mekelweg 4\\
+2628 CD Delft\\\\
+
+\emph{Project Advisor:}\\\\
+\textbf{Egbert}\\
+?\\ 
+?\\
+Mekelweg 4\\
+2628 CD Delft\\\\
+
+\emph{Bachelor Project Coordinator:}\\\\
+\textbf{Dr. Martha A. Larson}\\
+M.A.Larson@tudelft.nl\\
++31 (0)15 27 87357\\
+Room: HB 11.040\\
+Mekelweg 4\\
+2628 CD Delft\\
+
+\subsection{The final product}
+At the end of the Bachelor Project, we will deliver an Android application that allows users to find and download content from other relays (mobile devices). This application makes use of the code from the Tribler project, which is written in Python. Therefore, we will make sure that the Android application will be able to run Python code.\\
+If all is well, the downloads that run through the Tor tunnels will be anonymous, just like the current Tor protocol.
+
+\subsection{Requirements and risks}
+The final product will offer the features that are described in the previous section and should be considered a prototype. The prototype will offer anonymous downloading using the Tor tunnels mentioned earlier. The development of the prototype will be targeted to the Android platform.\\\\
+The following requirements are set during the project:
+
+\begin{itemize}
+\item Weekly scrum evaluations. At the end of scrum iteration, we evaluate what we have done and set the target for next week. This keeps the deadlines 'SMART' and manageable .
+\item Weekly meeting with the client. Every two weeks we will implement a feature, but we will show and discuss progress each week with the supervisor to ensure we are doing the right thing and are still on schedule.
+\item The members of the team will complete a prototype at the end of this project and will also demonstrate this during a 30 minute presentation given in the last week of Q4.
+\end{itemize}
+
+The risks involved with this project include:
+\begin{itemize}
+\item Run Python code on an Android application. As the Tor-tunnel functionality is written in Python code, we need to be able to run Python code on an Android device as well. An library exist where you can write Python for Android, but we will still face a challenge when we will try to combine other libraries.
+\item As we dependent on third party code, we might lose time to understand or read certain pats of code or documentation as well as link pieces of code that belong to different parties together.
+\end{itemize}
+
+
 
 \section{Approach}
 In this section, we will describe the approach we are taking for this project. First, we will discuss the methodology we are using (Scrum). After that, we will discuss the MoSCoW technique we are using to classify requirements. Afterwards, we will give an overview of the tools we will be using during this project. Finally, we will give our planning and milestones.

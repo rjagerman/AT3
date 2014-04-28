@@ -11,7 +11,7 @@
 
 \maketitle
 
-\section{Introduction (Rolf)}
+\section{Introduction}
 This report is part of the bachelor end project on anonymous video streaming on tablets. In this project we attempt to get Tribler, a peer-to-peer file sharing application working anonymously on android using an already implemented Tor-like protocol.
 
 Tribler has been developed at Delft University of Technology, by the Parallel and Distributed Systems group. The research performed by this group is focused on designing, implementing and analyzing parallel and distributed systems. As most of the research in this field is empirically conducted, prototypes and real working software are extremely important. Tribler is a peer-to-peer file sharing tool that is completely decentralized. It is used as a vehicle for research on parallel and distributed systems. Tribler has been in development for over 9 years and has a very mature and well-established code-base. An anonymous networking protocol based on Tor and implemented in Python is part of a new beta version of Tribler.
@@ -123,7 +123,7 @@ Our planning can be found on Github. As for now, we have four milestones:
 \item 04-07-14: the end presentation of our project.
 \end{itemize}
 
-\section{Project structure (Rolf)}
+\section{Project structure}
 
 In this chapter the administrative aspects of the project are described.
 
@@ -138,6 +138,20 @@ Martijn de Vos - M.A.Devos@student.tudelft.nl
 \subsection{Reporting}
 Weekly meetings with the client will be held in person. The notes of these meetings will be recorded and stored online. All documentation of the project will be written in {\LaTeX} and will be provided as a PDF. The project material, including source code and documentation, will be available throughout the project on a GitHub repository: \href{http://www.github.com/rjagerman/AT3/}{www.github.com/rjagerman/AT3}.
 
-\section{Quality assurance (Rolf)}
+\section{Quality assurance}
+
+To assure a good quality of the delivered product, several agreements are made about which methods should be used. In particular we look at documentation, testing, code review and version control.
+
+\subsection{Documentation}
+All documentation regarding the software will be written as Python Docstrings. This will be parsed and exported into online documentation. Additional tutorials or information will be supplemented in this online documentation.
+
+\subsection{Testing}
+All written software will be tested using python unit tests. Additionally, test code coverage is provided to ensure a majority of the code has been thoroughly tested.
+
+\subsection{Code review}
+All written code will be reviewed by at least 1 team member before pull requests are accepted. This will ensure the code is comprehensible, working and correct. Additionally our code will undergo a complete source review by SIG (Software Improvement Group).
+
+\subsection{Version control}
+To maintain a good overview and history of the code we write, we will use a version control system. All our code will be stored on GitHub and therefore use the Git version control system.
 
 \end{document}

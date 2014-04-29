@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Tribler.community.anontunnel.tests.test_libtorrent</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;Tribler ::
+        Package&nbsp;community ::
+        <a href="Tribler.community.anontunnel-module.html">Package&nbsp;anontunnel</a> ::
+        <a href="Tribler.community.anontunnel.tests-module.html">Package&nbsp;tests</a> ::
+        Module&nbsp;test_libtorrent
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Tribler.community.anontunnel.tests.test_libtorrent-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Tribler.community.anontunnel.tests.test_libtorrent-module.html">Module Tribler.community.anontunnel.tests.test_libtorrent</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module Tribler.community.anontunnel.community=Tribler.community.anontunnel.community-module.html"><a title="Tribler.community.anontunnel.community" class="py-name" href="#" onclick="return doclink('link-0', 'community', 'link-0');">community</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package Tribler.community.anontunnel=Tribler.community.anontunnel-module.html"><a title="Tribler.community.anontunnel" class="py-name" href="#" onclick="return doclink('link-1', 'anontunnel', 'link-1');">anontunnel</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Tribler.community.anontunnel.events=Tribler.community.anontunnel.events-module.html"><a title="Tribler.community.anontunnel.events" class="py-name" href="#" onclick="return doclink('link-2', 'events', 'link-2');">events</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class Tribler.community.anontunnel.events.TunnelObserver=Tribler.community.anontunnel.events.TunnelObserver-class.html"><a title="Tribler.community.anontunnel.events.TunnelObserver" class="py-name" href="#" onclick="return doclink('link-3', 'TunnelObserver', 'link-3');">TunnelObserver</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">shutil</tt> </tt>
+<a name="LibtorrentTest"></a><div id="LibtorrentTest-def"><a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt> <a class="py-toggle" href="#" id="LibtorrentTest-toggle" onclick="return toggle('LibtorrentTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html">LibtorrentTest</a><tt class="py-op">(</tt><tt class="py-base-class">TunnelObserver</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="LibtorrentTest-expanded"><a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">    @param ProxyCommunity proxy : The proxy community instance</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">    @param Tribler.Core.Session.Session tribler_session: The Tribler Session</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest.__init__"></a><div id="LibtorrentTest.__init__-def"><a name="L13"></a><tt class="py-lineno"> 13</tt> <a class="py-toggle" href="#" id="LibtorrentTest.__init__-toggle" onclick="return toggle('LibtorrentTest.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proxy</tt><tt class="py-op">,</tt> <tt class="py-param">tribler_session</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest.__init__-expanded"><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-4" class="py-name" targets="Class Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html"><a title="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest" class="py-name" href="#" onclick="return doclink('link-4', 'LibtorrentTest', 'link-4');">LibtorrentTest</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method Tribler.community.anontunnel.Main.AnonTunnel.__init__()=Tribler.community.anontunnel.Main.AnonTunnel-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.ConnectionState.__init__()=Tribler.community.anontunnel.Socks5.connection.ConnectionState-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.Socks5Connection.__init__()=Tribler.community.anontunnel.Socks5.connection.Socks5Connection-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver.__init__()=Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.MethodRequest.__init__()=Tribler.community.anontunnel.Socks5.conversion.MethodRequest-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.Request.__init__()=Tribler.community.anontunnel.Socks5.conversion.Request-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.UdpRequest.__init__()=Tribler.community.anontunnel.Socks5.conversion.UdpRequest-class.html#__init__,Method Tribler.community.anontunnel.Socks5.server.Socks5Server.__init__()=Tribler.community.anontunnel.Socks5.server.Socks5Server-class.html#__init__,Method Tribler.community.anontunnel.Socks5.session.Socks5Session.__init__()=Tribler.community.anontunnel.Socks5.session.Socks5Session-class.html#__init__,Method Tribler.community.anontunnel.cache.CircuitRequestCache.__init__()=Tribler.community.anontunnel.cache.CircuitRequestCache-class.html#__init__,Method Tribler.community.anontunnel.cache.CreatedRequestCache.__init__()=Tribler.community.anontunnel.cache.CreatedRequestCache-class.html#__init__,Method Tribler.community.anontunnel.cache.PingRequestCache.__init__()=Tribler.community.anontunnel.cache.PingRequestCache-class.html#__init__,Method Tribler.community.anontunnel.community.ProxyCommunity.__init__()=Tribler.community.anontunnel.community.ProxyCommunity-class.html#__init__,Method Tribler.community.anontunnel.community.ProxySettings.__init__()=Tribler.community.anontunnel.community.ProxySettings-class.html#__init__,Method Tribler.community.anontunnel.conversion.CustomProxyConversion.__init__()=Tribler.community.anontunnel.conversion.CustomProxyConversion-class.html#__init__,Method Tribler.community.anontunnel.conversion.ProxyConversion.__init__()=Tribler.community.anontunnel.conversion.ProxyConversion-class.html#__init__,Method Tribler.community.anontunnel.crypto.Crypto.__init__()=Tribler.community.anontunnel.crypto.Crypto-class.html#__init__,Method Tribler.community.anontunnel.crypto.DefaultCrypto.__init__()=Tribler.community.anontunnel.crypto.DefaultCrypto-class.html#__init__,Method Tribler.community.anontunnel.crypto.NoCrypto.__init__()=Tribler.community.anontunnel.crypto.NoCrypto-class.html#__init__,Method Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint.__init__()=Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint-class.html#__init__,Method Tribler.community.anontunnel.events.CircuitPoolObserver.__init__()=Tribler.community.anontunnel.events.CircuitPoolObserver-class.html#__init__,Method Tribler.community.anontunnel.events.TunnelObserver.__init__()=Tribler.community.anontunnel.events.TunnelObserver-class.html#__init__,Method Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket.__init__()=Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket-class.html#__init__,Method Tribler.community.anontunnel.exitsocket.TunnelExitSocket.__init__()=Tribler.community.anontunnel.exitsocket.TunnelExitSocket-class.html#__init__,Method Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy.__init__()=Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.ExtendStrategy.__init__()=Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.NeighbourSubset.__init__()=Tribler.community.anontunnel.extendstrategies.NeighbourSubset-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour.__init__()=Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy.__init__()=Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength.__init__()=Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy.__init__()=Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy-class.html#__init__,Method Tribler.community.anontunnel.payload.CreateMessage.__init__()=Tribler.community.anontunnel.payload.CreateMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.CreatedMessage.__init__()=Tribler.community.anontunnel.payload.CreatedMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.DataMessage.__init__()=Tribler.community.anontunnel.payload.DataMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.ExtendMessage.__init__()=Tribler.community.anontunnel.payload.ExtendMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.ExtendedMessage.__init__()=Tribler.community.anontunnel.payload.ExtendedMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.PingMessage.__init__()=Tribler.community.anontunnel.payload.PingMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.PongMessage.__init__()=Tribler.community.anontunnel.payload.PongMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.StatsPayload.Implementation.__init__()=Tribler.community.anontunnel.payload.StatsPayload.Implementation-class.html#__init__,Method Tribler.community.anontunnel.routing.Circuit.__init__()=Tribler.community.anontunnel.routing.Circuit-class.html#__init__,Method Tribler.community.anontunnel.routing.CircuitPool.__init__()=Tribler.community.anontunnel.routing.CircuitPool-class.html#__init__,Method Tribler.community.anontunnel.routing.Hop.__init__()=Tribler.community.anontunnel.routing.Hop-class.html#__init__,Method Tribler.community.anontunnel.routing.RelayRoute.__init__()=Tribler.community.anontunnel.routing.RelayRoute-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy.__init__()=Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.RoundRobin.__init__()=Tribler.community.anontunnel.selectionstrategies.RoundRobin-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.SelectionStrategy.__init__()=Tribler.community.anontunnel.selectionstrategies.SelectionStrategy-class.html#__init__,Method Tribler.community.anontunnel.stats.CircuitStats.__init__()=Tribler.community.anontunnel.stats.CircuitStats-class.html#__init__,Method Tribler.community.anontunnel.stats.RelayStats.__init__()=Tribler.community.anontunnel.stats.RelayStats-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsCollector.__init__()=Tribler.community.anontunnel.stats.StatsCollector-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsCrawler.__init__()=Tribler.community.anontunnel.stats.StatsCrawler-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsDatabase.__init__()=Tribler.community.anontunnel.stats.StatsDatabase-class.html#__init__,Method Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.__init__()=Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock-class.html#__init__,Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.__init__()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#__init__"><a title="Tribler.community.anontunnel.Main.AnonTunnel.__init__
+Tribler.community.anontunnel.Socks5.connection.ConnectionState.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5Connection.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver.__init__
+Tribler.community.anontunnel.Socks5.conversion.MethodRequest.__init__
+Tribler.community.anontunnel.Socks5.conversion.Request.__init__
+Tribler.community.anontunnel.Socks5.conversion.UdpRequest.__init__
+Tribler.community.anontunnel.Socks5.server.Socks5Server.__init__
+Tribler.community.anontunnel.Socks5.session.Socks5Session.__init__
+Tribler.community.anontunnel.cache.CircuitRequestCache.__init__
+Tribler.community.anontunnel.cache.CreatedRequestCache.__init__
+Tribler.community.anontunnel.cache.PingRequestCache.__init__
+Tribler.community.anontunnel.community.ProxyCommunity.__init__
+Tribler.community.anontunnel.community.ProxySettings.__init__
+Tribler.community.anontunnel.conversion.CustomProxyConversion.__init__
+Tribler.community.anontunnel.conversion.ProxyConversion.__init__
+Tribler.community.anontunnel.crypto.Crypto.__init__
+Tribler.community.anontunnel.crypto.DefaultCrypto.__init__
+Tribler.community.anontunnel.crypto.NoCrypto.__init__
+Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint.__init__
+Tribler.community.anontunnel.events.CircuitPoolObserver.__init__
+Tribler.community.anontunnel.events.TunnelObserver.__init__
+Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket.__init__
+Tribler.community.anontunnel.exitsocket.TunnelExitSocket.__init__
+Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.ExtendStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.NeighbourSubset.__init__
+Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour.__init__
+Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy.__init__
+Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength.__init__
+Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy.__init__
+Tribler.community.anontunnel.payload.CreateMessage.__init__
+Tribler.community.anontunnel.payload.CreatedMessage.__init__
+Tribler.community.anontunnel.payload.DataMessage.__init__
+Tribler.community.anontunnel.payload.ExtendMessage.__init__
+Tribler.community.anontunnel.payload.ExtendedMessage.__init__
+Tribler.community.anontunnel.payload.PingMessage.__init__
+Tribler.community.anontunnel.payload.PongMessage.__init__
+Tribler.community.anontunnel.payload.StatsPayload.Implementation.__init__
+Tribler.community.anontunnel.routing.Circuit.__init__
+Tribler.community.anontunnel.routing.CircuitPool.__init__
+Tribler.community.anontunnel.routing.Hop.__init__
+Tribler.community.anontunnel.routing.RelayRoute.__init__
+Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy.__init__
+Tribler.community.anontunnel.selectionstrategies.RoundRobin.__init__
+Tribler.community.anontunnel.selectionstrategies.SelectionStrategy.__init__
+Tribler.community.anontunnel.stats.CircuitStats.__init__
+Tribler.community.anontunnel.stats.RelayStats.__init__
+Tribler.community.anontunnel.stats.StatsCollector.__init__
+Tribler.community.anontunnel.stats.StatsCrawler.__init__
+Tribler.community.anontunnel.stats.StatsDatabase.__init__
+Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.__init__
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.__init__" class="py-name" href="#" onclick="return doclink('link-5', '__init__', 'link-5');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">proxy</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt> <tt class="py-op">=</tt> <tt class="py-name">tribler_session</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">lm</tt><tt class="py-op">.</tt><tt class="py-name">rawserver</tt><tt class="py-op">.</tt><tt class="py-name">add_task</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method Tribler.community.anontunnel.Socks5.server.Socks5Server.start()=Tribler.community.anontunnel.Socks5.server.Socks5Server-class.html#start,Method Tribler.community.anontunnel.stats.StatsCollector.start()=Tribler.community.anontunnel.stats.StatsCollector-class.html#start,Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.start()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#start"><a title="Tribler.community.anontunnel.Socks5.server.Socks5Server.start
+Tribler.community.anontunnel.stats.StatsCollector.start
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.start" class="py-name" href="#" onclick="return doclink('link-6', 'start', 'link-6');">start</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">stopping</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_finished_at</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest._mark_test_completed"></a><div id="LibtorrentTest._mark_test_completed-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="LibtorrentTest._mark_test_completed-toggle" onclick="return toggle('LibtorrentTest._mark_test_completed');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#_mark_test_completed">_mark_test_completed</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest._mark_test_completed-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest._mark_test_completed-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">get_state_dir</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/anon_test.txt"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">handle</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name" targets="Method Tribler.community.anontunnel.stats.StatsDatabase.open()=Tribler.community.anontunnel.stats.StatsDatabase-class.html#open"><a title="Tribler.community.anontunnel.stats.StatsDatabase.open" class="py-name" href="#" onclick="return doclink('link-7', 'open', 'link-7');">open</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">"w"</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-name">handle</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method Tribler.community.anontunnel.Socks5.connection.Socks5Connection.write()=Tribler.community.anontunnel.Socks5.connection.Socks5Connection-class.html#write"><a title="Tribler.community.anontunnel.Socks5.connection.Socks5Connection.write" class="py-name" href="#" onclick="return doclink('link-8', 'write', 'link-8');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"Delete this file to redo the anonymous download test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-keyword">finally</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-name">handle</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method Tribler.community.anontunnel.Socks5.connection.Socks5Connection.close()=Tribler.community.anontunnel.Socks5.connection.Socks5Connection-class.html#close,Method Tribler.community.anontunnel.stats.StatsDatabase.close()=Tribler.community.anontunnel.stats.StatsDatabase-class.html#close"><a title="Tribler.community.anontunnel.Socks5.connection.Socks5Connection.close
+Tribler.community.anontunnel.stats.StatsDatabase.close" class="py-name" href="#" onclick="return doclink('link-9', 'close', 'link-9');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest.on_unload"></a><div id="LibtorrentTest.on_unload-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="LibtorrentTest.on_unload-toggle" onclick="return toggle('LibtorrentTest.on_unload');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#on_unload">on_unload</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest.on_unload-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest.on_unload-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method Tribler.community.anontunnel.Main.AnonTunnel.stop()=Tribler.community.anontunnel.Main.AnonTunnel-class.html#stop,Method Tribler.community.anontunnel.stats.StatsCollector.stop()=Tribler.community.anontunnel.stats.StatsCollector-class.html#stop,Method Tribler.community.anontunnel.stats.StatsCrawler.stop()=Tribler.community.anontunnel.stats.StatsCrawler-class.html#stop,Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.stop()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#stop"><a title="Tribler.community.anontunnel.Main.AnonTunnel.stop
+Tribler.community.anontunnel.stats.StatsCollector.stop
+Tribler.community.anontunnel.stats.StatsCrawler.stop
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.stop" class="py-name" href="#" onclick="return doclink('link-10', 'stop', 'link-10');">stop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest.stop"></a><div id="LibtorrentTest.stop-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="LibtorrentTest.stop-toggle" onclick="return toggle('LibtorrentTest.stop');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#stop">stop</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">delay</tt><tt class="py-op">=</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest.stop-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest.stop-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-keyword">def</tt> <tt class="py-def-name">remove_download</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">remove_download</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-string">"Removed test download"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">lm</tt><tt class="py-op">.</tt><tt class="py-name">rawserver</tt><tt class="py-op">.</tt><tt class="py-name">add_task</tt><tt class="py-op">(</tt><tt class="py-name">remove_download</tt><tt class="py-op">,</tt> <tt class="py-name">delay</tt><tt class="py-op">=</tt><tt class="py-name">delay</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest._has_completed_before"></a><div id="LibtorrentTest._has_completed_before-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="LibtorrentTest._has_completed_before-toggle" onclick="return toggle('LibtorrentTest._has_completed_before');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#_has_completed_before">_has_completed_before</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest._has_completed_before-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest._has_completed_before-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> <tt class="py-comment"># os.path.isfile(self.tribler_session.get_state_dir() + "/anon_test.txt")</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="LibtorrentTest.start"></a><div id="LibtorrentTest.start-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="LibtorrentTest.start-toggle" onclick="return toggle('LibtorrentTest.start');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#start">start</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LibtorrentTest.start-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LibtorrentTest.start-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="Tribler.community.anontunnel.community" class="py-name" href="#" onclick="return doclink('link-11', 'community', 'link-0');">community</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Tribler.community.anontunnel" class="py-name" href="#" onclick="return doclink('link-12', 'anontunnel', 'link-1');">anontunnel</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module Tribler.community.anontunnel.stats=Tribler.community.anontunnel.stats-module.html"><a title="Tribler.community.anontunnel.stats" class="py-name" href="#" onclick="return doclink('link-13', 'stats', 'link-13');">stats</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class Tribler.community.anontunnel.stats.StatsCollector=Tribler.community.anontunnel.stats.StatsCollector-class.html"><a title="Tribler.community.anontunnel.stats.StatsCollector" class="py-name" href="#" onclick="return doclink('link-14', 'StatsCollector', 'link-14');">StatsCollector</a></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">wx</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt class="py-name">Core</tt><tt class="py-op">.</tt><tt class="py-name">TorrentDef</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TorrentDef</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt class="py-name">Core</tt><tt class="py-op">.</tt><tt class="py-name">simpledefs</tt> <tt class="py-keyword">import</tt> <tt class="py-name">DLSTATUS_DOWNLOADING</tt><tt class="py-op">,</tt> <tt class="py-name">DLSTATUS_SEEDING</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Module Tribler.community.anontunnel.Main=Tribler.community.anontunnel.Main-module.html"><a title="Tribler.community.anontunnel.Main" class="py-name" href="#" onclick="return doclink('link-15', 'Main', 'link-15');">Main</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Module Tribler.community.anontunnel.globals=Tribler.community.anontunnel.globals-module.html"><a title="Tribler.community.anontunnel.globals" class="py-name" href="#" onclick="return doclink('link-16', 'globals', 'link-16');">globals</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">DefaultDownloadStartupConfig</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="Tribler.community.anontunnel.Main" class="py-name" href="#" onclick="return doclink('link-17', 'Main', 'link-15');">Main</a></tt><tt class="py-op">.</tt><tt class="py-name">vwxGUI</tt> <tt class="py-keyword">import</tt> <tt class="py-name">forceWxThread</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">hosts</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">"94.23.38.156"</tt><tt class="py-op">,</tt> <tt class="py-number">51413</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">"95.211.198.147"</tt><tt class="py-op">,</tt> <tt class="py-number">51413</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">"95.211.198.142"</tt><tt class="py-op">,</tt> <tt class="py-number">51413</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">"95.211.198.140"</tt><tt class="py-op">,</tt> <tt class="py-number">51413</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">"95.211.198.141"</tt><tt class="py-op">,</tt> <tt class="py-number">51413</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-decorator">@</tt><tt class="py-decorator">forceWxThread</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">thank_you</tt><tt class="py-op">(</tt><tt class="py-param">file_size</tt><tt class="py-op">,</tt> <tt class="py-param">start_time</tt><tt class="py-op">,</tt> <tt class="py-param">end_time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-name">avg_speed_KBps</tt> <tt class="py-op">=</tt> <tt class="py-number">1.0</tt> <tt class="py-op">*</tt> <tt class="py-name">file_size</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-name">end_time</tt> <tt class="py-op">-</tt> <tt class="py-name">start_time</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-number">1024.0</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">MessageBox</tt><tt class="py-op">(</tt><tt class="py-string">'Your average speed was %.2f KB/s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">avg_speed_KBps</tt><tt class="py-op">)</tt> <tt class="py-op">,</tt> <tt class="py-string">'Download Completed'</tt><tt class="py-op">,</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">OK</tt> <tt class="py-op">|</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">ICON_INFORMATION</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">state_call</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-name">stats_collector</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="Tribler.community.anontunnel.stats.StatsCollector" class="py-name" href="#" onclick="return doclink('link-18', 'StatsCollector', 'link-14');">StatsCollector</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-keyword">def</tt> <tt class="py-def-name">_callback</tt><tt class="py-op">(</tt><tt class="py-param">ds</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">stopping</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_status</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">DLSTATUS_DOWNLOADING</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                        <tt class="py-name">stats_collector</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="Tribler.community.anontunnel.Socks5.server.Socks5Server.start
+Tribler.community.anontunnel.stats.StatsCollector.start
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.start" class="py-name" href="#" onclick="return doclink('link-19', 'start', 'link-6');">start</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                    <tt class="py-name">stats_collector</tt><tt class="py-op">.</tt><tt class="py-name">download_stats</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                        <tt class="py-string">'size'</tt><tt class="py-op">:</tt> <tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_progress</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_length</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                        <tt class="py-string">'download_time'</tt><tt class="py-op">:</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                    <tt class="py-op">}</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_status</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">DLSTATUS_SEEDING</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt> <tt class="py-keyword">and</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_finished_at</tt><tt class="py-op">:</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_finished_at</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                    <tt class="py-name">stats_collector</tt><tt class="py-op">.</tt><tt class="py-name">download_stats</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                        <tt class="py-string">'size'</tt><tt class="py-op">:</tt> <tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_length</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                        <tt class="py-string">'download_time'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_finished_at</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                    <tt class="py-op">}</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                    <tt class="py-name">stats_collector</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method Tribler.community.anontunnel.stats.StatsCollector.share_stats()=Tribler.community.anontunnel.stats.StatsCollector-class.html#share_stats"><a title="Tribler.community.anontunnel.stats.StatsCollector.share_stats" class="py-name" href="#" onclick="return doclink('link-20', 'share_stats', 'link-20');">share_stats</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                    <tt class="py-name">stats_collector</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="Tribler.community.anontunnel.Main.AnonTunnel.stop
+Tribler.community.anontunnel.stats.StatsCollector.stop
+Tribler.community.anontunnel.stats.StatsCrawler.stop
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.stop" class="py-name" href="#" onclick="return doclink('link-21', 'stop', 'link-10');">stop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="Tribler.community.anontunnel.Main.AnonTunnel.stop
+Tribler.community.anontunnel.stats.StatsCollector.stop
+Tribler.community.anontunnel.stats.StatsCrawler.stop
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.stop" class="py-name" href="#" onclick="return doclink('link-22', 'stop', 'link-10');">stop</a></tt><tt class="py-op">(</tt><tt class="py-number">5.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest._mark_test_completed()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#_mark_test_completed"><a title="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest._mark_test_completed" class="py-name" href="#" onclick="return doclink('link-23', '_mark_test_completed', 'link-23');">_mark_test_completed</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                    <tt class="py-name">thank_you</tt><tt class="py-op">(</tt><tt class="py-name">ds</tt><tt class="py-op">.</tt><tt class="py-name">get_length</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_started_at</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download_finished_at</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">_callback</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest._has_completed_before()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#_has_completed_before"><a title="Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest._has_completed_before" class="py-name" href="#" onclick="return doclink('link-24', '_has_completed_before', 'link-24');">_has_completed_before</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt><tt class="py-op">.</tt><tt class="py-name">warning</tt><tt class="py-op">(</tt><tt class="py-string">"Skipping Anon Test since it has been run before"</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">destination_dir</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">get_state_dir</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"/anon_test/"</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-name">shutil</tt><tt class="py-op">.</tt><tt class="py-name">rmtree</tt><tt class="py-op">(</tt><tt class="py-name">destination_dir</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">tdef</tt> <tt class="py-op">=</tt> <tt class="py-name">TorrentDef</tt><tt class="py-op">.</tt><tt class="py-name">load</tt><tt class="py-op">(</tt><tt class="py-string">"public.torrent"</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">defaultDLConfig</tt> <tt class="py-op">=</tt> <tt class="py-name">DefaultDownloadStartupConfig</tt><tt class="py-op">.</tt><tt class="py-name">getInstance</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">dscfg</tt> <tt class="py-op">=</tt> <tt class="py-name">defaultDLConfig</tt><tt class="py-op">.</tt><tt class="py-name">copy</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-string">''' :type : DefaultDownloadStartupConfig '''</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">dscfg</tt><tt class="py-op">.</tt><tt class="py-name">set_anon_mode</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">dscfg</tt><tt class="py-op">.</tt><tt class="py-name">set_dest_dir</tt><tt class="py-op">(</tt><tt class="py-name">destination_dir</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tribler_session</tt><tt class="py-op">.</tt><tt class="py-name">start_download</tt><tt class="py-op">(</tt><tt class="py-name">tdef</tt><tt class="py-op">,</tt> <tt class="py-name">dscfg</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt><tt class="py-op">.</tt><tt class="py-name">set_state_callback</tt><tt class="py-op">(</tt><tt class="py-name">state_call</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">delay</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">peer</tt> <tt class="py-keyword">in</tt> <tt class="py-name">hosts</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">download</tt><tt class="py-op">.</tt><tt class="py-name">add_peer</tt><tt class="py-op">(</tt><tt class="py-name">peer</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Apr 29 14:21:23 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Tribler.community.anontunnel.extendstrategies</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;Tribler ::
+        Package&nbsp;community ::
+        <a href="Tribler.community.anontunnel-module.html">Package&nbsp;anontunnel</a> ::
+        Module&nbsp;extendstrategies
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Tribler.community.anontunnel.extendstrategies-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Tribler.community.anontunnel.extendstrategies-module.html">Module Tribler.community.anontunnel.extendstrategies</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module Tribler.community.anontunnel.community=Tribler.community.anontunnel.community-module.html"><a title="Tribler.community.anontunnel.community" class="py-name" href="#" onclick="return doclink('link-0', 'community', 'link-0');">community</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package Tribler.community.anontunnel=Tribler.community.anontunnel-module.html"><a title="Tribler.community.anontunnel" class="py-name" href="#" onclick="return doclink('link-1', 'anontunnel', 'link-1');">anontunnel</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Tribler.community.anontunnel.globals=Tribler.community.anontunnel.globals-module.html"><a title="Tribler.community.anontunnel.globals" class="py-name" href="#" onclick="return doclink('link-2', 'globals', 'link-2');">globals</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Variable Tribler.community.anontunnel.globals.CIRCUIT_STATE_EXTENDING=Tribler.community.anontunnel.globals-module.html#CIRCUIT_STATE_EXTENDING"><a title="Tribler.community.anontunnel.globals.CIRCUIT_STATE_EXTENDING" class="py-name" href="#" onclick="return doclink('link-3', 'CIRCUIT_STATE_EXTENDING', 'link-3');">CIRCUIT_STATE_EXTENDING</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable Tribler.community.anontunnel.globals.MESSAGE_EXTEND=Tribler.community.anontunnel.globals-module.html#MESSAGE_EXTEND"><a title="Tribler.community.anontunnel.globals.MESSAGE_EXTEND" class="py-name" href="#" onclick="return doclink('link-4', 'MESSAGE_EXTEND', 'link-4');">MESSAGE_EXTEND</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="Tribler.community.anontunnel.community" class="py-name" href="#" onclick="return doclink('link-5', 'community', 'link-0');">community</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="Tribler.community.anontunnel" class="py-name" href="#" onclick="return doclink('link-6', 'anontunnel', 'link-1');">anontunnel</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module Tribler.community.anontunnel.payload=Tribler.community.anontunnel.payload-module.html"><a title="Tribler.community.anontunnel.payload" class="py-name" href="#" onclick="return doclink('link-7', 'payload', 'link-7');">payload</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class Tribler.community.anontunnel.payload.ExtendMessage=Tribler.community.anontunnel.payload.ExtendMessage-class.html"><a title="Tribler.community.anontunnel.payload.ExtendMessage" class="py-name" href="#" onclick="return doclink('link-8', 'ExtendMessage', 'link-8');">ExtendMessage</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Tribler</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="Tribler.community.anontunnel.community" class="py-name" href="#" onclick="return doclink('link-9', 'community', 'link-0');">community</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="Tribler.community.anontunnel" class="py-name" href="#" onclick="return doclink('link-10', 'anontunnel', 'link-1');">anontunnel</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Module Tribler.community.anontunnel.routing=Tribler.community.anontunnel.routing-module.html"><a title="Tribler.community.anontunnel.routing" class="py-name" href="#" onclick="return doclink('link-11', 'routing', 'link-11');">routing</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Class Tribler.community.anontunnel.routing.Hop=Tribler.community.anontunnel.routing.Hop-class.html"><a title="Tribler.community.anontunnel.routing.Hop" class="py-name" href="#" onclick="return doclink('link-12', 'Hop', 'link-12');">Hop</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'chris'</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="NoCandidatesException"></a><div id="NoCandidatesException-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="NoCandidatesException-toggle" onclick="return toggle('NoCandidatesException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.NoCandidatesException-class.html">NoCandidatesException</a><tt class="py-op">(</tt><tt class="py-base-class">ValueError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoCandidatesException-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NoCandidatesException-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="ExtendStrategy"></a><div id="ExtendStrategy-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="ExtendStrategy-toggle" onclick="return toggle('ExtendStrategy');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html">ExtendStrategy</a><tt class="py-op">:</tt> </tt>
+</div><div id="ExtendStrategy-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ExtendStrategy-expanded"><a name="ExtendStrategy.__init__"></a><div id="ExtendStrategy.__init__-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="ExtendStrategy.__init__-toggle" onclick="return toggle('ExtendStrategy.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ExtendStrategy.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ExtendStrategy.__init__-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="ExtendStrategy.extend"></a><div id="ExtendStrategy.extend-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="ExtendStrategy.extend-toggle" onclick="return toggle('ExtendStrategy.extend');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html#extend">extend</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">candidate_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ExtendStrategy.extend-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ExtendStrategy.extend-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">candidate_list</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">            <tt class="py-name">candidate_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="TrustThyNeighbour"></a><div id="TrustThyNeighbour-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="TrustThyNeighbour-toggle" onclick="return toggle('TrustThyNeighbour');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour-class.html">TrustThyNeighbour</a><tt class="py-op">(</tt><tt class="py-base-class">ExtendStrategy</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TrustThyNeighbour-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TrustThyNeighbour-expanded"><a name="TrustThyNeighbour.__init__"></a><div id="TrustThyNeighbour.__init__-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="TrustThyNeighbour.__init__-toggle" onclick="return toggle('TrustThyNeighbour.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proxy</tt><tt class="py-op">,</tt> <tt class="py-param">circuit</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TrustThyNeighbour.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TrustThyNeighbour.__init__-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">        :type proxy: Tribler.community.anontunnel.community.ProxyCommunity</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">        :param circuit:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt id="link-13" class="py-name" targets="Class Tribler.community.anontunnel.extendstrategies.ExtendStrategy=Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html"><a title="Tribler.community.anontunnel.extendstrategies.ExtendStrategy" class="py-name" href="#" onclick="return doclink('link-13', 'ExtendStrategy', 'link-13');">ExtendStrategy</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method Tribler.community.anontunnel.Main.AnonTunnel.__init__()=Tribler.community.anontunnel.Main.AnonTunnel-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.ConnectionState.__init__()=Tribler.community.anontunnel.Socks5.connection.ConnectionState-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.Socks5Connection.__init__()=Tribler.community.anontunnel.Socks5.connection.Socks5Connection-class.html#__init__,Method Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver.__init__()=Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.MethodRequest.__init__()=Tribler.community.anontunnel.Socks5.conversion.MethodRequest-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.Request.__init__()=Tribler.community.anontunnel.Socks5.conversion.Request-class.html#__init__,Method Tribler.community.anontunnel.Socks5.conversion.UdpRequest.__init__()=Tribler.community.anontunnel.Socks5.conversion.UdpRequest-class.html#__init__,Method Tribler.community.anontunnel.Socks5.server.Socks5Server.__init__()=Tribler.community.anontunnel.Socks5.server.Socks5Server-class.html#__init__,Method Tribler.community.anontunnel.Socks5.session.Socks5Session.__init__()=Tribler.community.anontunnel.Socks5.session.Socks5Session-class.html#__init__,Method Tribler.community.anontunnel.cache.CircuitRequestCache.__init__()=Tribler.community.anontunnel.cache.CircuitRequestCache-class.html#__init__,Method Tribler.community.anontunnel.cache.CreatedRequestCache.__init__()=Tribler.community.anontunnel.cache.CreatedRequestCache-class.html#__init__,Method Tribler.community.anontunnel.cache.PingRequestCache.__init__()=Tribler.community.anontunnel.cache.PingRequestCache-class.html#__init__,Method Tribler.community.anontunnel.community.ProxyCommunity.__init__()=Tribler.community.anontunnel.community.ProxyCommunity-class.html#__init__,Method Tribler.community.anontunnel.community.ProxySettings.__init__()=Tribler.community.anontunnel.community.ProxySettings-class.html#__init__,Method Tribler.community.anontunnel.conversion.CustomProxyConversion.__init__()=Tribler.community.anontunnel.conversion.CustomProxyConversion-class.html#__init__,Method Tribler.community.anontunnel.conversion.ProxyConversion.__init__()=Tribler.community.anontunnel.conversion.ProxyConversion-class.html#__init__,Method Tribler.community.anontunnel.crypto.Crypto.__init__()=Tribler.community.anontunnel.crypto.Crypto-class.html#__init__,Method Tribler.community.anontunnel.crypto.DefaultCrypto.__init__()=Tribler.community.anontunnel.crypto.DefaultCrypto-class.html#__init__,Method Tribler.community.anontunnel.crypto.NoCrypto.__init__()=Tribler.community.anontunnel.crypto.NoCrypto-class.html#__init__,Method Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint.__init__()=Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint-class.html#__init__,Method Tribler.community.anontunnel.events.CircuitPoolObserver.__init__()=Tribler.community.anontunnel.events.CircuitPoolObserver-class.html#__init__,Method Tribler.community.anontunnel.events.TunnelObserver.__init__()=Tribler.community.anontunnel.events.TunnelObserver-class.html#__init__,Method Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket.__init__()=Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket-class.html#__init__,Method Tribler.community.anontunnel.exitsocket.TunnelExitSocket.__init__()=Tribler.community.anontunnel.exitsocket.TunnelExitSocket-class.html#__init__,Method Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy.__init__()=Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.ExtendStrategy.__init__()=Tribler.community.anontunnel.extendstrategies.ExtendStrategy-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.NeighbourSubset.__init__()=Tribler.community.anontunnel.extendstrategies.NeighbourSubset-class.html#__init__,Method Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour.__init__()=Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy.__init__()=Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength.__init__()=Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength-class.html#__init__,Method Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy.__init__()=Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy-class.html#__init__,Method Tribler.community.anontunnel.payload.CreateMessage.__init__()=Tribler.community.anontunnel.payload.CreateMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.CreatedMessage.__init__()=Tribler.community.anontunnel.payload.CreatedMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.DataMessage.__init__()=Tribler.community.anontunnel.payload.DataMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.ExtendMessage.__init__()=Tribler.community.anontunnel.payload.ExtendMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.ExtendedMessage.__init__()=Tribler.community.anontunnel.payload.ExtendedMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.PingMessage.__init__()=Tribler.community.anontunnel.payload.PingMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.PongMessage.__init__()=Tribler.community.anontunnel.payload.PongMessage-class.html#__init__,Method Tribler.community.anontunnel.payload.StatsPayload.Implementation.__init__()=Tribler.community.anontunnel.payload.StatsPayload.Implementation-class.html#__init__,Method Tribler.community.anontunnel.routing.Circuit.__init__()=Tribler.community.anontunnel.routing.Circuit-class.html#__init__,Method Tribler.community.anontunnel.routing.CircuitPool.__init__()=Tribler.community.anontunnel.routing.CircuitPool-class.html#__init__,Method Tribler.community.anontunnel.routing.Hop.__init__()=Tribler.community.anontunnel.routing.Hop-class.html#__init__,Method Tribler.community.anontunnel.routing.RelayRoute.__init__()=Tribler.community.anontunnel.routing.RelayRoute-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy.__init__()=Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.RoundRobin.__init__()=Tribler.community.anontunnel.selectionstrategies.RoundRobin-class.html#__init__,Method Tribler.community.anontunnel.selectionstrategies.SelectionStrategy.__init__()=Tribler.community.anontunnel.selectionstrategies.SelectionStrategy-class.html#__init__,Method Tribler.community.anontunnel.stats.CircuitStats.__init__()=Tribler.community.anontunnel.stats.CircuitStats-class.html#__init__,Method Tribler.community.anontunnel.stats.RelayStats.__init__()=Tribler.community.anontunnel.stats.RelayStats-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsCollector.__init__()=Tribler.community.anontunnel.stats.StatsCollector-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsCrawler.__init__()=Tribler.community.anontunnel.stats.StatsCrawler-class.html#__init__,Method Tribler.community.anontunnel.stats.StatsDatabase.__init__()=Tribler.community.anontunnel.stats.StatsDatabase-class.html#__init__,Method Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.__init__()=Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock-class.html#__init__,Method Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.__init__()=Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest-class.html#__init__"><a title="Tribler.community.anontunnel.Main.AnonTunnel.__init__
+Tribler.community.anontunnel.Socks5.connection.ConnectionState.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5Connection.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver.__init__
+Tribler.community.anontunnel.Socks5.conversion.MethodRequest.__init__
+Tribler.community.anontunnel.Socks5.conversion.Request.__init__
+Tribler.community.anontunnel.Socks5.conversion.UdpRequest.__init__
+Tribler.community.anontunnel.Socks5.server.Socks5Server.__init__
+Tribler.community.anontunnel.Socks5.session.Socks5Session.__init__
+Tribler.community.anontunnel.cache.CircuitRequestCache.__init__
+Tribler.community.anontunnel.cache.CreatedRequestCache.__init__
+Tribler.community.anontunnel.cache.PingRequestCache.__init__
+Tribler.community.anontunnel.community.ProxyCommunity.__init__
+Tribler.community.anontunnel.community.ProxySettings.__init__
+Tribler.community.anontunnel.conversion.CustomProxyConversion.__init__
+Tribler.community.anontunnel.conversion.ProxyConversion.__init__
+Tribler.community.anontunnel.crypto.Crypto.__init__
+Tribler.community.anontunnel.crypto.DefaultCrypto.__init__
+Tribler.community.anontunnel.crypto.NoCrypto.__init__
+Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint.__init__
+Tribler.community.anontunnel.events.CircuitPoolObserver.__init__
+Tribler.community.anontunnel.events.TunnelObserver.__init__
+Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket.__init__
+Tribler.community.anontunnel.exitsocket.TunnelExitSocket.__init__
+Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.ExtendStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.NeighbourSubset.__init__
+Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour.__init__
+Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy.__init__
+Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength.__init__
+Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy.__init__
+Tribler.community.anontunnel.payload.CreateMessage.__init__
+Tribler.community.anontunnel.payload.CreatedMessage.__init__
+Tribler.community.anontunnel.payload.DataMessage.__init__
+Tribler.community.anontunnel.payload.ExtendMessage.__init__
+Tribler.community.anontunnel.payload.ExtendedMessage.__init__
+Tribler.community.anontunnel.payload.PingMessage.__init__
+Tribler.community.anontunnel.payload.PongMessage.__init__
+Tribler.community.anontunnel.payload.StatsPayload.Implementation.__init__
+Tribler.community.anontunnel.routing.Circuit.__init__
+Tribler.community.anontunnel.routing.CircuitPool.__init__
+Tribler.community.anontunnel.routing.Hop.__init__
+Tribler.community.anontunnel.routing.RelayRoute.__init__
+Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy.__init__
+Tribler.community.anontunnel.selectionstrategies.RoundRobin.__init__
+Tribler.community.anontunnel.selectionstrategies.SelectionStrategy.__init__
+Tribler.community.anontunnel.stats.CircuitStats.__init__
+Tribler.community.anontunnel.stats.RelayStats.__init__
+Tribler.community.anontunnel.stats.StatsCollector.__init__
+Tribler.community.anontunnel.stats.StatsCrawler.__init__
+Tribler.community.anontunnel.stats.StatsDatabase.__init__
+Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.__init__
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.__init__" class="py-name" href="#" onclick="return doclink('link-14', '__init__', 'link-14');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">proxy</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt> <tt class="py-op">=</tt> <tt class="py-name">circuit</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="TrustThyNeighbour.extend"></a><div id="TrustThyNeighbour.extend-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="TrustThyNeighbour.extend-toggle" onclick="return toggle('TrustThyNeighbour.extend');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour-class.html#extend">extend</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">candidate_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TrustThyNeighbour.extend-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TrustThyNeighbour.extend-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">candidate_list</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">            <tt class="py-name">candidate_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable Tribler.community.anontunnel.routing.Circuit.state=Tribler.community.anontunnel.routing.Circuit-class.html#state"><a title="Tribler.community.anontunnel.routing.Circuit.state" class="py-name" href="#" onclick="return doclink('link-15', 'state', 'link-15');">state</a></tt> <tt class="py-op">==</tt> <tt id="link-16" class="py-name"><a title="Tribler.community.anontunnel.globals.CIRCUIT_STATE_EXTENDING" class="py-name" href="#" onclick="return doclink('link-16', 'CIRCUIT_STATE_EXTENDING', 'link-3');">CIRCUIT_STATE_EXTENDING</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">            <tt class="py-string">"Only circuits with state CIRCUIT_STATE_EXTENDING can be extended"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">goal_hops</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Variable Tribler.community.anontunnel.routing.Circuit.hops=Tribler.community.anontunnel.routing.Circuit-class.html#hops"><a title="Tribler.community.anontunnel.routing.Circuit.hops" class="py-name" href="#" onclick="return doclink('link-17', 'hops', 'link-17');">hops</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">            <tt class="py-string">"Circuits with correct length cannot be extended"</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt><tt class="py-string">"Trusting our tunnel to extend circuit %d"</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">circuit_id</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method Tribler.community.anontunnel.community.ProxyCommunity.send_message()=Tribler.community.anontunnel.community.ProxyCommunity-class.html#send_message,Method Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.send_message()=Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock-class.html#send_message"><a title="Tribler.community.anontunnel.community.ProxyCommunity.send_message
+Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.send_message" class="py-name" href="#" onclick="return doclink('link-18', 'send_message', 'link-18');">send_message</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">candidate</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">circuit_id</tt><tt class="py-op">,</tt> <tt id="link-19" class="py-name"><a title="Tribler.community.anontunnel.globals.MESSAGE_EXTEND" class="py-name" href="#" onclick="return doclink('link-19', 'MESSAGE_EXTEND', 'link-4');">MESSAGE_EXTEND</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                                <tt id="link-20" class="py-name"><a title="Tribler.community.anontunnel.payload.ExtendMessage" class="py-name" href="#" onclick="return doclink('link-20', 'ExtendMessage', 'link-8');">ExtendMessage</a></tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"> </tt>
+<a name="NeighbourSubset"></a><div id="NeighbourSubset-def"><a name="L51"></a><tt class="py-lineno">51</tt> <a class="py-toggle" href="#" id="NeighbourSubset-toggle" onclick="return toggle('NeighbourSubset');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.NeighbourSubset-class.html">NeighbourSubset</a><tt class="py-op">(</tt><tt class="py-base-class">ExtendStrategy</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NeighbourSubset-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NeighbourSubset-expanded"><a name="NeighbourSubset.__init__"></a><div id="NeighbourSubset.__init__-def"><a name="L52"></a><tt class="py-lineno">52</tt> <a class="py-toggle" href="#" id="NeighbourSubset.__init__-toggle" onclick="return toggle('NeighbourSubset.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.NeighbourSubset-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proxy</tt><tt class="py-op">,</tt> <tt class="py-param">circuit</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NeighbourSubset.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="NeighbourSubset.__init__-expanded"><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">        :type proxy: Tribler.community.anontunnel.community.ProxyCommunity</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">        :param circuit:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt id="link-21" class="py-name"><a title="Tribler.community.anontunnel.extendstrategies.ExtendStrategy" class="py-name" href="#" onclick="return doclink('link-21', 'ExtendStrategy', 'link-13');">ExtendStrategy</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="Tribler.community.anontunnel.Main.AnonTunnel.__init__
+Tribler.community.anontunnel.Socks5.connection.ConnectionState.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5Connection.__init__
+Tribler.community.anontunnel.Socks5.connection.Socks5ConnectionObserver.__init__
+Tribler.community.anontunnel.Socks5.conversion.MethodRequest.__init__
+Tribler.community.anontunnel.Socks5.conversion.Request.__init__
+Tribler.community.anontunnel.Socks5.conversion.UdpRequest.__init__
+Tribler.community.anontunnel.Socks5.server.Socks5Server.__init__
+Tribler.community.anontunnel.Socks5.session.Socks5Session.__init__
+Tribler.community.anontunnel.cache.CircuitRequestCache.__init__
+Tribler.community.anontunnel.cache.CreatedRequestCache.__init__
+Tribler.community.anontunnel.cache.PingRequestCache.__init__
+Tribler.community.anontunnel.community.ProxyCommunity.__init__
+Tribler.community.anontunnel.community.ProxySettings.__init__
+Tribler.community.anontunnel.conversion.CustomProxyConversion.__init__
+Tribler.community.anontunnel.conversion.ProxyConversion.__init__
+Tribler.community.anontunnel.crypto.Crypto.__init__
+Tribler.community.anontunnel.crypto.DefaultCrypto.__init__
+Tribler.community.anontunnel.crypto.NoCrypto.__init__
+Tribler.community.anontunnel.endpoint.DispersyBypassEndpoint.__init__
+Tribler.community.anontunnel.events.CircuitPoolObserver.__init__
+Tribler.community.anontunnel.events.TunnelObserver.__init__
+Tribler.community.anontunnel.exitsocket.ShortCircuitExitSocket.__init__
+Tribler.community.anontunnel.exitsocket.TunnelExitSocket.__init__
+Tribler.community.anontunnel.exitstrategies.DefaultExitStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.ExtendStrategy.__init__
+Tribler.community.anontunnel.extendstrategies.NeighbourSubset.__init__
+Tribler.community.anontunnel.extendstrategies.TrustThyNeighbour.__init__
+Tribler.community.anontunnel.lengthstrategies.CircuitLengthStrategy.__init__
+Tribler.community.anontunnel.lengthstrategies.ConstantCircuitLength.__init__
+Tribler.community.anontunnel.lengthstrategies.RandomCircuitLengthStrategy.__init__
+Tribler.community.anontunnel.payload.CreateMessage.__init__
+Tribler.community.anontunnel.payload.CreatedMessage.__init__
+Tribler.community.anontunnel.payload.DataMessage.__init__
+Tribler.community.anontunnel.payload.ExtendMessage.__init__
+Tribler.community.anontunnel.payload.ExtendedMessage.__init__
+Tribler.community.anontunnel.payload.PingMessage.__init__
+Tribler.community.anontunnel.payload.PongMessage.__init__
+Tribler.community.anontunnel.payload.StatsPayload.Implementation.__init__
+Tribler.community.anontunnel.routing.Circuit.__init__
+Tribler.community.anontunnel.routing.CircuitPool.__init__
+Tribler.community.anontunnel.routing.Hop.__init__
+Tribler.community.anontunnel.routing.RelayRoute.__init__
+Tribler.community.anontunnel.selectionstrategies.LengthSelectionStrategy.__init__
+Tribler.community.anontunnel.selectionstrategies.RoundRobin.__init__
+Tribler.community.anontunnel.selectionstrategies.SelectionStrategy.__init__
+Tribler.community.anontunnel.stats.CircuitStats.__init__
+Tribler.community.anontunnel.stats.RelayStats.__init__
+Tribler.community.anontunnel.stats.StatsCollector.__init__
+Tribler.community.anontunnel.stats.StatsCrawler.__init__
+Tribler.community.anontunnel.stats.StatsDatabase.__init__
+Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.__init__
+Tribler.community.anontunnel.tests.test_libtorrent.LibtorrentTest.__init__" class="py-name" href="#" onclick="return doclink('link-22', '__init__', 'link-14');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">proxy</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt> <tt class="py-op">=</tt> <tt class="py-name">circuit</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"> </tt>
+<a name="NeighbourSubset.extend"></a><div id="NeighbourSubset.extend-def"><a name="L61"></a><tt class="py-lineno">61</tt> <a class="py-toggle" href="#" id="NeighbourSubset.extend-toggle" onclick="return toggle('NeighbourSubset.extend');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Tribler.community.anontunnel.extendstrategies.NeighbourSubset-class.html#extend">extend</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">candidate_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NeighbourSubset.extend-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="NeighbourSubset.extend-expanded"><a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">candidate_list</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">            <tt class="py-name">candidate_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="Tribler.community.anontunnel.routing.Circuit.state" class="py-name" href="#" onclick="return doclink('link-23', 'state', 'link-15');">state</a></tt> <tt class="py-op">==</tt> <tt id="link-24" class="py-name"><a title="Tribler.community.anontunnel.globals.CIRCUIT_STATE_EXTENDING" class="py-name" href="#" onclick="return doclink('link-24', 'CIRCUIT_STATE_EXTENDING', 'link-3');">CIRCUIT_STATE_EXTENDING</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">            <tt class="py-string">"Only circuits with state CIRCUIT_STATE_EXTENDING can be extended"</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">goal_hops</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="Tribler.community.anontunnel.routing.Circuit.hops" class="py-name" href="#" onclick="return doclink('link-25', 'hops', 'link-17');">hops</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">            <tt class="py-string">"Circuits with correct length cannot be extended"</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">        <tt class="py-name">extend_hop_public_bin</tt> <tt class="py-op">=</tt> <tt class="py-name">next</tt><tt class="py-op">(</tt><tt class="py-name">iter</tt><tt class="py-op">(</tt><tt class="py-name">candidate_list</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">extend_hop_public_bin</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-26" class="py-name" targets="Class Tribler.community.anontunnel.extendstrategies.NoCandidatesException=Tribler.community.anontunnel.extendstrategies.NoCandidatesException-class.html"><a title="Tribler.community.anontunnel.extendstrategies.NoCandidatesException" class="py-name" href="#" onclick="return doclink('link-26', 'NoCandidatesException', 'link-26');">NoCandidatesException</a></tt><tt class="py-op">(</tt><tt class="py-string">"No candidates (with key) to extend, bailing out."</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-name">extend_hop_public_key</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt><tt class="py-op">.</tt><tt class="py-name">dispersy</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Variable Tribler.community.anontunnel.community.ProxyCommunity.crypto=Tribler.community.anontunnel.community.ProxyCommunity-class.html#crypto,Module Tribler.community.anontunnel.crypto=Tribler.community.anontunnel.crypto-module.html"><a title="Tribler.community.anontunnel.community.ProxyCommunity.crypto
+Tribler.community.anontunnel.crypto" class="py-name" href="#" onclick="return doclink('link-27', 'crypto', 'link-27');">crypto</a></tt><tt class="py-op">.</tt><tt class="py-name">key_from_public_bin</tt><tt class="py-op">(</tt><tt class="py-name">extend_hop_public_bin</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-name">hashed_public_key</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt><tt class="py-op">.</tt><tt class="py-name">dispersy</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="Tribler.community.anontunnel.community.ProxyCommunity.crypto
+Tribler.community.anontunnel.crypto" class="py-name" href="#" onclick="return doclink('link-28', 'crypto', 'link-27');">crypto</a></tt><tt class="py-op">.</tt><tt class="py-name">key_to_hash</tt><tt class="py-op">(</tt><tt class="py-name">extend_hop_public_key</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">candidate</tt><tt class="py-op">.</tt><tt class="py-name">pub_key</tt> <tt class="py-op">=</tt> <tt class="py-name">extend_hop_public_key</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">unverified_hop</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="Tribler.community.anontunnel.routing.Hop" class="py-name" href="#" onclick="return doclink('link-29', 'Hop', 'link-12');">Hop</a></tt><tt class="py-op">(</tt><tt class="py-name">extend_hop_public_key</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">                <tt class="py-string">"We chose %s from the list to extend circuit %d"</tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">                <tt class="py-name">hashed_public_key</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">circuit_id</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">proxy</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="Tribler.community.anontunnel.community.ProxyCommunity.send_message
+Tribler.community.anontunnel.tests.test_extendStrategies.ProxyMock.send_message" class="py-name" href="#" onclick="return doclink('link-30', 'send_message', 'link-18');">send_message</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">candidate</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">circuit</tt><tt class="py-op">.</tt><tt class="py-name">circuit_id</tt><tt class="py-op">,</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">                <tt id="link-31" class="py-name"><a title="Tribler.community.anontunnel.globals.MESSAGE_EXTEND" class="py-name" href="#" onclick="return doclink('link-31', 'MESSAGE_EXTEND', 'link-4');">MESSAGE_EXTEND</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">                <tt id="link-32" class="py-name"><a title="Tribler.community.anontunnel.payload.ExtendMessage" class="py-name" href="#" onclick="return doclink('link-32', 'ExtendMessage', 'link-8');">ExtendMessage</a></tt><tt class="py-op">(</tt><tt class="py-name">extend_hop_public_bin</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">BaseException</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_logger</tt><tt class="py-op">.</tt><tt class="py-name">exception</tt><tt class="py-op">(</tt><tt class="py-string">"Encryption error"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line"> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div></div><a name="L95"></a><tt class="py-lineno">95</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Apr 29 14:21:23 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

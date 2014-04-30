@@ -72,6 +72,17 @@ After benchmarking Dispersy against Cassandra (the database system used by Faceb
 
 
 \subsection{Anonymous tunnels (Martijn)}
+Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page (https://github.com/Tribler/tribler/pull/525) is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achived by using the Tor protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only the Tor protocol. More information about Tor can be found in section II.\\\\
+The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
+\begin{itemize} 
+\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library is used for the Diffie-Hellman protocol.
+\item The experimental code is using the Socks5 protocol for communication with other nodes. This code has been written by the Tribler team.
+\item Dispersy is used as a cache system to keep track of the outstanding PING and EXTEND requests and of candidates used in CREATE and CREATED requests.
+\item A circuit can be in four states: ready, extending, to be extended or broken.
+\item There are nine different messages that can be send amongst nodes: create, created, extend, extended, data, ping, pong, puncture and stats.
+\end{itemize}
+In order to test the anonymous connections and the download speed, a special anonymous tab has been built into Tribler. Clicking on this tab brings up a graph of the current anonymous network as a graph. It also logs the circuit events such as the extend or creation of a circuit. When enough anonymous proxies are online, a 50MB test download file should start to download.\\\\
+HIER KOMT NOG HET PLAATJE MET HET ANONYMOUS TAB IN TRIBLER
 
 \section{Motivation}
 Worldwide the amount of mobile devices is growing fast. In 2013, there were 6.8 billion mobile subscriptions worldwide (http://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx). This number is expected to exceed the world population in 2014 with 7.3 billion subscriptions. Android had a share of 81\% in Q3 of devices shipped (http://www.forbes.com/sites/tonybradley/2013/11/15/android-dominates-market-share-but-apple-makes-all-the-money/).

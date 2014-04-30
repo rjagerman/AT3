@@ -1,0 +1,1976 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Tribler.community.anontunnel.community.ProxyCommunity</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;Tribler ::
+        Package&nbsp;community ::
+        <a href="Tribler.community.anontunnel-module.html">Package&nbsp;anontunnel</a> ::
+        <a href="Tribler.community.anontunnel.community-module.html">Module&nbsp;community</a> ::
+        Class&nbsp;ProxyCommunity
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ProxyCommunity</h1><p class="nomargin-top"><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="class_hierarchy_for_proxycommu" name="class_hierarchy_for_proxycommu">
+<area shape="rect" id="node1" href="Tribler.community.anontunnel.community.ProxyCommunity-class.html" title="ProxyCommunity" alt="" coords="48,61,171,88"/>
+<area shape="rect" id="node2" href="javascript:void(0);" title="dispersy.community.Community" alt="" coords="5,5,213,32"/>
+</map>
+  <img src="class_hierarchy_for_proxycommu.gif" alt='' usemap="#class_hierarchy_for_proxycommu" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>The dispersy community which discovers other proxies on the internet 
+  and creates TOR-like circuits together with them</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b>:
+      <code><a href="abc.ABCMeta-class.html">__metaclass__</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dispersy</span>,
+        <span class="summary-sig-arg">master_member</span>,
+        <span class="summary-sig-arg">my_member</span>,
+        <span class="summary-sig-arg">settings</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">tribler_session</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Loading, or joining an existing community can be done by calling the 
+      constructor.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__discover"></a><span class="summary-sig-name">__discover</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__discover">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#unload_community" class="summary-sig-name">unload_community</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Called by dispersy when the ProxyCommunity is being unloaded</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.unload_community">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_initiate_message_handlers"></a><span class="summary-sig-name">_initiate_message_handlers</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._initiate_message_handlers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list[Tribler.dispersy.conversion.Conversion]</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#initiate_conversions" class="summary-sig-name">initiate_conversions</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Called by dispersy when we need to return our message Conversions</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.initiate_conversions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list[Message]</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#initiate_meta_messages" class="summary-sig-name">initiate_meta_messages</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Called by dispersy when we need to define the messages we would like 
+      to use in the community</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.initiate_meta_messages">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#_generic_timeline_check" class="summary-sig-name" onclick="show_private();">_generic_timeline_check</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">messages</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._generic_timeline_check">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_on_stats"></a><span class="summary-sig-name">_on_stats</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">messages</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._on_stats">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#send_stats" class="summary-sig-name">send_stats</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">stats</span>)</span><br />
+      Send a stats message to the community</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_stats">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__handle_incoming"></a><span class="summary-sig-name">__handle_incoming</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">am_originator</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">data</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__handle_incoming">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__relay"></a><span class="summary-sig-name">__relay</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">relay_key</span>,
+        <span class="summary-sig-arg">sock_addr</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__relay">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#__handle_packet" class="summary-sig-name" onclick="show_private();">__handle_packet</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock_addr</span>,
+        <span class="summary-sig-arg">orig_packet</span>)</span><br />
+      Returns:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__handle_packet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">Tribler.community.anontunnel.routing.Circuit</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#create_circuit" class="summary-sig-name">create_circuit</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first_hop</span>,
+        <span class="summary-sig-arg">goal_hops</span>,
+        <span class="summary-sig-arg">extend_strategy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">deferred</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Create a new circuit, with one initial hop</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_circuit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#remove_circuit" class="summary-sig-name">remove_circuit</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">additional_info</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      Removes a circuit from our pool, destroying it</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.remove_circuit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#remove_relay" class="summary-sig-name">remove_relay</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">relay_key</span>,
+        <span class="summary-sig-arg">additional_info</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      Removes a relay from our routing table, will drop any incoming 
+      packets and eventually cause a timeout at the originator</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.remove_relay">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_create" class="summary-sig-name">on_create</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Handle incoming CREATE message, acknowledge the CREATE request with a
+      CREATED reply</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_create">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_created" class="summary-sig-name">on_created</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Handle incoming CREATED messages relay them backwards towards the 
+      originator if necessary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_created">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#_ours_on_created_extended" class="summary-sig-name" onclick="show_private();">_ours_on_created_extended</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit</span>,
+        <span class="summary-sig-arg">message</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._ours_on_created_extended">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_data" class="summary-sig-name">on_data</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Handles incoming DATA message</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_extend" class="summary-sig-name">on_extend</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Upon reception of a EXTEND message the message is forwarded over the 
+      Circuit if possible.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_extend">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_extended" class="summary-sig-name">on_extended</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      A circuit has been extended, forward the acknowledgment back to the 
+      origin of the EXTEND.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_extended">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#create_ping" class="summary-sig-name">create_ping</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">circuit_id</span>)</span><br />
+      Creates, sends and keeps track of a PING message to given candidate 
+      on the specified circuit.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_ping">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_ping" class="summary-sig-name">on_ping</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Upon reception of a PING message we respond with a PONG message</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_ping">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#on_pong" class="summary-sig-name">on_pong</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      When we receive a PONG message on our circuit we can be sure that the
+      circuit is alive and well.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_pong">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_generate_circuit_id"></a><span class="summary-sig-name">_generate_circuit_id</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">neighbour</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._generate_circuit_id">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#send_message" class="summary-sig-name">send_message</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">destination</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">message_type</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Send a message to a specified destination and circuit</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_message">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#send_packet" class="summary-sig-name">send_packet</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">destination</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">message_type</span>,
+        <span class="summary-sig-arg">packet</span>,
+        <span class="summary-sig-arg">relayed</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Sends a packet to a relay over the specified circuit</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_packet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__dict_inc"></a><span class="summary-sig-name">__dict_inc</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">statistics_dict</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">inc</span>=<span class="summary-sig-default">1</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__dict_inc">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__ping_circuits"></a><span class="summary-sig-name">__ping_circuits</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__ping_circuits">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#tunnel_data_to_end" class="summary-sig-name">tunnel_data_to_end</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ultimate_destination</span>,
+        <span class="summary-sig-arg">payload</span>,
+        <span class="summary-sig-arg">circuit</span>)</span><br />
+      Tunnel data to the end and request an EXIT to the outside world</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.tunnel_data_to_end">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#tunnel_data_to_origin" class="summary-sig-name">tunnel_data_to_origin</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">source_address</span>,
+        <span class="summary-sig-arg">payload</span>)</span><br />
+      Tunnel data to originator</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.tunnel_data_to_origin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#create_created_cache" class="summary-sig-name">create_created_cache</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>,
+        <span class="summary-sig-arg">candidates</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_created_cache">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_created_cache"></a><span class="summary-sig-name">get_created_cache</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">circuit_id</span>,
+        <span class="summary-sig-arg">candidate</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.get_created_cache">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b>:
+      <code>add_candidate</code>,
+      <code>add_conversion</code>,
+      <code>check_introduction_request</code>,
+      <code>check_introduction_response</code>,
+      <code>check_puncture</code>,
+      <code>check_puncture_request</code>,
+      <code>check_signature_request</code>,
+      <code>check_signature_response</code>,
+      <code>check_undo</code>,
+      <code>claim_global_time</code>,
+      <code>cleanup_candidates</code>,
+      <code>create_authorize</code>,
+      <code>create_candidate</code>,
+      <code>create_destroy_community</code>,
+      <code>create_dynamic_settings</code>,
+      <code>create_identity</code>,
+      <code>create_introduction_request</code>,
+      <code>create_missing_identity</code>,
+      <code>create_missing_last_message</code>,
+      <code>create_missing_message</code>,
+      <code>create_missing_proof</code>,
+      <code>create_missing_sequence</code>,
+      <code>create_or_update_walkcandidate</code>,
+      <code>create_revoke</code>,
+      <code>create_signature_request</code>,
+      <code>create_undo</code>,
+      <code>dispersy_check_database</code>,
+      <code>dispersy_claim_sync_bloom_filter</code>,
+      <code>dispersy_cleanup_community</code>,
+      <code>dispersy_get_introduce_candidate</code>,
+      <code>dispersy_get_walk_candidate</code>,
+      <code>dispersy_store</code>,
+      <code>dispersy_yield_candidates</code>,
+      <code>dispersy_yield_verified_candidates</code>,
+      <code>filter_duplicate_candidate</code>,
+      <code>flush_batch_cache</code>,
+      <code>get_candidate</code>,
+      <code>get_candidate_mid</code>,
+      <code>get_conversion_for_message</code>,
+      <code>get_conversion_for_packet</code>,
+      <code>get_default_conversion</code>,
+      <code>get_member</code>,
+      <code>get_meta_message</code>,
+      <code>get_meta_messages</code>,
+      <code>get_walkcandidate</code>,
+      <code>handle_missing_messages</code>,
+      <code>on_authorize</code>,
+      <code>on_destroy_community</code>,
+      <code>on_dynamic_settings</code>,
+      <code>on_identity</code>,
+      <code>on_incoming_packets</code>,
+      <code>on_introduction_request</code>,
+      <code>on_introduction_response</code>,
+      <code>on_messages</code>,
+      <code>on_missing_identity</code>,
+      <code>on_missing_last_message</code>,
+      <code>on_missing_message</code>,
+      <code>on_missing_proof</code>,
+      <code>on_missing_sequence</code>,
+      <code>on_puncture</code>,
+      <code>on_puncture_request</code>,
+      <code>on_revoke</code>,
+      <code>on_signature_request</code>,
+      <code>on_signature_response</code>,
+      <code>on_undo</code>,
+      <code>purge_batch_cache</code>,
+      <code>remove_candidate</code>,
+      <code>take_step</code>,
+      <code>update_bootstrap_candidates</code>,
+      <code>update_global_time</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b> (private):
+      <code>_check_for_pruning</code>,
+      <code>_claim_master_member_sequence_number</code>,
+      <code>_dispersy_claim_sync_bloom_filter_largest</code>,
+      <code>_dispersy_claim_sync_bloom_filter_modulo</code>,
+      <code>_download_master_member_identity</code>,
+      <code>_get_packets_for_bloomfilters</code>,
+      <code>_initialize_meta_messages</code>,
+      <code>_initialize_timeline</code>,
+      <code>_iter_bootstrap</code>,
+      <code>_iter_categories</code>,
+      <code>_iter_category</code>,
+      <code>_on_batch_cache</code>,
+      <code>_on_batch_cache_timeout</code>,
+      <code>_select_and_fix</code>,
+      <code>_select_bloomfilter_range</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#get_master_members" class="summary-sig-name">get_master_members</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">dispersy</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.get_master_members">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b>:
+      <code>create_community</code>,
+      <code>get_classification</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__abstractmethods__"></a><span class="summary-name">__abstractmethods__</span> = <code title="frozenset([])"><code class="variable-group">frozenset([</code><code class="variable-group">])</code></code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b> (private):
+      <code>_SKIP_CURVE_STEPS</code>,
+      <code>_SKIP_STEPS</code>,
+      <code>_abc_cache</code>,
+      <code>_abc_negative_cache</code>,
+      <code>_abc_negative_cache_version</code>,
+      <code>_abc_registry</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="observers"></a><span class="summary-name">observers</span><br />
+      :type : list of TunnelObserver
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#_message_handlers" class="summary-name" onclick="show_private();">_message_handlers</a><br />
+      :type : dict[...
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="circuits"></a><span class="summary-name">circuits</span><br />
+      :type : dict[int, Circuit]
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="relay_from_to"></a><span class="summary-name">relay_from_to</span><br />
+      :type :  dict[((str, int),int),RelayRoute]
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="waiting_for"></a><span class="summary-name">waiting_for</span><br />
+      :type :  dict[((str, int),int), bool]
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict[(str, int), int]</span>
+    </td><td class="summary">
+        <a name="destination_circuit"></a><span class="summary-name">destination_circuit</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="circuit_pools"></a><span class="summary-name">circuit_pools</span><br />
+      :type : list[CircuitPool]
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ElgamalCrypto</span>
+    </td><td class="summary">
+        <a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#crypto" class="summary-name">crypto</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#packet_crypto" class="summary-name">packet_crypto</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict[int, Tribler.community.anontunnel.routing.Circuit]</span>
+    </td><td class="summary">
+        <a href="Tribler.community.anontunnel.community.ProxyCommunity-class.html#active_circuits" class="summary-name">active_circuits</a><br />
+      Dict of active circuits, a circuit is active when its state is 
+      CIRCUIT_STATE_READY
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dispersy.community.Community</code></b>:
+      <code>acceptable_global_time</code>,
+      <code>candidates</code>,
+      <code>cid</code>,
+      <code>database_id</code>,
+      <code>database_version</code>,
+      <code>dispersy</code>,
+      <code>dispersy_acceptable_global_time_range</code>,
+      <code>dispersy_auto_download_master_member</code>,
+      <code>dispersy_auto_load</code>,
+      <code>dispersy_enable_bloom_filter_sync</code>,
+      <code>dispersy_enable_candidate_walker</code>,
+      <code>dispersy_enable_candidate_walker_responses</code>,
+      <code>dispersy_missing_sequence_response_limit</code>,
+      <code>dispersy_sync_bloom_filter_bits</code>,
+      <code>dispersy_sync_bloom_filter_error_rate</code>,
+      <code>dispersy_sync_bloom_filter_strategy</code>,
+      <code>dispersy_sync_cache_enable</code>,
+      <code>dispersy_sync_response_limit</code>,
+      <code>dispersy_sync_skip_enable</code>,
+      <code>global_time</code>,
+      <code>master_member</code>,
+      <code>my_member</code>,
+      <code>request_cache</code>,
+      <code>statistics</code>,
+      <code>timeline</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="get_master_members"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_master_members</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">dispersy</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.get_master_members">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        dispersy.community.Community.get_master_members
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dispersy</span>,
+        <span class="sig-arg">master_member</span>,
+        <span class="sig-arg">my_member</span>,
+        <span class="sig-arg">settings</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">tribler_session</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Loading, or joining an existing community can be done by calling the 
+  constructor. Creating a new instance of a community needs to use the 
+  create_community() call.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dispersy</code></strong> - The Dispersy instance where this community will attach itself to.</li>
+        <li><strong class="pname"><code>master</code></strong> - The master member that identifies the community.</li>
+        <li><strong class="pname"><code>my_member</code></strong> - The my member that identifies you in this community.</li>
+        <li><strong class="pname"><code>tribler_session</code></strong> (Tribler.Core.Session.Session)</li>
+        <li><strong class="pname"><code>master_member</code></strong> (Tribler.dispersy.member.Member)</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="unload_community"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unload_community</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.unload_community">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called by dispersy when the ProxyCommunity is being unloaded</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dispersy.community.Community.unload_community
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="initiate_conversions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initiate_conversions</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.initiate_conversions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called by dispersy when we need to return our message Conversions</p>
+  <dl class="fields">
+    <dt>Returns: list[Tribler.dispersy.conversion.Conversion]</dt>
+    <dt>Overrides:
+        dispersy.community.Community.initiate_conversions
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="initiate_meta_messages"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initiate_meta_messages</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.initiate_meta_messages">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called by dispersy when we need to define the messages we would like 
+  to use in the community</p>
+  <dl class="fields">
+    <dt>Returns: list[Message]</dt>
+        <dd>The new meta messages.</dd>
+    <dt>Overrides:
+        dispersy.community.Community.initiate_meta_messages
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_generic_timeline_check"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_generic_timeline_check</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">messages</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._generic_timeline_check">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        dispersy.community.Community._generic_timeline_check
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="send_stats"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">send_stats</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">stats</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_stats">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send a stats message to the community</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dict</code></strong>, <strong class="pname"><code>stats</code></strong> - the statistics dictionary to share</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__handle_packet"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__handle_packet</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock_addr</span>,
+        <span class="sig-arg">orig_packet</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.__handle_packet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>(str</code></strong>, <strong class="pname"><code>int)</code></strong>, <strong class="pname"><code>sock_addr</code></strong> - socket address in tuple format</li>
+        <li><strong class="pname"><code>orig_packet</code></strong></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_circuit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_circuit</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first_hop</span>,
+        <span class="sig-arg">goal_hops</span>,
+        <span class="sig-arg">extend_strategy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">deferred</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_circuit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a new circuit, with one initial hop</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>WalkCandidate</code></strong>, <strong class="pname"><code>first_hop</code></strong> - The first hop of our circuit, needs to be a candidate.</li>
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>goal_hops</code></strong> - The number of hops the circuit should reach</li>
+        <li><strong class="pname"><code>T</code></strong>, <strong class="pname"><code><=</code></strong>, <strong class="pname"><code>extendstrategies.ExtendStrategy</code></strong>, <strong class="pname"><code>extend_strategy</code></strong> - The extend strategy used</li>
+    </ul></dd>
+    <dt>Returns: Tribler.community.anontunnel.routing.Circuit</dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remove_circuit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">remove_circuit</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">additional_info</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.remove_circuit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Removes a circuit from our pool, destroying it</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the id of the circuit to destroy</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>additional_info</code></strong> - optional reason, useful for logging</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the removal was successful</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remove_relay"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">remove_relay</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">relay_key</span>,
+        <span class="sig-arg">additional_info</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.remove_relay">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Removes a relay from our routing table, will drop any incoming packets
+  and eventually cause a timeout at the originator</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>((str</code></strong>, <strong class="pname"><code>int)</code></strong>, <strong class="pname"><code>int)</code></strong>, <strong class="pname"><code>relay_key</code></strong> - the key of the relay to remove</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>additional_info</code></strong> - optional reason, useful for logging</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the removal was successful</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_create"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_create</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_create">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Handle incoming CREATE message, acknowledge the CREATE request with a 
+  CREATED reply</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - The circuit's identifier</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - The candidate we got a CREATE message from</li>
+        <li><strong class="pname"><code>CreateMessage</code></strong>, <strong class="pname"><code>message</code></strong> - The message's payload</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_created"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_created</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_created">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Handle incoming CREATED messages relay them backwards towards the 
+  originator if necessary</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - The circuit's id we got a CREATED message on</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - The candidate we got the message from</li>
+        <li><strong class="pname"><code>CreatedMessage</code></strong>, <strong class="pname"><code>message</code></strong> - The message we received</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_ours_on_created_extended"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_ours_on_created_extended</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity._ours_on_created_extended">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ExtendedMessage</code></strong>, <strong class="pname"><code>|</code></strong>, <strong class="pname"><code>CreatedMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the CREATED or EXTENDED message we received</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_data</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Handles incoming DATA message</p>
+  <p>Determines whether the data comes from the outside world (origin set) 
+  or whether the data came from the origin (destination set)</p>
+  <p>If the data comes from the outside world the on_incoming_from_tunnel 
+  method is called on the observers and the circuit is marked as active</p>
+  <p>When the data comes from the origin we need to EXIT to the outside 
+  world. This is left to the observers as well, by calling the 
+  on_exiting_from_tunnel method.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit's id we received the DATA message on</li>
+        <li><strong class="pname"><code>Candidate|None</code></strong>, <strong class="pname"><code>candidate</code></strong> - the messenger of the packet</li>
+        <li><strong class="pname"><code>DataMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the message's content</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_extend"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_extend</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_extend">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Upon reception of a EXTEND message the message is forwarded over the 
+  Circuit if possible. At the end of the circuit a CREATE request is send 
+  to the Proxy to extend the circuit with. It's CREATED reply will 
+  eventually be received and propagated back along the Circuit.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit's id we got the EXTEND message on</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the relay which sent us the EXTEND</li>
+        <li><strong class="pname"><code>ExtendMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the message's content</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_extended"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_extended</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_extended">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>A circuit has been extended, forward the acknowledgment back to the 
+  origin of the EXTEND. If we are the origin update our records.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit's id we got the EXTENDED message on</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the relay which sent us the EXTENDED</li>
+        <li><strong class="pname"><code>ExtendedMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the message's content</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_ping"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_ping</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">circuit_id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_ping">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Creates, sends and keeps track of a PING message to given candidate on
+  the specified circuit.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the candidate to which we want to sent a ping</li>
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit id to sent the ping over</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_ping"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_ping</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_ping">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Upon reception of a PING message we respond with a PONG message</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit's id we got the PING from</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the relay we got the PING from</li>
+        <li><strong class="pname"><code>PingMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the message's content</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="on_pong"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">on_pong</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.on_pong">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>When we receive a PONG message on our circuit we can be sure that the 
+  circuit is alive and well.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit's id we got the PONG message on</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the relay which sent us the PONG</li>
+        <li><strong class="pname"><code>PongMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the message's content</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the message could be handled correctly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="send_message"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">send_message</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">destination</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">message_type</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_message">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send a message to a specified destination and circuit</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>destination</code></strong> - the relay's candidate</li>
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit to sent over</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>message_type</code></strong> - the messages type, used to determine how to serialize it</li>
+        <li><strong class="pname"><code>BaseMessage</code></strong>, <strong class="pname"><code>message</code></strong> - the messages content in object form</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="send_packet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">send_packet</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">destination</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">message_type</span>,
+        <span class="sig-arg">packet</span>,
+        <span class="sig-arg">relayed</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.send_packet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sends a packet to a relay over the specified circuit</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>destination</code></strong> - the relay's candidate structure</li>
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit to sent over</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>message_type</code></strong> - the messages type, for logging purposes</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>packet</code></strong> - the messages content in serialised form</li>
+        <li><strong class="pname"><code>bool</code></strong>, <strong class="pname"><code>relayed</code></strong> - whether this is a relay packet or not</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>whether the send was successful</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="tunnel_data_to_end"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">tunnel_data_to_end</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ultimate_destination</span>,
+        <span class="sig-arg">payload</span>,
+        <span class="sig-arg">circuit</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.tunnel_data_to_end">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Tunnel data to the end and request an EXIT to the outside world</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>(str</code></strong>, <strong class="pname"><code>int)</code></strong>, <strong class="pname"><code>ultimate_destination</code></strong> - The destination outside the tunnel community</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>payload</code></strong> - The raw payload to send to the ultimate destination</li>
+        <li><strong class="pname"><code>Tribler.community.anontunnel.routing.Circuit</code></strong>, <strong class="pname"><code>circuit</code></strong> - The circuit id to tunnel data over</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Whether the request has been handled successfully</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="tunnel_data_to_origin"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">tunnel_data_to_origin</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">source_address</span>,
+        <span class="sig-arg">payload</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.tunnel_data_to_origin">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Tunnel data to originator</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - The circuit's id to return data over</li>
+        <li><strong class="pname"><code>Candidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - The relay to return data over</li>
+        <li><strong class="pname"><code>(str</code></strong>, <strong class="pname"><code>int)</code></strong>, <strong class="pname"><code>source_address</code></strong> - The source outside the tunnel community</li>
+        <li><strong class="pname"><code>str</code></strong>, <strong class="pname"><code>payload</code></strong> - The raw payload to return to the originator</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Whether the request has been handled successfully</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_created_cache"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_created_cache</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">circuit_id</span>,
+        <span class="sig-arg">candidate</span>,
+        <span class="sig-arg">candidates</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Tribler.community.anontunnel.community-pysrc.html#ProxyCommunity.create_created_cache">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>int</code></strong>, <strong class="pname"><code>circuit_id</code></strong> - the circuit id we received the CREATE from</li>
+        <li><strong class="pname"><code>WalkCandidate</code></strong>, <strong class="pname"><code>candidate</code></strong> - the candidate we got the CREATE from</li>
+        <li><strong class="pname"><code>dict[str</code></strong>, <strong class="pname"><code>WalkCandidate]</code></strong>, <strong class="pname"><code>candidates</code></strong> - list of extend candidates we sent back</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_message_handlers"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_message_handlers</h3>
+  <pre class="literalblock">
+:type : dict[
+str,
+(
+    int, Candidate,
+    StatsPayload|Tribler.community.anontunnel.payload.BaseMessage
+) -&gt; bool]
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="crypto"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">crypto</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.crypto(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd>ElgamalCrypto</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="packet_crypto"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">packet_crypto</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.packet_crypto(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="active_circuits"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">active_circuits</h3>
+  <p>Dict of active circuits, a circuit is active when its state is 
+  CIRCUIT_STATE_READY</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.active_circuits(<span class="summary-sig-arg">self</span>)</span>
+        - Dict of active circuits, a circuit is active when its state is 
+CIRCUIT_STATE_READY
+    </dd>
+    <dt>Type:</dt>
+      <dd>dict[int, Tribler.community.anontunnel.routing.Circuit]</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Tribler.community.anontunnel-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Apr 29 14:21:20 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

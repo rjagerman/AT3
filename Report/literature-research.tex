@@ -85,7 +85,6 @@ A Bloomfilter uses a hash area consisting of \emph{N} bits, initially all set to
 
 After benchmarking Dispersy against Cassandra (the database system used by Facebook), they came to the conclusion that Dispersy performs better than Cassandra. By using Bloomfilters, Dispersy can scale to over 100,000 bundles to synchronize.
 
-
 \subsection{Anonymous tunnels (Martijn)}
 Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page (https://github.com/Tribler/tribler/pull/525) is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achived by using the Tor protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only the Tor protocol. More information about Tor can be found in section II.\\\\
 The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
@@ -97,7 +96,13 @@ The anonymous tunnels are implemented in the Python module \emph{Tribler.communi
 \item There are nine different messages that can be send amongst nodes: create, created, extend, extended, data, ping, pong, puncture and stats.
 \end{itemize}
 In order to test the anonymous connections and the download speed, a special anonymous tab has been built into Tribler. Clicking on this tab brings up a graph of the current anonymous network as a graph. It also logs the circuit events such as the extend or creation of a circuit. When enough anonymous proxies are online, a 50MB test download file should start to download.\\\\
-HIER KOMT NOG HET PLAATJE MET HET ANONYMOUS TAB IN TRIBLER
+
+\begin{figure*}[!t]
+		\centering
+		\includegraphics[width=0.8\textwidth]{graphics/8hop.png}
+		\caption{The graphical user interface in Tribler that shows the anonymous network.}
+		\label{fig:anon_downloads}
+	\end{figure*}
 
 \section{Motivation}
 Worldwide the amount of mobile devices is growing fast. In 2013, there were 6.8 billion mobile subscriptions worldwide (http://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx). This number is expected to exceed the world population in 2014 with 7.3 billion subscriptions. Android had a share of 81\% in Q3 of devices shipped (http://www.forbes.com/sites/tonybradley/2013/11/15/android-dominates-market-share-but-apple-makes-all-the-money/).
@@ -127,7 +132,8 @@ TGS has their own Github repository where they host contributions to various pro
 Another important contribution has been done to the Python for Android project. TGS has added the libswift, netifaces and m2crypto libraries to the Python for Android project, making it possible to create an Android application bundle with these libraries included. This is an important contribution because it can be used as a first step to implement the Tribler community or anonymous tunnels on an Android device: Tribler is using some of these libraries.
 
 \subsection{Our project (Martijn)}
-Hier wat over ons project
+We've discussed Tor, Tribler and have explained some libraries that Tribler is using and Python for Android. In this section, we will give an overview of our activities for the upcoming weeks.\\\\
+The idea is to port the experimental code of pull request 525 to the Android device. This experimental code is written in Python so we have two options: either write the code of the anonymous tunnels in Java or use the Python for Android library to run the Python code on an Android device. We think the second options is the most easy. The Global Square already worked on porting some libraries to the Android so we can extend on their work. There are some other libraries we have to port such as libtorrent and Dispersy. Overall, this project will not be easy but if we succeed, it could be a big step towards anonymous streaming on the Android device.
 
 \bibliographystyle{plain}
 \bibliography{literature-research}

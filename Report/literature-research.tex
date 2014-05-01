@@ -12,7 +12,7 @@
 \usepackage{amssymb}
 \usepackage[bookmarks]{hyperref}
 
-\title{Action plan}
+\title{AT3: Background Research}
 \author{Rolf Jagerman, Laurens Versluis and Martijn de Vos}
 \date{\today}
 
@@ -59,7 +59,7 @@ OpenSSL is written in C. To use the OpenSSL libraries in Python, one could use p
 \subsection{Tribler Mobile}
 
 \subsection{Dispersy (Laurens)}
-Dispersy [CITE NAAR DISPERY PAPER] is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a challenged network environment. Such an environment is often characterized by:
+Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a challenged network environment. Such an environment is often characterized by:
 \begin{itemize}
 \item Nodes randomly joining and leaving.
 \item Delays in the network.
@@ -105,11 +105,11 @@ In order to test the anonymous connections and the download speed, a special ano
 	\end{figure*}
 
 \section{Motivation}
-Worldwide the amount of mobile devices is growing fast. In 2013, there were 6.8 billion mobile subscriptions worldwide (http://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx). This number is expected to exceed the world population in 2014 with 7.3 billion subscriptions. Android had a share of 81\% in Q3 of devices shipped (http://www.forbes.com/sites/tonybradley/2013/11/15/android-dominates-market-share-but-apple-makes-all-the-money/).
+Worldwide the amount of mobile devices is growing fast. In 2013, there were 6.8 billion mobile subscriptions worldwide \cite{itustatistics}. This number is expected to exceed the world population in 2014 with 7.3 billion subscriptions. Android had a share of 81\% in Q3 of devices shipped \cite{forbesandroidmarket}.
 
 This shows that there is a lot of potential gain on the Android market. Android is open source and can be modified more than a platform like iOs, on top of that is the Google Play not subject to a review before you can release your application, which allows for an easier deployment. Since a library called Python for Android already exists, it's also a more natural choice to develop it for Android since as stated earlier, the Tor-tunnel functionality is written in Python.
 
-Besides the arguments stated above, a mobile application is an excellent way to attract more new users to Tribler. While the Tor project does have an Android app named Orbot, this app does not provide anonymous file transfer (https://www.torproject.org/docs/android.html.en, https://play.google.com/store/apps/details?id=org.torproject.android). Orbot only serves as an anonymous proxy. On top of that, the structure of Tor is currently semi-centralized [CITE NAAR ONZE PAPER!!!!] where this app will be completely decentralized using Dispersy as synchronization system[Cite naar Dispery]. With the billions of mobile devices out there and no competition in this area, this app has a lot of potential to open a new way of anonymous file sharing while being on the go.
+Besides the arguments stated above, a mobile application is an excellent way to attract more new users to Tribler. While the Tor project does have an Android app named Orbot, this app does not provide anonymous file transfer \cite{tororbot, googleplayorbot}. Orbot only serves as an anonymous proxy. On top of that, the structure of Tor is currently semi-centralized \cite{jagerman2014fifteen} where this app will be completely decentralized using Dispersy as synchronization system \cite{zeilemaker2013dispersy}. With the billions of mobile devices out there and no competition in this area, this app has a lot of potential to open a new way of anonymous file sharing while being on the go.
 
 \section{Python for Android (Rolf)}
 Hier komt een stukje over wat Python for Android precies is, wat het doet en hoe we het kunnen gebruiken.

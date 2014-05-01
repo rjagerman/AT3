@@ -115,7 +115,11 @@ This shows that there is a lot of potential gain on the Android market. Android 
 Besides the arguments stated above, a mobile application is an excellent way to attract more new users to Tribler. While the Tor project does have an Android app named Orbot, this app does not provide anonymous file transfer (https://www.torproject.org/docs/android.html.en, https://play.google.com/store/apps/details?id=org.torproject.android). Orbot only serves as an anonymous proxy. On top of that, the structure of Tor is currently semi-centralized [CITE NAAR ONZE PAPER!!!!] where this app will be completely decentralized using Dispersy as synchronization system[Cite naar Dispery]. With the billions of mobile devices out there and no competition in this area, this app has a lot of potential to open a new way of anonymous file sharing while being on the go.
 
 \section{Python for Android (Rolf)}
-Hier komt een stukje over wat Python for Android precies is, wat het doet en hoe we het kunnen gebruiken.
+	The capability of running Python applications on Android devices is of paramount importance to the success of this project. Tribler is mostly written in the Python programming language and has dependencies on many Python libraries. Fortunately a tool called Python for Android allows us to build and bundle Python code and its dependencies into standalone Android APK packages.
+	
+	Python for Android uses Scripting Layer 4 Android (SL4A) to run Python in an Android environment. For performance reasons this layer uses the CPython binary compiled for the ARM architecture. This means that running python scripts will not work on other mobile architectures such as Intel Atom x86. This restriction however allows us to focus the development solely on the ARM architecture. This mitigates some of the difficulty of getting Tribler dependencies such as libtorrent to work cross-platform.
+	
+	Python for Android provides so called facades that interface python code with Android APIs. This makes it easy to utilize basic Android functionality directly from within Python.
 
 \section{The Global Square (Martijn)}
 Over the past years, Tribler had many contributors. One of these contributors is The Global Square (TGS). This organization has Github commits on the Dispersy and libswift project. They also worked on the Python for Android library and made steps to compile the libraries used by Tribler in Python for Android. In this section, we will first describe what TGS is and where they stand for. After that, we describe their contributions to Tribler.

@@ -1,4 +1,7 @@
-*.DS_Store
+# OS generated files
+.DS_Store
+
+# LaTeX files
 *.aux
 *.glo
 *.idx

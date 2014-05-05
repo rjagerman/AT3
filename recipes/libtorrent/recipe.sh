@@ -21,6 +21,11 @@ RECIPE_libtorrent=$RECIPES_PATH/libtorrent
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_libtorrent() {
+	true
+}
+
+# function called to build the source code
+function build_libtorrent() {
 	push_arm
 	cd $BUILD_libtorrent
 	./configure --enable-pyton-binding --host=arm-eabi
@@ -29,11 +34,6 @@ function prebuild_libtorrent() {
 	make
 	try $HOSTPYTHON setup.py install
 	pop_arm
-}
-
-# function called to build the source code
-function build_libtorrent() {
-	true
 }
 
 # function called after all the compile have been done

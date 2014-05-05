@@ -23,7 +23,7 @@ RECIPE_libtorrent=$RECIPES_PATH/libtorrent
 function prebuild_libtorrent() {
 	push_arm
 	cd $BUILD_libtorrent
-	./configure --enable-pyton-binding
+	./configure --enable-pyton-binding --host=arm-eabi
 	make
 	cd bindings/python
 	make

@@ -13,7 +13,7 @@ DEPS_dispersy=()
 URL_dispersy=http://ios-dev.no-ip.org/dispersy-$VERSION_dispersy.tar.gz
 
 # md5 of the package
-MD5_dispersy=96149da7bcbfac14e84d6550a3032c96
+MD5_dispersy=a0b4c791c8dd8a246c83b0e4185544fc
 
 # default build path
 BUILD_dispersy=$BUILD_PATH/dispersy/$(get_directory $URL_dispersy)

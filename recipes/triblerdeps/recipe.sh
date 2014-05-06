@@ -13,7 +13,7 @@ DEPS_triblerdeps=()
 URL_triblerdeps=http://ios-dev.no-ip.org/triblerdeps-$VERSION_triblerdeps.tar.gz
 
 # md5 of the package
-MD5_triblerdeps=2861989440922ad2f56ae410b4662221
+MD5_triblerdeps=66714958b3e8878ced44127940fad775
 
 # default build path
 BUILD_triblerdeps=$BUILD_PATH/triblerdeps/$(get_directory $URL_triblerdeps)

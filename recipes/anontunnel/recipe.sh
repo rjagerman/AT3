@@ -13,7 +13,7 @@ DEPS_anontunnel=()
 URL_anontunnel=http://ios-dev.no-ip.org/anontunnel-$VERSION_anontunnel.tar.gz
 
 # md5 of the package
-MD5_anontunnel=2c6a699e98e6b3f492c4dd7745c9c21a
+MD5_anontunnel=57baeb8e1e7a1785398c6d7e9e26b639
 
 # default build path
 BUILD_anontunnel=$BUILD_PATH/anontunnel/$(get_directory $URL_anontunnel)

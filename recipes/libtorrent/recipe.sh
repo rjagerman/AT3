@@ -4,7 +4,7 @@
 VERSION_libtorrent=${VERSION_libtorrent:-0.16.16}
 
 # dependencies of this recipe
-DEPS_libtorrent=()
+DEPS_libtorrent=(boost)
 
 # url of the package
 URL_libtorrent=http://downloads.sourceforge.net/project/libtorrent/libtorrent/libtorrent-rasterbar-$VERSION_libtorrent.tar.gz

@@ -21,21 +21,34 @@ RECIPE_boost=$RECIPES_PATH/boost
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_boost() {
-	true
+	cd $BUILD_boost
+
+	# Create build tools for boost
+	./bootstrap.sh
+	
+	# Write android config to boost user-config instructions
+	NDKBIN=${ANDROIDNDK}/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86
+	USRCONFIG=${BUILD_boost}/tools/build/v2/user-config.jam
+
+	echo "# Android Configuration " > $USRCONFIG
+	echo "local AndroidToolchainRoot = ${NDKBIN}" >> $USRCONFIG
+	echo "using gcc" >> $USRCONFIG
+	echo ": androidR9" >> $USRCONFIG
+	echo ": $(AndroidToolchainRoot)/bin/arm-linux-androideabi-g++" >> $USRCONFIG
+	echo ";" >> $USRCONFIG
 }
 
 # function called to build the source code
 function build_boost() {
 	cd $BUILD_boost
+	
+	# Build boost with arm architecture
 	push_arm
-	#try $HOSTPYTHON setup.py install
+	./b2 toolset=gcc-androidR9
 	pop_arm
 }
 
 # function called after all the compile have been done
 function postbuild_boost() {
-	push_arm
-	cd $BUILD_PATH/boost/$(get_directory $URL_boost)/
-	./bootstrap.sh
-	pop_arm
+	true
 }

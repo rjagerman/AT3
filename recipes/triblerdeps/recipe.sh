@@ -7,7 +7,7 @@
 VERSION_triblerdeps=${VERSION_triblerdeps:-0.1.0}
 
 # dependencies of this recipe
-DEPS_triblerdeps=()
+DEPS_triblerdeps=(kivy openssl)
 
 # url of the package
 URL_triblerdeps=http://ios-dev.no-ip.org/triblerdeps-$VERSION_triblerdeps.tar.gz
@@ -17,6 +17,8 @@ MD5_triblerdeps=66714958b3e8878ced44127940fad775
 
 # default build path
 BUILD_triblerdeps=$BUILD_PATH/triblerdeps/$(get_directory $URL_triblerdeps)
+CURVES_source=$BUILD_triblerdeps/triblerdeps/crypto/curves.ec
+CURVES_dest=$BUILD_triblerdeps/build/lib/triblerdeps/crypto/curves.ec
 
 # default recipe path
 RECIPE_triblerdeps=$RECIPES_PATH/triblerdeps
@@ -37,5 +39,5 @@ function build_triblerdeps() {
 
 # function called after all the compile have been done
 function postbuild_triblerdeps() {
-	true
+	cp $CURVES_source $CURVES_dest
 }

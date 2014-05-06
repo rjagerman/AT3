@@ -7,7 +7,7 @@
 VERSION_dispersy=${VERSION_dispersy:-0.1.0}
 
 # dependencies of this recipe
-DEPS_dispersy=()
+DEPS_dispersy=(kivy)
 
 # url of the package
 URL_dispersy=http://ios-dev.no-ip.org/dispersy-$VERSION_dispersy.tar.gz

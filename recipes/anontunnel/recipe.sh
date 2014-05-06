@@ -7,7 +7,7 @@
 VERSION_anontunnel=${VERSION_anontunnel:-0.1.0}
 
 # dependencies of this recipe
-DEPS_anontunnel=()
+DEPS_anontunnel=(kivy)
 
 # url of the package
 URL_anontunnel=http://ios-dev.no-ip.org/anontunnel-$VERSION_anontunnel.tar.gz

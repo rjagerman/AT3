@@ -34,7 +34,7 @@ function prebuild_boost() {
 	echo "local AndroidToolchainRoot = ${NDKBIN}" >> $USRCONFIG
 	echo "using gcc" >> $USRCONFIG
 	echo ": androidR9" >> $USRCONFIG
-	echo ": $(AndroidToolchainRoot)/bin/arm-linux-androideabi-g++" >> $USRCONFIG
+	echo ": \$(AndroidToolchainRoot)/bin/arm-linux-androideabi-g++" >> $USRCONFIG
 	echo ";" >> $USRCONFIG
 }
 

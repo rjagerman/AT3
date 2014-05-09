@@ -7,7 +7,7 @@ from kivy.app import App
 import os
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
 
 from anontunnel.atunnel import AnonTunnel
 

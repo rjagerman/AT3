@@ -30,3 +30,6 @@ action-plan.pdf
 
 # Temporary gedit files
 *.*~
+
+# Generated app folder
+./app

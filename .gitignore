@@ -32,4 +32,4 @@ action-plan.pdf
 *.*~
 
 # Generated app folder
-./app
+/app/*

@@ -54,6 +54,16 @@ if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
 	mkdir -p "${CURRENTFOLDERPATH}/app"
 fi
 
+if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
+	echo -e "${red}${CURRENTFOLDERPATH}/app/main.py is missing, copying from anontunnel{$NC}" {
+	cp "${CURRENTFOLDERPATH}/anontunnel/main.py" "${CURRENTFOLDERPATH}/app/main.py"
+fi
+
+if [ ! -f "${CURRENTFOLDERPATH}/app/anontunnel.kv" ]; then
+	echo -e "${red}${CURRENTFOLDERPATH}/app/anontunnel.kv is missing, copying from anontunnel{$NC}" {
+	cp "${CURRENTFOLDERPATH}/anontunnel/anontunnel.kv" "${CURRENTFOLDERPATH}/app/anontunnel.kv"
+fi
+
 # Check if destination exist
 if [ -e "${PY4APATH}/dist/${DIRNAME}" ]; then
 	echo -e "${red}The distribution ${PY4APATH}/dist/${DIRNAME} already exist${NC}"

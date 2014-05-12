@@ -49,7 +49,7 @@ if [ ! -f $APPSPLASH ]; then
 fi
 
 # If the app folder in AT3 does not exist, create it.
-if [ ! -e "${CURRENTFOLDERPATH}/app"]; then
+if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
 	echo -e "${red}${CURRENTFOLDERPATH}/app does not exist! Attempting to create it${NC}"
 	mkdir -p "${CURRENTFOLDERPATH}/app"
 fi

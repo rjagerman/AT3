@@ -23,7 +23,7 @@ while getopts ":p:" opt; do
 done
 
 if [ "X$PY4APATH" == "X" ]; then
-	echo -e "${yellow}༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽_•︻̷̿┻̿═━一༼ຈل͜ຈ༽ give the path of python-for-android using the -d flag or the donger dies${NC}"
+	echo -e "${yellow}༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽_•︻̷̿┻̿═━一༼ຈل͜ຈ༽ give the path of python-for-android using the -p flag or the donger dies${NC}"
 	exit 1
 fi
 
@@ -63,13 +63,17 @@ if [ -e "${PY4APATH}/dist/${DIRNAME}" ]; then
 fi
 
 # Build kivy first
-$PY4APATH/distribute.sh -m "kivy" -d $DIRNAME
+pushd $PY4APATH
+./distribute.sh -m "kivy" -d $DIRNAME
+popd
 
 # Remove the created directory 
 rm -rf "${PY4APATH}/dist/${DIRNAME}"
 
 # Build a distribute folder with all the packages now that kivy has been set
-$PY4APATH/distribute.sh -m "kivy openssl pycrypto m2crypto twisted sqlite3 pyasn1 dispersy anontunnel tribler_core_minimal netifaces" -d $DIRNAME
+pushd $PY4APATH
+./distribute.sh -m "kivy openssl pycrypto m2crypto twisted sqlite3 pyasn1 dispersy anontunnel tribler_core_minimal netifaces" -d $DIRNAME
+popd
 
 cd "${PY4APATH}/dist/${DIRNAME}/"
 
@@ -78,7 +82,7 @@ cd "${PY4APATH}/dist/${DIRNAME}/"
 # Copy the .apk files to our own app folder
 find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \;
 
-# Delete the distribute now that the app has been made in the AT3 folder
+# Delete the distribute and build now that the app has been made in the AT3 folder
 rm -rf "${PY4APATH}/dist/${DIRNAME}"
 
 echo -e "${green}All done!${NC} Everything seems to be in order (̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄ "

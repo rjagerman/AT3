@@ -1,0 +1,19 @@
+kivy pygame pyjnius android
+openssl
+pycrypto openssl python
+m2crypto openssl hostpython python
+twisted zope
+sqlite3
+pyasn1 python
+dispersy kivy
+anontunnel kivy
+tribler_core_minimal kivy openssl
+netifaces hostpython python setuptools
+pygame python sdl
+pyjnius python sdl
+android pygame
+python hostpython
+hostpython
+zope python
+setuptools python
+sdl python

@@ -19,6 +19,43 @@ Hier iets in het algemeen over deze eerste scrum iteratie en een uitleg wat er b
 \section{Our work}
 In deze sectie komt wat we deze sprint gedaan hebben
 
+The python-for-Android framework allows developers to add exisiting python packages by creating so called recipes for them.
+A recipe downloads the package, extracts the contents and applies operations on them when required, written by the developer himself.
+The python-for-Android framework allows to build these packages under the arm architecture so they won't compile to the pc's architecture which is not suitable for android development. By simply using the 'push arm' and 'pop arm' commands this is done. Because of this easy integration and the fact that tribler and the anontunnels were written in Python, this is a good environment to develop the application.\\\\
+
+package kivy\\
+
+We use Kivy as framework for the GUI. Kivy is an open source software library for creating NUI applications. It's easy to use and also cross-platform, allowing users to create a GUI on their PC and then intergrate it in their products (for us our app). As Kivy is integrated in Python-for-Android, it's a natural choice to use it to create our GUI. Kivy is dependent on python, as it's a python package. 
+\\\\
+Package openssl\\
+
+OpenSSL is the world's most famous open source crypto package, also available for python. As our application makes use of pycrypto and m2crypto which are both dependent on openSSL, we have to include it in our app and thus created a recipe for it. \\\\
+
+Package m2crypto\\
+
+Dispersy and tribler are dependent on m2crypto as it has some security features which m2crypto implements such as elliptic curves. As the anontunnels are dependent on both Dispersy and tribler, our core function of the app, we are also dependent on m2crypto. m2crypto itself is dependent on python and openssl as it's a python package using the openssl implementation.\\\\
+
+package pycrypto\\
+
+Pycrypto is a python library which implements certain crypto functions used by the tribler_core-minimal package. Pycrypto itself depends on functionality of the openssl package.\\\\
+
+package boost\\
+
+Libtorrent is used to download torrent via the tor protocol. To compile libtorrent, the boost package is required. Boost is a c++ library which enables seamless interoperability between c++ and python. \\\\
+
+package netifaces\\
+
+Netifaces allows to easy get the address(es) of the machine's network interfaces from Python. It's therefore dependent on python and used by the dispersy package\\\\
+
+package zope\\
+
+zope is a open source web framework for object oriented web application servers. The package twitsted makes use of this framework for asynchronous networking.\\\\
+
+package Twisted\\
+
+Twisted is an extensible framework for asynchronous networking written in python. The framework has special focus on event-based network programming and multiprotocol integration. It has dependencies on the zope web framework.\\\\
+
+
 \subsection{Porting the anonymous tunnels to Android}
 In deze subsectie iets over de anontunnels die we hebben geport naar android, wat over Python for Android en de packages. Misschien de packages in subsubsections bespreken?
 

@@ -1,0 +1,51 @@
+Python-for-Android and recipes:
+
+The python-for-Android framework allows developers to add exisiting python packages by creating so called recipes for them.
+A recipe downloads the package, extracts the contents and applies operations on them when required, written by the developer himself.
+The python-for-Android framework allows to build these packages under the arm architecture so they won't compile to the pc's architecture which is not suitable for android development. By simply using the 'push arm' and 'pop arm' commands this is done. Because of this easy integration and the fact that tribler and the anontunnels were written in Python, this is a good environment to develop the application.
+
+package kivy
+
+We use Kivy as framework for the GUI. Kivy is an open source software library for creating NUI applications. It's easy to use and also cross-platform, allowing users to create a GUI on their PC and then intergrate it in their products (for us our app). As Kivy is integrated in Python-for-Android, it's a natural choice to use it to create our GUI. Kivy is dependent on python, as it's a python package. 
+
+Package openssl
+
+OpenSSL is the world's most famous open source crypto package, also available for python. As our application makes use of pycrypto and m2crypto which are both dependent on openSSL, we have to include it in our app and thus created a recipe for it. 
+
+Package m2crypto
+
+Dispersy and tribler are dependent on m2crypto as it has some security features which m2crypto implements such as elliptic curves. As the anontunnels are dependent on both Dispersy and tribler, our core function of the app, we are also dependent on m2crypto. m2crypto itself is dependent on python and openssl as it's a python package using the openssl implementation.
+
+package pycrypto
+
+Pycrypto is a python library which implements certain crypto functions used by the tribler_core-minimal package. Pycrypto itself depends on functionality of the openssl package.
+
+package boost
+
+Libtorrent is used to download torrent via the tor protocol. To compile libtorrent, the boost package is required. Boost is a c++ library which enables seamless interoperability between c++ and python. 
+
+package libtorrent
+
+As mentioned at the boost package description, libtorrent is used to download from peers using torrents over the tor tunnels. Our anontunnel package as well as the other bachelor project group, which we closely work together with, are both dependent on the libtorrent package. More about this package can be found in this scrum sprint as there are quite some difficulties with compiling this library for an ARM 32 bit arhitecture.
+
+package anontunnels 
+
+The anontunnel package is the core of our application. This package contains the functionality of the so called tor tunnels. These tunnels use the tor protocol to allow anonymous downloading between two applications. This package depends on the m2crypto, dispery, tribler_core_minimal and libtorrent packages. The anontunnel package combines downloading from torrent with decentralized bundle sharing using Dispersy, tribler functionality using the tribler_core_minimal package and security through the combination of the packages mention and additional functions from the m2crypto package itself.
+
+package dispersy
+
+The dispersy package contains the system dispersy created by the TU Delft parallel and distributed systems group. It is a fully decentralized system that allows bundle synchronisation between peers. This system is used by the application to see which peers have the requested torrent available. Dispersy is dependent on m2crypto, twited and netifaces.
+
+package netifaces
+
+Netifaces allows to easy get the address(es) of the machine's network interfaces from Python. It's therefore dependent on python and used by the dispersy package
+
+package zope
+
+zope is a open source web framework for object oriented web application servers. The package twitsted makes use of this framework for asynchronous networking.
+
+package Twisted
+
+Twisted is an extensible framework for asynchronous networking written in python. The framework has special focus on event-based network programming and multiprotocol integration. It has dependencies on the zope web framework.
+
+

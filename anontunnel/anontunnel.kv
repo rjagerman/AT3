@@ -1,6 +1,7 @@
 <AnonTunnelScreen>:
 
 	log_textview: logTextView
+	tunnel_togglebutton: tunnelToggleButton
 
     orientation: 'vertical'
 	Image:
@@ -35,17 +36,22 @@
 			color: 0,0,0,1
 			size_hint: None, None
 			size: root.size[0] * 0.225, root.size[1] * 0.1167
-		ToggleButton:
-			size_hint_y: 0.5
-			pos_hint_y: 0.2
-			text: 'On'
-			group: 'g1'
-			on_release: root.startAnonTunnel()
-		ToggleButton:
-			size_hint_y: 0.5
-			text: 'Off'
-			group: 'g1'
-			on_release: root.stopAnonTunnel()
+		BoxLayout:
+			orientation: 'vertical'
+			Image:
+				size_hint: None, None
+				size: 23, 21
+			ToggleButton:
+				id: tunnelToggleButton
+				text: 'Off'
+				group: 'g1'
+				on_release: root.toggleAnonTunnel()
+			Image:
+				size_hint: None, None
+				size: 23, 17
+		Image:
+			size_hint: None, None
+			size: root.size[0] * 0.02, root.size[1] * 0.1167
 	Image:
 		size_hint: None, None
 		size: root.width, root.size[1] * 0.008

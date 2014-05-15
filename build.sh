@@ -93,6 +93,6 @@ cd "${PY4APATH}/dist/${DIRNAME}/"
 find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \;
 
 # Delete the distribute and build now that the app has been made in the AT3 folder
-rm -rf "${PY4APATH}/dist/${DIRNAME}"
+#rm -rf "${PY4APATH}/dist/${DIRNAME}"
 
 echo -e "${green}All done!${NC} Everything seems to be in order (̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄ "

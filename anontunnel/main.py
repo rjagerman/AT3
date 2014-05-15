@@ -32,21 +32,30 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
 
 class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
+        self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
 
         # redirect the stdout to the log_textview
         import sys
         sys.stdout = StdoutRedirector(self.log_textview)
 
-class AnonTunnelApp(App):
-    def build(self):
-
-        if platform == 'android':
+    def startAnonTunnel(self):
+	if(! self.isRunning):
+            self.isRunning = True
+            print 'Sending start request'
             from android import AndroidService
-            service = AndroidService('Anon Tunnel Service', 'Runs the anontunnels in the background.')
+            service = AndroidService('Anon Tunnel Service', 'Anontunnels are running...')
             service.start('AnonTunnel Service started')
             self.service = service
+        
+        
+    def stopAnonTunnel(self):
+        print 'Sending stop request'
+        self.isRunning = False
+        self.service.stop()
 
+class AnonTunnelApp(App):
+    def build(self):
         return AnonTunnelScreen()
 
 if __name__ == '__main__':

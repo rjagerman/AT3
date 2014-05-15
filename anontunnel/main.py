@@ -34,10 +34,6 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
     def write(self,str):
         self.log_textview.text = self.log_textview.text+ str
 
-class StderrRedirector(IORedirector): # A class for redirecting stderr to this Text widget.
-    def write(self,str):
-        self.log_textview.text = self.log_textview.text+ str
-
 class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
         self.isRunning = False
@@ -45,12 +41,11 @@ class AnonTunnelScreen(BoxLayout):
 
         # redirect the stdout to the log_textview
         sys.stdout = StdoutRedirector(self.log_textview)
-        sys.stderr = StderrRedirector(self.log_textview)
 
         # redirect logger to stdout
         root = logging.getLogger()
         root.setLevel(logging.DEBUG)
-        ch = logging.StreamHandler(sys.stderr)
+        ch = logging.StreamHandler(sys.stdout)
         ch.setLevel(logging.DEBUG)
         root.addHandler(ch)
 

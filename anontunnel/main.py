@@ -8,7 +8,11 @@ kivy.require('1.0.9')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
+from kivy.uix.scrollview import ScrollView
+from kivy.properties import StringProperty
 from kivy.app import App
+
+import sys
 
 #adjust the PYTHON_EGG_CACHE
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
@@ -25,6 +29,9 @@ print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
 # set the background color to white
 from kivy.core.window import Window
 Window.clearcolor = (1, 1, 1, 1)
+
+class ScrollableLabel(ScrollView):
+    text = StringProperty('')
 
 class IORedirector(object): # A general class for redirecting I/O to this Text widget.
     def __init__(self,log_textview):

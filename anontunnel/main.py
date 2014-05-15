@@ -1,10 +1,13 @@
+import logging
+import logging.config
+import os
+
 import kivy
 kivy.require('1.0.9')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
 from kivy.app import App
-import os
 
 #adjust the PYTHON_EGG_CACHE
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
@@ -30,17 +33,28 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
     def write(self,str):
         self.log_textview.text = self.log_textview.text+ str
 
+class StderrRedirector(IORedirector): # A class for redirecting stderr to this Text widget.
+	def write(self,str):
+		self.log_textview.text = self.log_textview.text+ str
+
 class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
         self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
 
         # redirect the stdout to the log_textview
-        import sys
-        sys.stdout = StdoutRedirector(self.log_textview)
+		sys.stdout = StdoutRedirector(self.log_textview)
+		sys.stderr = StderrRedirector(self.log_textview)
+
+	# redirect logger to stdout
+	root = logging.getLogger()
+	root.setLevel(logging.DEBUG)
+	ch = logging.StreamHandler(sys.stderr)
+	ch.setLevel(logging.DEBUG)
+	root.addHandler(ch)
 
     def startAnonTunnel(self):
-	if(! self.isRunning):
+	if not self.isRunning:
             self.isRunning = True
             print 'Sending start request'
             from android import AndroidService

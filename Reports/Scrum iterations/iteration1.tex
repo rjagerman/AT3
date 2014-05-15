@@ -14,75 +14,86 @@
 \newpage
 
 \section{Introduction}
-Hier iets in het algemeen over deze eerste scrum iteratie en een uitleg wat er besproken wordt in dit bestand\\
-mijlpalen\\
+	We decided to do sprints of two weeks, where everyday we perform our daily scrum and at the end of each week we evaluate the current goals and where we stand. Based on our current progress we decide the feasibility of the goals and adjust where needed. In this chapter we describe our first sprint, starting in week 4.3 (5$^{th}$ of may) and ending in week 4.5 (16$^{th}$ of may).\\
+	First, we describe our goals and milestones we had initially set for the sprint, then we evaluate the first week of the sprint and describe the adjustments, if any. We then talk about our productivity, where we explain what we have done, how we did it, if it's dependent on anything and what part of the final product it fulfills.
 
+\section{Goals and milestones}
+	In this section we describe which goals were set and the milestones that were created on the Version Control System Github. The goals are often represented in different subgoals that are translated in milestones. We use milestones to separate different subgoals such as a small gui from i.e. updating existing code.\\
+	
+	The following goal was set for this sprint:\\
+	
+	Port the exisiting packages we need to Python-for-Android and understand, read and experiment with the current code.\\
+	
+	We translated this goal into two milestones for this current sprint:
+
+	\begin{enumerate}
+		\item Get all Tribler packages and dependencies working on Android
+		\item and implement a basic GUI to test with
+	\end{enumerate}
+
+	Each issue we identied was filled in on Github and assigned to one of the milestones. This allowed us to see the progress throughout  the sprint. These issues as well as the milestones on the Github page allowes us to easily track, discuss and check them off. 
 
 \section{Our work}
-In deze sectie komt wat we deze sprint gedaan hebben
+	The python-for-Android framework allows developers to add exisiting python packages by creating so called recipes for them. As a lot of the packages were not available or were custom made, we had to build a lot of these recipes ourselves.\\
 
-The python-for-Android framework allows developers to add exisiting python packages by creating so called recipes for them.
-A recipe downloads the package, extracts the contents and applies operations on them when required, written by the developer himself.
-The python-for-Android framework allows to build these packages under the arm architecture so they won't compile to the pc's architecture which is not suitable for android development. By simply using the 'push arm' and 'pop arm' commands this is done. Because of this easy integration and the fact that tribler and the anontunnels were written in Python, this is a good environment to develop the application.\\\\
+	A recipe downloads the package, extracts the contents and applies operations on them when required, written by the developer himself.\\
 
-package kivy\\
+	The python-for-Android framework allows to build these packages under the arm architecture so they won't compile to the pc's architecture which is not suitable for android development. By simply using the 'push arm' and 'pop arm' commands this is done. Because of this easy integration and the fact that tribler and the anontunnels were written in Python, this is a good environment to develop the application.\\
 
-We use Kivy as framework for the GUI. Kivy is an open source software library for creating NUI applications. It's easy to use and also cross-platform, allowing users to create a GUI on their PC and then intergrate it in their products (for us our app). As Kivy is integrated in Python-for-Android, it's a natural choice to use it to create our GUI. Kivy is dependent on python, as it's a python package. 
-\\\\
-Package openssl\\
+	Below are the packages described we use in our application and in most cases had to create a recipe for. We describe the functionality of the package in the applciation and which dependencies this package has.\\
 
-OpenSSL is the world's most famous open source crypto package, also available for python. As our application makes use of pycrypto and m2crypto which are both dependent on openSSL, we have to include it in our app and thus created a recipe for it. \\\\
-
-Package m2crypto\\
-
-Dispersy and tribler are dependent on m2crypto as it has some security features which m2crypto implements such as elliptic curves. As the anontunnels are dependent on both Dispersy and tribler, our core function of the app, we are also dependent on m2crypto. m2crypto itself is dependent on python and openssl as it's a python package using the openssl implementation.\\\\
-
-package pycrypto\\
-
-Pycrypto is a python library which implements certain crypto functions used by the tribler_core-minimal package. Pycrypto itself depends on functionality of the openssl package.\\\\
-
-package boost\\
-
-Libtorrent is used to download torrent via the tor protocol. To compile libtorrent, the boost package is required. Boost is a c++ library which enables seamless interoperability between c++ and python. \\\\
-
-package netifaces\\
-
-Netifaces allows to easy get the address(es) of the machine's network interfaces from Python. It's therefore dependent on python and used by the dispersy package\\\\
-
-package zope\\
-
-zope is a open source web framework for object oriented web application servers. The package twitsted makes use of this framework for asynchronous networking.\\\\
-
-package Twisted\\
-
-Twisted is an extensible framework for asynchronous networking written in python. The framework has special focus on event-based network programming and multiprotocol integration. It has dependencies on the zope web framework.\\\\
-
+	\begin{itemize}
+	
+		\item Kivy\\
+		We use Kivy as framework for the GUI. Kivy is an open source software library for creating NUI applications. It's easy to use and also cross-platform, allowing users to create a GUI on their PC and then intergrate it in their products (for us our app). As Kivy is integrated in Python-for-Android, it's a natural choice to use it to create our GUI. Kivy is dependent on python, as it's a python package. 
+	
+		\item Openssl\\
+		OpenSSL is the world's most famous open source crypto package, also available for python. As our application makes use of pycrypto and m2crypto which are both dependent on openSSL, we have to include it in our app and thus created a recipe for it. 
+	
+		\item M2crypto\\
+		Dispersy and tribler are dependent on m2crypto as it has some security features which m2crypto implements such as elliptic curves. As the anontunnels are dependent on both Dispersy and tribler, our core function of the app, we are also dependent on m2crypto. m2crypto itself is dependent on python and openssl as it's a python package using the openssl implementation.
+	
+		\item Pycrypto\\
+		Pycrypto is a python library which implements certain crypto functions used by the tribler\_core\_minimal package. Pycrypto itself depends on functionality of the openssl package.
+	
+		\item Boost\\
+		Libtorrent is used to download torrent via the tor protocol. To compile libtorrent, the boost package is required. Boost is a c++ library which enables seamless interoperability between c++ and python.
+	
+		\item Netifaces\\
+		Netifaces allows to easy get the address(es) of the machine's network interfaces from Python. It's therefore dependent on python and used by the dispersy package.
+	
+		\item Zope\\
+		zope is a open source web framework for object oriented web application servers. The package twitsted makes use of this framework for asynchronous networking.
+	
+		\item Twisted\\
+		Twisted is an extensible framework for asynchronous networking written in python. The framework has special focus on event-based network programming and multiprotocol integration. It has dependencies on the zope web framework.
+	
+		\item Anontunnels\\
+		This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler Github.\\
+		
+		We've made some minor changes to this code: the Main.py file has been removed and the class definition of AnonTunnel has been moved to it’s own file (atunnel.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
+		
+		\item Tribler\_core\_minimal\\
+		The anonymous tunnels are using some parts of the core of Tribler. These files have been bundled in the tribler\_core\_minimal package. We’ve looked closely to the various imports the code for the anonymous tunnels is using and when a script imports a script from the Tribler core, it is added to the tribler\_core\_minimal package. For example, this package contains the RawServer and the SocketHandler classes. It also contains the code needed for the cryptography such as support for elliptic curve cryptography and ELGamal.
+		
+		\item Dispersy\\
+		Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we’ve created a Python package with all the code that’s needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.\\
+		The files we have bundled are from pull request 525 on the Tribler Github. We didn’t use the files from the official Dispersy Github because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
+	
+	\end{itemize}
 
 \subsection{Porting the anonymous tunnels to Android}
-In deze subsectie iets over de anontunnels die we hebben geport naar android, wat over Python for Android en de packages. Misschien de packages in subsubsections bespreken?
-
-\subsubsection{Anonymous tunnels}
-This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler Github.
-
-We've made some minor changes to this code: the Main.py file has been removed and the class definition of AnonTunnel has been moved to it’s own file (atunnel.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
-
-\subsubsection{Tribler core}
-The anonymous tunnels are using some parts of the core of Tribler. These files have been bundled in the tribler\_core\_minimal package. We’ve looked closely to the various imports the code for the anonymous tunnels is using and when a script imports a script from the Tribler core, it is added to the tribler\_core\_minimal package. For example, this package contains the RawServer and the SocketHandler classes. It also contains the code needed for the cryptography such as support for elliptic curve cryptography and ELGamal.
-
-\subsubsection{Dispersy}
-Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we’ve created a Python package with all the code that’s needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.
-
-The files we have bundled are from pull request 525 on the Tribler Github. We didn’t use the files from the official Dispersy Github because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
+	In deze subsectie iets over de anontunnels die we hebben geport naar android, wat over Python for Android en de packages. Misschien de packages in subsubsections bespreken?
 
 \subsection{Creating a GUI with Kivy}
-The first version of the anonymous tunnels used the standard output for printing information about what’s going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That’s why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what’s happening.
+	The first version of the anonymous tunnels used the standard output for printing information about what’s going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That’s why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what’s happening.
 
-Creating a GUI was a small stap for us: we already included the Kivy package in our Python for Android distribution. Since Kivy is a GUI framework for desktop (but has been ported to Python for Android), we first tried to create a desktop interface. Creating interfaces in Kivy is quite straightforward and is related to creating user interfaces in Android: you specify your layout elements in Kivy files which have the kv extension. In the main Python file, you load this interface file and you can access properties of the UI elements.
+	Creating a GUI was a small stap for us: we already included the Kivy package in our Python for Android distribution. Since Kivy is a GUI framework for desktop (but has been ported to Python for Android), we first tried to create a desktop interface. Creating interfaces in Kivy is quite straightforward and is related to creating user interfaces in Android: you specify your layout elements in Kivy files which have the kv extension. In the main Python file, you load this interface file and you can access properties of the UI elements.
 
 \subsection{Attempt (?) to compile Libtorrent for Android}
-Hier iets over onze uitdaging om Libtorrent werkend te krijgen in Python for Android
+	Hier iets over onze uitdaging om Libtorrent werkend te krijgen in Python for Android
 
 \section{Conclusion}
-Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)
+	Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)
 
 \end{document}

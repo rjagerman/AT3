@@ -53,7 +53,7 @@ class AnonTunnelScreen(BoxLayout):
         ch.setLevel(logging.DEBUG)
         root.addHandler(ch)
 
-    def startAnonTunnel(self):
+    def toggleAnonTunnel(self):
         if not self.isRunning:
             self.isRunning = True
             print 'Sending start request'
@@ -61,10 +61,7 @@ class AnonTunnelScreen(BoxLayout):
             service = AndroidService('Anonymous downloading Service', 'Anonymous tunnels are running...')
             service.start('Anonymous tunnels service started')
             self.service = service
-        
-        
-    def stopAnonTunnel(self):
-        if self.isRunning:
+        else:
             print 'Stopping the anonymous tunnels...'
             self.isRunning = False
             self.service.stop()

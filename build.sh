@@ -56,7 +56,7 @@ fi
 
 # If the app folder does not contain the main.py file, copy it from the anontunnel folder
 if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
-	echo -e "${red}${CURRENTFOLDERPATH}/app/main.py is missing, copying from anontunnel${NC}" {
+	echo -e "${red}${CURRENTFOLDERPATH}/app/main.py is missing, copying from anontunnel${NC}"
 	cp "${CURRENTFOLDERPATH}/anontunnel/main.py" "${CURRENTFOLDERPATH}/app/main.py"
 fi
 

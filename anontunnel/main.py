@@ -1,6 +1,7 @@
+import os
+
 import logging
 import logging.config
-import os
 
 import kivy
 kivy.require('1.0.9')

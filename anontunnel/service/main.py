@@ -4,7 +4,7 @@ from anontunnel.community import ProxyCommunity, ProxySettings
 class AnonTunnelService():
 
     def startService(self):
-        print 'Starting anon tunnel'
+        print 'Starting the anonymous tunnels...'
         
         socks5_port = None
         proxy_settings = ProxySettings()
@@ -14,7 +14,7 @@ class AnonTunnelService():
         self.anon_tunnel.start()
 
     def stopService(self):
-        print 'Stopping anon tunnel'
+        print 'Stopping the anonymous tunnels...'
         self.anon_tunnel.stop()
     
 if __name__ == '__main__':

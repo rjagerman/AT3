@@ -54,14 +54,28 @@ if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
 	mkdir -p "${CURRENTFOLDERPATH}/app"
 fi
 
+# If the app folder does not contain the main.py file, copy it from the anontunnel folder
 if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
-	echo -e "${red}${CURRENTFOLDERPATH}/app/main.py is missing, copying from anontunnel{$NC}" {
+	echo -e "${red}${CURRENTFOLDERPATH}/app/main.py is missing, copying from anontunnel${NC}" {
 	cp "${CURRENTFOLDERPATH}/anontunnel/main.py" "${CURRENTFOLDERPATH}/app/main.py"
 fi
 
+# If the app folder does not contain the anontunnel.kv, copy it from the anontunnel folder
 if [ ! -f "${CURRENTFOLDERPATH}/app/anontunnel.kv" ]; then
-	echo -e "${red}${CURRENTFOLDERPATH}/app/anontunnel.kv is missing, copying from anontunnel{$NC}" {
+	echo -e "${red}${CURRENTFOLDERPATH}/app/anontunnel.kv is missing, copying from anontunnel${NC}"
 	cp "${CURRENTFOLDERPATH}/anontunnel/anontunnel.kv" "${CURRENTFOLDERPATH}/app/anontunnel.kv"
+fi
+
+# If the app/service folder does not exist, create it
+if [ ! -e "${CURRENTFOLDERPATH}/app/service" ]; then
+	echo -e "${red}${CURRENTFOLDERPATH}/app/service folder is missing, attempting to create it..${NC}"
+	mkdir -p "${CURRENTFOLDERPATH}/app/service"
+fi
+
+# If the app/service folder does not contain the main.py file, copy it from the anontunnel/service folder
+if [ ! -f "${CURRENTFOLDERPATH}/app/service/main.py" ]; then
+	echo -e "${red}${CURRENTFOLDERPATH}/app/service/main,py is missing, copying from anontunnel/service${NC}"
+	cp "${CURRENTFOLDERPATH}/anontunnel/service/main.py" "${CURRENTFOLDERPATH}/app/service/main.py"
 fi
 
 # Check if destination exist
@@ -95,4 +109,4 @@ find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURR
 # Delete the distribute and build now that the app has been made in the AT3 folder
 #rm -rf "${PY4APATH}/dist/${DIRNAME}"
 
-echo -e "${green}All done!${NC} Everything seems to be in order (̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄ "
+echo -e "${green}All done!${NC}"

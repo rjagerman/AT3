@@ -34,8 +34,8 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
         self.log_textview.text = self.log_textview.text+ str
 
 class StderrRedirector(IORedirector): # A class for redirecting stderr to this Text widget.
-	def write(self,str):
-		self.log_textview.text = self.log_textview.text+ str
+    def write(self,str):
+        self.log_textview.text = self.log_textview.text+ str
 
 class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
@@ -43,34 +43,39 @@ class AnonTunnelScreen(BoxLayout):
         super(AnonTunnelScreen, self).__init__(**kwargs)
 
         # redirect the stdout to the log_textview
-		sys.stdout = StdoutRedirector(self.log_textview)
-		sys.stderr = StderrRedirector(self.log_textview)
+        sys.stdout = StdoutRedirector(self.log_textview)
+        sys.stderr = StderrRedirector(self.log_textview)
 
-	# redirect logger to stdout
-	root = logging.getLogger()
-	root.setLevel(logging.DEBUG)
-	ch = logging.StreamHandler(sys.stderr)
-	ch.setLevel(logging.DEBUG)
-	root.addHandler(ch)
+        # redirect logger to stdout
+        root = logging.getLogger()
+        root.setLevel(logging.DEBUG)
+        ch = logging.StreamHandler(sys.stderr)
+        ch.setLevel(logging.DEBUG)
+        root.addHandler(ch)
 
     def startAnonTunnel(self):
-	if not self.isRunning:
+        if not self.isRunning:
             self.isRunning = True
             print 'Sending start request'
             from android import AndroidService
-            service = AndroidService('Anon Tunnel Service', 'Anontunnels are running...')
-            service.start('AnonTunnel Service started')
+            service = AndroidService('Anonymous downloading Service', 'Anonymous tunnels are running...')
+            service.start('Anonymous tunnels service started')
             self.service = service
         
         
     def stopAnonTunnel(self):
-        print 'Sending stop request'
-        self.isRunning = False
-        self.service.stop()
+        if self.isRunning:
+            print 'Stopping the anonymous tunnels...'
+            self.isRunning = False
+            self.service.stop()
 
 class AnonTunnelApp(App):
     def build(self):
-        return AnonTunnelScreen()
+        self.ats = AnonTunnelScreen()
+        return self.ats
+
+    def on_destroy(self):
+        self.ats.stopAnonTunnel()
 
 if __name__ == '__main__':
     AnonTunnelApp().run()

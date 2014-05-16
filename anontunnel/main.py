@@ -14,16 +14,22 @@ from kivy.app import App
 
 import sys
 
+print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
 
 """
 AnonTunnel CLI interface
 """
 
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-print os.getcwd()
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+class IORedirector(object): # A general class for redirecting I/O to this Text widget.
+    def __init__(self,log_textview):
+        self.log_textview = log_textview
+
+class StdoutRedirector(IORedirector): # A class for redirecting stdout to this Text widget.
+    def write(self,str):
+        self.log_textview.text = self.log_textview.text + str
 
 
 # set the background color to white
@@ -32,14 +38,6 @@ Window.clearcolor = (1, 1, 1, 1)
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
-
-class IORedirector(object): # A general class for redirecting I/O to this Text widget.
-    def __init__(self,log_textview):
-        self.log_textview = log_textview
-
-class StdoutRedirector(IORedirector): # A class for redirecting stdout to this Text widget.
-    def write(self,str):
-        self.log_textview.text = self.log_textview.text+ str
 
 class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
@@ -56,16 +54,24 @@ class AnonTunnelScreen(BoxLayout):
         ch.setLevel(logging.DEBUG)
         root.addHandler(ch)
 
+    def stopAnonTunnel(self):
+        if self.isRunning:
+            self.isRunning = False
+            self.service.stop()
+
     def toggleAnonTunnel(self):
         if not self.isRunning:
+            self.tunnel_togglebutton.text = 'On'
             self.isRunning = True
             print 'Sending start request'
             from android import AndroidService
             service = AndroidService('Anonymous downloading Service', 'Anonymous tunnels are running...')
             service.start('Anonymous tunnels service started')
             self.service = service
+
         else:
             print 'Stopping the anonymous tunnels...'
+            self.tunnel_togglebutton.text = 'Off'
             self.isRunning = False
             self.service.stop()
 
@@ -74,7 +80,13 @@ class AnonTunnelApp(App):
         self.ats = AnonTunnelScreen()
         return self.ats
 
-    def on_destroy(self):
+    def on_pause(self):
+        logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
+        return True
+
+    # we willen dat deze wordt aangeroepen zodra de app wordt gekilled
+    def on_stop(self):
+        logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         self.ats.stopAnonTunnel()
 
 if __name__ == '__main__':

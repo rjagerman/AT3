@@ -1,11 +1,7 @@
 import os
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
-
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-print os.getcwd()
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
 
 from anontunnel.atunnel import AnonTunnel
 from anontunnel.community import ProxyCommunity, ProxySettings

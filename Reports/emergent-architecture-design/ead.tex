@@ -1,0 +1,43 @@
+\chapter{Emergent architecture design}
+
+\section{Introduction}
+In this emergent architecture design we will describe our measures and actions to ensure as much code independence as possible while keeping the code quality as high as possible.
+
+\subsection{Code independence}
+We aim to not modify any code from the Python for Android framework or any other package we use in the application. When changes have to be applied, we try to minimize the amount of changes we have to do make.
+The reason we do this, is to ensure that future updates require no or minimal effort to be applied to the application.
+Besides that, we wish to create a pull request on Github with our work, so that the open source community can benefit from our work.
+Also, since our code will be independent from the Python for Android framework that we use, it will remain a "clean" environment so that anyone can reproduce the application with ease by simply downloading the framework and run our code from a separate place.
+
+\subsection{Code quality}
+It is our goal that at the end of each SCRUM sprint (see also section (REF NAAR SCRUM)), we have a stable, improved product available. To ensure this, we make certain that the code on our master branch on Github always contains code that can produce a working application. Besides that, we also want to have at least one .apk application file of our stable version that can be installed on Android devices. For pull request, one other team member has to approve the pull request before it is merged into the master.
+More on how we ensure code quality can be found in section \ref{codeQuality}
+
+\section{Software architecture}
+ The software architecture of our application is designed in such a way that it should be capable on running on most Android devices. Any Android device running on the ARM architecture and having the Android SDK API level 14 or higher installed should be able to run this application.
+ 
+\subsection{Programming languages and programs}
+\label{programminglang}
+This application is written in python, kivy script and shell script, making use of text editor programs such as Gedit and Sublime. With Gedit, one can easily adapt script as it's the default text editor on the Ubuntu operating system.Sublime is used for editing and creating python code, because this program contains auto indentation and colors to separate e.g. functions from variables. This speeds up development and with the colors one can easily separate different things to minimize errors.
+As Python for Android uses the Kivy framework to make the Graphical User Interface (GUI), we also use Kivy to create our GUI's with.
+Finally, shell scripts are used to create so called recipes and building scripts with that run certain commands. More about these recipes can be found in \ref{iteration1}.
+
+\subsection{Tests}
+As we are largely dependent on third party code, we will first make sure that the core functionality of these third party codes also functions on PC's. The Tribler team has set up a download test than can be run in order to check if everything works as it should. This test is run on the Tribler PC version, which also contain these third party libraries.
+
+We assume that third party libraries are tested by their respective authors, and that these tests are covering and passing before any of these libraries are released.
+Our shell scripts will be manually tested, as testing shell scripts is not commonly done, we will assert these ourselves.
+(ER BESTAAN WEL TESTING FRAMEWORKS VOOR...)
+
+\subsection{Maintaining code quality}
+\label{codeQuality}
+To uphold the code quality we make use of pull requests to merge git branches into the master branch, which contains the stable and final version of each sprint. When someone would like its code to be merged with the code on the master branch, he has to create a pull request that must be reviewed by another team member. During this review, this team member will closely watch for missing comments, wrong style, unclear or too complicated code and the completeness of tests when tests are required.
+
+The style of the code for Python should be conform to PEP 8. For shell scripts we follow the rules of indenting and commenting as described by various parties such as Google and Linux kernel.
+All scripts must contain good and relevant comments following the guidelines if they exist, variable names should be clear and meaningful of their purpose and of course the code style must match the guidelines as well.
+
+When a pull request is approved and can be automatically merged, it is merged into the master branch. When the master is updated, a new and stable version is created. All other branches that are being worked on should pull the master branch into theirs to ensure that their code is not behind and can be automatically merges without merge conflicts when they are ready to create a pull request.
+
+\subsection{Package architecture}
+As mentioned in section \ref{programminglang} we make use of recipes. Each recipe downloads and installs a package that is required for the application to work. Most of the time, a package depends on other packages or is used by another package as dependency. As more packages are added to the application, the dependencies become more complicated.
+To maintain and overview the structure and dependencies of the packages as easy as possible, we've created a package dependency graph where one can visually see which package is dependent on which. This graph is available in the appendix (HIER NOG DE APPENSDIX REF).

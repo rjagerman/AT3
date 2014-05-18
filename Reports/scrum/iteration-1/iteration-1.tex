@@ -61,7 +61,13 @@
 		\end{itemize}
 	
 	\subsection{Porting the anonymous tunnels to Android}
-		\textbf{TO DO: }In deze subsectie iets over de anontunnels die we hebben geport naar android, wat over Python for Android en de packages. Misschien de packages in subsubsections bespreken?
+		One of our first challenges was to port the code that setup the anonymous communication to the Android device, using Python for Android. We started by inspecting the current code from pull request 525 and dived into the dependencies this code has with the Tribler core and Dispersy. We decided to create three packages: one package with the Dispersy code, one package with the files we needed from the Tribler core and one package containing the anonymous tunnels code.
+		
+		After we created these packages, we had to find out which other packages we needed to run everything. We did this, by putting many imports in our main.py file which is being run on the device. Each test run, we looked at the error which was being thrown. Most of the time, this was an import error, indicating we missed some code from other packages. These issues were very easy to fix. We used various packages that The Global Square has ported such as M2Crypto and netifaces.
+		
+		Import errors were not the only issues we ran into: we had some problems with the netifaces package. Since this package is copied into the final APK file as a Python egg, it will be extracted on the device. The default location of this extraction is not writable by the Python process. This means we had to find another writable directory on the device. We decided to extract the files to the cache directory of the application which is writtable. This was accomplished by adjusting the PYTHON\_EGG\_CACHE environment variable in Python.
+		
+		We also found out that some files were missing and not copied into the APK. The curves.ec file was missing and is needed by the cryptography classes found in the Tribler core. We also needed the configuration file of the logger, logger.conf. To make sure these files are part of the application, we copy them into the final application in our build script.
 		
 	\subsection{Attempt (?) to compile Libtorrent for Android}
 		\textbf{TO DO:} Hier iets over onze uitdaging om Libtorrent werkend te krijgen in Python for Android

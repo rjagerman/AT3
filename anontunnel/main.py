@@ -1,7 +1,5 @@
 import os
-
 import logging
-import logging.config
 
 import kivy
 kivy.require('1.0.9')
@@ -11,26 +9,19 @@ from kivy.properties import NumericProperty
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
 from kivy.app import App
+from kivy.lib import osc
 
 import sys
 
 print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+# os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
 """
 AnonTunnel CLI interface
 """
-
-class IORedirector(object): # A general class for redirecting I/O to this Text widget.
-    def __init__(self,log_textview):
-        self.log_textview = log_textview
-
-class StdoutRedirector(IORedirector): # A class for redirecting stdout to this Text widget.
-    def write(self,str):
-        self.log_textview.text = self.log_textview.text + str
-
 
 # set the background color to white
 from kivy.core.window import Window
@@ -43,16 +34,6 @@ class AnonTunnelScreen(BoxLayout):
     def __init__(self, **kwargs):
         self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
-
-        # redirect the stdout to the log_textview
-        sys.stdout = StdoutRedirector(self.log_textview)
-
-        # redirect logger to stdout
-        root = logging.getLogger()
-        root.setLevel(logging.DEBUG)
-        ch = logging.StreamHandler(sys.stdout)
-        ch.setLevel(logging.DEBUG)
-        root.addHandler(ch)
 
     def stopAnonTunnel(self):
         if self.isRunning:
@@ -77,8 +58,14 @@ class AnonTunnelScreen(BoxLayout):
 
 class AnonTunnelApp(App):
     def build(self):
+        osc.init()
+        oscid = osc.listen(port=3002)
+        osc.bind(oscid, self.receivedLog, '/log')
         self.ats = AnonTunnelScreen()
         return self.ats
+
+    def receivedLog(self, message, *args):
+        self.ats.log_textview.text += '%s' % message[2]
 
     def on_pause(self):
         logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')

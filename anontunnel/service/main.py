@@ -1,14 +1,38 @@
 import os
+from kivy.lib import osc
+import logging
+import logging.config
+
+class IORedirector(object): # A general class for redirecting I/O to this Text widget.
+    def __init__(self):
+        pass
+
+class StdoutRedirector(IORedirector): # A class for redirecting stdout to this Text widget.
+    def write(self,str):
+        osc.sendMsg('/log', [str], port=3002)
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+#os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
-from anontunnel.atunnel import AnonTunnel
-from anontunnel.community import ProxyCommunity, ProxySettings
+from Tribler.community.anontunnel.atunnel import AnonTunnel
+from Tribler.community.anontunnel.community import ProxyCommunity, ProxySettings
 
 class AnonTunnelService():
 
+    def __init__(self, **kwargs):
+        # redirect logger to stdout
+        root = logging.getLogger()
+        root.setLevel(logging.DEBUG)
+        ch = logging.StreamHandler(sys.stdout)
+        ch.setLevel(logging.DEBUG)
+        root.addHandler(ch)
+
     def startService(self):
+
+        # redirect the stdout to the log_textview
+        sys.stdout = StdoutRedirector()
+
         print 'Starting the anonymous tunnels...'
         
         socks5_port = None
@@ -23,5 +47,7 @@ class AnonTunnelService():
         self.anon_tunnel.stop()
     
 if __name__ == '__main__':
+    osc.init()
+    oscid = osc.listen(ipAddr='0.0.0.0', port=3000)
     ats = AnonTunnelService()
     ats.startService()

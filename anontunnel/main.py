@@ -13,7 +13,6 @@ from kivy.lib import osc
 
 import sys
 
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
 
 #adjust the PYTHON_EGG_CACHE
 # os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
@@ -46,7 +45,7 @@ class AnonTunnelScreen(BoxLayout):
             self.isRunning = True
             print 'Sending start request'
             from android import AndroidService
-            service = AndroidService('Anonymous downloading Service', 'Anonymous tunnels are running...')
+            service = AndroidService('Anonymous downloading', 'Anonymous tunnels are running...')
             service.start('Anonymous tunnels service started')
             self.service = service
 
@@ -68,12 +67,10 @@ class AnonTunnelApp(App):
         self.ats.log_textview.text += '%s' % message[2]
 
     def on_pause(self):
-        logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         return True
 
     # we willen dat deze wordt aangeroepen zodra de app wordt gekilled
     def on_stop(self):
-        logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         self.ats.stopAnonTunnel()
 
 if __name__ == '__main__':

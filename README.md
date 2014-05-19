@@ -18,5 +18,5 @@ To build this app, one needs to execute the following steps:
 3. Go to the AT3 folder
 4. Call the ``build.sh`` script and pass the path to the Python for Android framework with it using the ``-p parameter``.
 5. If all goes well, the app should be created in the AT3/app folder.
-6. To install, make sure your device is connected to your computer and call adb install ``<.apk file>``
+6. To install, make sure your device is connected to your computer and call ``adb install <.apk file>``
  

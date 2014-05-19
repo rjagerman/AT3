@@ -3,21 +3,8 @@
 # This script first checks if certain folders and files exist. It first builds kivy and then the whole app (after kivy is set) because of some error with binaries.
 # The main and build functions should be reviewed first.
 
-# Variables
-CURRENTFOLDERPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IMAGEFOLDER="anontunnel/images"
-APPLOGO="tribler_applogo.png"
-APPSPLASH="splash.jpg"
-APPLOGOPATH="${CURRENTFOLDERPATH}/${IMAGEFOLDER}/${APPLOGO}"
-APPSPLASHPATH="${CURRENTFOLDERPATH}/${IMAGEFOLDER}/${APPSPLASH}"
-DIRNAME="AT3"
-PY4APATH=
-
-# Chat colors
-red="\x1B[0;31m"
-yellow="\x1B[1;33m"
-green="\x1B[0;32m"
-NC="\x1B[0m" # No Color
+# Load variables
+source buildconfig.conf
 
 while getopts ":p:" opt; do
 	case $opt in

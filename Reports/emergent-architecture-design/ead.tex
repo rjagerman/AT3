@@ -10,7 +10,7 @@ Besides that, we wish to create a pull request on Github with our work, so that 
 Also, since our code will be independent from the Python for Android framework that we use, it will remain a "clean" environment so that anyone can reproduce the application with ease by simply downloading the framework and run our code from a separate place.
 
 \subsection{Code quality}
-It is our goal that at the end of each SCRUM sprint (see also section (REF NAAR SCRUM)), we have a stable, improved product available. To ensure this, we make certain that the code on our master branch on Github always contains code that can produce a working application. Besides that, we also want to have at least one .apk application file of our stable version that can be installed on Android devices. For pull request, one other team member has to approve the pull request before it is merged into the master.
+It is our goal that at the end of each SCRUM sprint (see also section \ref{chp-Scrum}), we have a stable, improved product available. To ensure this, we make certain that the code on our master branch on Github always contains code that can produce a working application. Besides that, we also want to have at least one .apk application file of our stable version that can be installed on Android devices. For pull request, one other team member has to approve the pull request before it is merged into the master.
 More on how we ensure code quality can be found in section \ref{codeQuality}
 
 \section{Software architecture}
@@ -26,8 +26,7 @@ Finally, shell scripts are used to create so called recipes and building scripts
 As we are largely dependent on third party code, we will first make sure that the core functionality of these third party codes also functions on PC's. The Tribler team has set up a download test than can be run in order to check if everything works as it should. This test is run on the Tribler PC version, which also contain these third party libraries.
 
 We assume that third party libraries are tested by their respective authors, and that these tests are covering and passing before any of these libraries are released.
-Our shell scripts will be manually tested, as testing shell scripts is not commonly done, we will assert these ourselves.
-(ER BESTAAN WEL TESTING FRAMEWORKS VOOR...)
+Our shell scripts will be tested as well. Our scripts are divided into dependency files (config files) and functionality files with methods. Methods that check for critical components return exit statuses which can be tested.
 
 \subsection{Maintaining code quality}
 \label{codeQuality}

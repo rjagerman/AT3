@@ -26,6 +26,9 @@
 *.out
 *.synctex.gz
 
+# Compiled python objects
+.pyo
+
 # Temporary gedit files
 *.*~
 

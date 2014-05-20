@@ -13,9 +13,7 @@ from kivy.lib import osc
 
 import sys
 
-
 #adjust the PYTHON_EGG_CACHE
-# os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
 """
@@ -45,7 +43,7 @@ class AnonTunnelScreen(BoxLayout):
             self.isRunning = True
             print 'Sending start request'
             from android import AndroidService
-            service = AndroidService('Anonymous downloading', 'Anonymous tunnels are running...')
+            service = AndroidService('Anonymous downloading Service', 'Anonymous tunnels are running...')
             service.start('Anonymous tunnels service started')
             self.service = service
 

@@ -22,6 +22,11 @@ if [ "X$PY4APATH" == "X" ]; then
 	exit 1
 fi
 
+if [ "X$APPNAME" == "X" ]; then
+	echo -e "${yellow}༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽_•︻̷̿┻̿═━一༼ຈل͜ຈ༽ give the appname using the -a flag or the donger dies${NC}"
+	exit 1
+fi
+
 function checkDirectoryExist() {
 	# If the specified app folder does not exist, we throw an error.
 	if [ ! -e "${CURRENTFOLDERPATH}/${APPNAME}/" ]; then

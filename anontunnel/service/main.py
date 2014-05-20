@@ -12,7 +12,6 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
         osc.sendMsg('/log', [str], port=3002)
 
 #adjust the PYTHON_EGG_CACHE
-#os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
 from Tribler.community.anontunnel.atunnel import AnonTunnel
@@ -20,18 +19,18 @@ from Tribler.community.anontunnel.community import ProxyCommunity, ProxySettings
 
 class AnonTunnelService():
 
-    def __init__(self, **kwargs):
+
+    def startService(self):
+
+        # redirect the stdout to the log_textview
+        sys.stdout = StdoutRedirector()
+
         # redirect logger to stdout
         root = logging.getLogger()
         root.setLevel(logging.DEBUG)
         ch = logging.StreamHandler(sys.stdout)
         ch.setLevel(logging.DEBUG)
         root.addHandler(ch)
-
-    def startService(self):
-
-        # redirect the stdout to the log_textview
-        sys.stdout = StdoutRedirector()
 
         print 'Starting the anonymous tunnels...'
         

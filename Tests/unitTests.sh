@@ -25,11 +25,6 @@ function testAnontunnelDirectoryExistTrue() {
 	assertEquals 0 $?
 }
 
-function testImageExistTrue() {
-	checkImagesExist > /dev/null 2>&1
-	assertEquals 0 $?
-}
-
 function testDirectoriesMissingTrue() {
 	DIRECTORYMISSING=0
 	if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
@@ -91,10 +86,8 @@ function serviceMainexistFail() {
 }
 
 function testMainExistTrue() {
-	# Run the function that copies the files from the anontunnel folder
-	checkAppFiles > /dev/null 2>&1
 	MAINEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/main.py" ]; then
 		MAINEXIST=1
 	fi
 
@@ -103,7 +96,7 @@ function testMainExistTrue() {
 
 function testKivyFileExistTrue() {
 	KIVYEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/anontunnel.kv" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/anontunnel.kv" ]; then
 		KIVYEXIST=1
 	fi
 
@@ -112,11 +105,29 @@ function testKivyFileExistTrue() {
 
 function serviceMainexistTrue() {
 	SERVICEMAINEXIST=0;
-	if [ ! -f "${CURRENTFOLDERPATH}/app/service/main.py" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/service/main.py" ]; then
 		SERVICEMAINEXIST=1
 	fi
 	
 	assertTrue $SERVICEMAINEXIST
+}
+
+function testSplashExist() {
+	SPLASHEXIST=0;
+	if [ -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+		SPLASHEXIST=1
+	fi
+	
+	assertTrue $SPLASHEXIST
+}
+
+function testLogoExist() {
+	LOGOEXIST=0;
+	if [ -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+		LOGOEXIST=1
+	fi
+	
+	assertTrue $LOGOEXIST
 }
 
 function testBuildWorking() {

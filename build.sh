@@ -5,6 +5,7 @@
 
 # Load variables
 source buildconfig.conf
+source functions.sh
 
 while getopts ":p:a:" opt; do
 	case $opt in
@@ -99,5 +100,4 @@ function main() {
 	build
 }
 
-# Call the main method.
 main

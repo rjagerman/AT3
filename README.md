@@ -1,4 +1,4 @@
-[![Build Status](http://jenkins.tribler.org/job/Build-AT3-ARM-32/badge/icon)](http://jenkins.tribler.org/job/Build-AT3-ARM-32/)
+[![Build Status](http://jenkins.tribler.org/buildStatus/icon?job=Build-AT3-ARM-32)](http://jenkins.tribler.org/job/Build-AT3-ARM-32/)
 
 ![Android Tor Tribler Tunnelling (AT3)](http://forum.tribler.org/download/file.php?id=203)
 

@@ -3,6 +3,11 @@
 # This defines all the functions needed for the build.sh script.
 # As this script will be tested, functions are separated from the build.sh
 
+red="\x1B[0;31m"
+yellow="\x1B[1;33m"
+green="\x1B[0;32m"
+NC="\x1B[0m"
+
 function try () {
     "$@" || exit -1
 }

@@ -34,3 +34,7 @@
 
 # Generated app folder
 /app/*
+
+# Generated configuration file
+/configuration
+

@@ -1,6 +1,6 @@
 \section{Iteration 1}
 \label{iteration1}
-	In this section we describe our first sprint, starting in week 4.3 (5$^{th}$ of may) and ending in week 4.5 (16$^{th}$ of may).
+	In this section we describe our first sprint, starting in week 4.3 (5$^{th}$ of May) and ending in week 4.4 (16$^{th}$ of May).
 
 	\subsection{Goals}
 		This sprint, we had the following goals:
@@ -47,7 +47,7 @@
 			Twisted is an extensible framework for asynchronous networking written in Python. The framework has special focus on event-based network programming and multi-protocol integration. It has dependencies on the Zope framework.
 		
 			\item Anontunnels\\
-			This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler Github.
+			This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler GitHub.
 			
 			We made some minor changes to this code: the Main.py file has been removed from the package and the class definition of AnonTunnel has been moved to it’s own file (atunnel.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
 			
@@ -56,7 +56,7 @@
 			
 			\item Dispersy\\
 			Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we’ve created a Python package with all the code that’s needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.\\
-			The files we have bundled are from pull request 525 on the Tribler Github. We didn’t use the files from the official Dispersy Github because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
+			The files we have bundled are from pull request 525 on the Tribler GitHub. We didn’t use the files from the official Dispersy GitHub because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
 		
 		\end{itemize}
 	
@@ -73,7 +73,7 @@
 		\textbf{TO DO:} Hier iets over onze uitdaging om Libtorrent werkend te krijgen in Python for Android
 	
 	\subsection{Creating a GUI with Kivy}
-		The first version of the anonymous tunnels used the standard output for printing information about what’s going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That’s why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what’s happening.
+		The first version of the anonymous tunnels used the standard output for printing information about what’s going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That’s why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what's happening.
 	
 		Creating a GUI was a small stap for us: we already included the Kivy package in our Python for Android distribution. Since Kivy is a GUI framework for desktop (but has been ported to Python for Android), we first tried to create a desktop interface. Creating interfaces in Kivy is quite straightforward and is related to creating user interfaces in Android: you specify your layout elements in Kivy files which have the kv extension. In the main Python file, you load this interface file and you can access properties of the UI elements.
 	

@@ -3,6 +3,10 @@
 # This defines all the functions needed for the build.sh script.
 # As this script will be tested, functions are separated from the build.sh
 
+function try () {
+    "$@" || exit -1
+}
+
 function checkDirectoryExist() {
 	# If the specified app folder does not exist, we throw an error.
 	if [ ! -e "${CURRENTFOLDERPATH}/${APPNAME}/" ]; then
@@ -16,7 +20,7 @@ function generateFolders() {
 	# If the app folder in AT3 does not exist, create it.
 	if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
 		echo -e "${yellow}${CURRENTFOLDERPATH}/app does not exist! Attempting to create it${NC}"
-		mkdir -p "${CURRENTFOLDERPATH}/app"
+		try mkdir -p "${CURRENTFOLDERPATH}/app"
 	fi
 }
 
@@ -26,7 +30,7 @@ function checkDistFolderExist() {
 		echo -e "${red}The distribution ${PY4APATH}/dist/${DIRNAME} already exist${NC}"
 		echo -e "${red}Press a key to remove it, or Control + C to abort.${NC}"
 		read
-		rm -rf "${PY4APATH}/dist/${DIRNAME}"
+		try rm -rf "${PY4APATH}/dist/${DIRNAME}"
 	fi
 }
 
@@ -48,15 +52,15 @@ function setIcon() {
 function build() {
 	# Build a distribute folder with all the packages now that kivy has been set
 	pushd $PY4APATH
-	./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME
+	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME
 	popd
 
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"
-	./build.py --package com.AT3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG
+	try ./build.py --package com.AT3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG
 
 	# Copy the .apk files to our own app folder
-	find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \;
+	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \;
 
 	# Delete the distribute and build now that the app has been made in the AT3 folder
 	#rm -rf "${PY4APATH}/dist/${DIRNAME}"
@@ -67,10 +71,10 @@ function build() {
 # This functions first runs checks on wheter certain files and folders exist.
 # If they do and all passes, the build function is run.
 function main() {
-	checkDirectoryExist &&
-	checkDistFolderExist &&
-	setSplash &&
-	setIcon &&
-	generateFolders &&
-	build
+	try checkDirectoryExist
+	try checkDistFolderExist &&
+	try setSplash &&
+	try setIcon &&
+	try generateFolders &&
+	try build
 }

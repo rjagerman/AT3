@@ -4,6 +4,8 @@
 
 Android Tor Tribler Tunneling (AT3) is a sub project from the Tribler project from the Parallel and Distributed Systems group from the Technical University of Delft. This project is based on the [Python for Android framework](https://github.com/kivy/python-for-android/). The code this app runs can be found at the [main Tribler project](https://github.com/Tribler/tribler), more specifically from [Pull Request #581](https://github.com/Tribler/tribler/pull/581).
 
+![Test download succeeded!](http://forum.tribler.org/download/file.php?id=204)
+
 Goal
 ====
 

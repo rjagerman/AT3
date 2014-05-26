@@ -20,8 +20,8 @@ To build this app, one needs to execute the following steps:
 1. Clone the Python for Android framework and remember the location where it is saved.
 2. Next you can clone this project on a place where you prefer it, we will assume you've named the folder AT3.
 3. Go to the AT3 folder
-4. Adapt the build.config file to include your icon (optional), splashimage (optional) and path the python for android (required).
-5. Call the ``build.sh`` script.
+4. Run configure as following: `./configure -p <YOUR-PATH-TO-PYTHON-FOR-ANDROID> -a anontunnel`
+5. Call the `./build.sh` script.
 6. If all goes well, the app should be created in the AT3/app folder.
-7. To install, make sure your device is connected to your computer and call ``adb install <.apk file>``
+7. To install, make sure your device is connected to your computer and call ``adb install app/<.apk file>``
  

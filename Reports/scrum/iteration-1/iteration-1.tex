@@ -109,12 +109,12 @@
 		Following libtorrent's official documentation we first run \texttt{bootstrap.sh}. Now, in order to configure and compile we will have to set up an environment in which it will use the Android GNU ARM compiler. To do this, we set the following environment variables:
 		
 		\begin{lstlisting}
-export SYSROOT=$ANDROIDNDK/platforms/android-14/arch-arm
-export PATH=/usr/local/gcc-4.8.0-arm-linux-androideabi/bin:$PATH
-export CC=arm-linux-androideabi-gcc
-export CXX=arm-linux-androideabi-g++
-export CROSSHOST=arm-linux-androideabi
-export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
+			export SYSROOT=$ANDROIDNDK/platforms/android-14/arch-arm
+			export PATH=/usr/local/gcc-4.8.0-arm-linux-androideabi/bin:$PATH
+			export CC=arm-linux-androideabi-gcc
+			export CXX=arm-linux-androideabi-g++
+			export CROSSHOST=arm-linux-androideabi
+			export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		\end{lstlisting}
 		
 		Note that we have set up a custom NDK toolchain under /usr/local/gcc-4.8.0-arm-linux-androideabi. 

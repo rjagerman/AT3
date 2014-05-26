@@ -31,7 +31,7 @@ function oneTimeSetUp() {
 }
 
 function testCurrentfolderpathNotEmpty() {
-	NOTEMPTY = 0
+	NOTEMPTY=0
 	if [ "X$CURRENTFOLDERPATH" == "X" ]; then
 		NOTEMPTY=1
 	fi
@@ -40,7 +40,7 @@ function testCurrentfolderpathNotEmpty() {
 }
 
 function testAppnameNotEmpty() {
-	NOTEMPTY = 0
+	NOTEMPTY=0
 	if [ "X$APPNAME" == "X" ]; then
 		NOTEMPTY=1
 	fi
@@ -49,7 +49,7 @@ function testAppnameNotEmpty() {
 }
 
 function testPythonpathNotEmpty() {
-	NOTEMPTY = 0
+	NOTEMPTY=0
 	if [ "X$PY4APATH" == "X" ]; then
 		NOTEMPTY=1
 	fi

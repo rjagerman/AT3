@@ -30,6 +30,54 @@ function oneTimeSetUp() {
 	popd
 }
 
+function testCurrentfolderpathNotEmpty() {
+	NOTEMPTY = 0
+	if [ "X$CURRENTFOLDERPATH" == "X" ]; then
+		NOTEMPTY=1
+	fi
+	
+	assertTrue "CURRENTFOLDERPATH variable is empty" $NOTEMPTY
+}
+
+function testAppnameNotEmpty() {
+	NOTEMPTY = 0
+	if [ "X$APPNAME" == "X" ]; then
+		NOTEMPTY=1
+	fi
+	
+	assertTrue "APPNAME variable is empty" $NOTEMPTY
+}
+
+function testPythonpathNotEmpty() {
+	NOTEMPTY = 0
+	if [ "X$PY4APATH" == "X" ]; then
+		NOTEMPTY=1
+	fi
+	
+	assertTrue "PY4APATH variable is empty" $NOTEMPTY
+}
+
+function testPFlagError() {
+	pushd ../
+	./configure -a "test" > /dev/null 2>&1
+	assertEquals "Missing the -p flag should throw an error" 1 $?
+	popd
+}
+
+function testAFlagErorr() {
+	pushd ../
+	./configure -p "test" > /dev/null 2>&1
+	assertEquals "Missing the -a flag should throw an error" 1 $?
+	popd
+}
+
+function testNoFlags() {
+	pushd ../
+	./configure > /dev/null 2>&1
+	assertEquals "No flags provided should throw an error" 1 $?
+	popd
+}
+
 function testAnontunnelDirectoryExistTrue() {
 	checkDirectoryExist > /dev/null 2>&1
 	assertEquals "Anontunnel directory does not exist" 0 $?

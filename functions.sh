@@ -56,9 +56,10 @@ function setIcon() {
 
 function build() {
 	# Build a distribute folder with all the packages now that kivy has been set
-	pushd $PY4APATH
+	PREVPATH=`pwd`
+	cd $PY4APATH
 	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME
-	popd
+	cd $PREVPATH
 
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"

@@ -2,9 +2,19 @@
  
 ### unitTest.sh ###
 
+PREVPATH=/
+function pushd() {
+	PREVPATH=`pwd`
+	cd $1
+}
+
+function popd() {
+	cd $PREVPATH
+}
+
 # This function loads the environment variables and functions once
 function oneTimeSetUp() {
-	source ../buildconfig.conf
+	source ../configuration
 	source ../functions.sh 
 
 	# Remove the app folder to enforce a clean environment.
@@ -50,12 +60,6 @@ function testDirectoriesMissingFalse() {
 
 	assertFalse $DIRECTORYMISSING
 	
-	DIRECTORYMISSING=1
-	if [ ! -e "${CURRENTFOLDERPATH}/app/service" ]; then
-		DIRECTORYMISSING=0
-	fi
-
-	assertFalse $DIRECTORYMISSING
 }
 
 function testMainExistFail() {
@@ -114,7 +118,7 @@ function serviceMainexistTrue() {
 
 function testSplashExist() {
 	SPLASHEXIST=0;
-	if [ -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
 		SPLASHEXIST=1
 	fi
 	
@@ -123,7 +127,7 @@ function testSplashExist() {
 
 function testLogoExist() {
 	LOGOEXIST=0;
-	if [ -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
 		LOGOEXIST=1
 	fi
 	

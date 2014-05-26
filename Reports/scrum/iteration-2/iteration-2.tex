@@ -1,0 +1,34 @@
+\section{Iteration 2}
+\label{iteration2}
+	In this section we describe our second sprint, starting in week 4.5 (19$^{th}$ of May) and ending in week 4.6 (30$^{th}$ of May).
+
+	\subsection{Goals}
+		This sprint, we had the following goals:
+	
+		\begin{enumerate}
+			\item Get libtorrent from sprint 1 working.
+			\item Get the anon tunnels running,relaying and downloading.
+			\item Merge our work with the other group to create a first prototype of the complete application.
+		\end{enumerate}
+	
+	\subsection{Jenkins}
+		In this sprint we decided to make use of the continuous integration system called Jenkins. Jenkins automatically runs your tests when a build has been changed or a pull request comes in/has changed. 
+		Even though this was not specified in our plan of action initially, we think this is a good addition to improve and maintain the (code) quality of our application.
+		
+		Jenkins allows for an own environment to run tests in, which is perfect for our setup. Currently Jenkins executes the following steps:
+		
+		\begin{enumerate}
+			\item Jenkins cleans the environment when a build starts, so nothing is cached.
+			\item It then clones our repository and the Python for Android framework from GitHub.
+			\item Optionally, if the build is from a pull request, merge the pull request with the master branch.
+			\item Jenkins then starts up an Android emulator where the application can be installed and tested on with application tests.
+			\item Once the emulator is started up, the unit and application tests are run. If one of the tests fail, Jenkins will mark the build as failed. Else the build succeeds.
+			\item Finally once the tests are done the Tribler bot comments the result on the pull request if that's what was running, else it reports the result of the project in our IRC channel.
+		\end{enumerate} 
+		
+		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
+		
+		
+	
+	\subsection{Conclusion}
+		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

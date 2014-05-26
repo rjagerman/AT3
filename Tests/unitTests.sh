@@ -32,7 +32,7 @@ function oneTimeSetUp() {
 
 function testAnontunnelDirectoryExistTrue() {
 	checkDirectoryExist > /dev/null 2>&1
-	assertEquals 0 $?
+	assertEquals "Anontunnel directory does not exist" 0 $?
 }
 
 function testDirectoriesMissingTrue() {
@@ -41,14 +41,7 @@ function testDirectoriesMissingTrue() {
 		DIRECTORYMISSING=1
 	fi
 
-	assertFalse $DIRECTORYMISSING
-	
-	DIRECTORYMISSING=0
-	if [ ! -e "${CURRENTFOLDERPATH}/app/service" ]; then
-		DIRECTORYMISSING=1
-	fi
-
-	assertFalse $DIRECTORYMISSING
+	assertFalse "App directory should not exist yet" $DIRECTORYMISSING
 }
 
 function testDirectoriesMissingFalse() {
@@ -58,35 +51,8 @@ function testDirectoriesMissingFalse() {
 		DIRECTORYMISSING=0
 	fi
 
-	assertFalse $DIRECTORYMISSING
+	assertFalse "App directory does not exist after generating folders" $DIRECTORYMISSING
 	
-}
-
-function testMainExistFail() {
-	MAINEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
-		MAINEXIST=1
-	fi
-
-	assertFalse $MAINEXIST
-}
-
-function testKivyFileExistFail() {
-	KIVYEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/anontunnel.kv" ]; then
-		KIVYEXIST=1
-	fi
-
-	assertFalse $KIVYEXIST
-}
-
-function serviceMainexistFail() {
-	SERVICEMAINEXIST=0;
-	if [ ! -f "${CURRENTFOLDERPATH}/app/service/main.py" ]; then
-		SERVICEMAINEXIST=1
-	fi
-	
-	assertFalse $SERVICEMAINEXIST
 }
 
 function testMainExistTrue() {
@@ -95,7 +61,7 @@ function testMainExistTrue() {
 		MAINEXIST=1
 	fi
 
-	assertTrue $MAINEXIST
+	assertTrue "File main.py does not exist" $MAINEXIST
 }
 
 function testKivyFileExistTrue() {
@@ -104,7 +70,7 @@ function testKivyFileExistTrue() {
 		KIVYEXIST=1
 	fi
 
-	assertTrue $KIVYEXIST
+	assertTrue "File anontunnel.kv does not exist" $KIVYEXIST
 }
 
 function serviceMainexistTrue() {
@@ -113,32 +79,36 @@ function serviceMainexistTrue() {
 		SERVICEMAINEXIST=1
 	fi
 	
-	assertTrue $SERVICEMAINEXIST
+	assertTrue "File service/main.py does not exist" $SERVICEMAINEXIST
 }
 
 function testSplashExist() {
-	SPLASHEXIST=0;
-	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
-		SPLASHEXIST=1
+	if [ "X$APPSPLASH" != "X" ] ; then
+		SPLASHEXIST=0;
+		if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+			SPLASHEXIST=1
+		fi
+		
+		assertTrue "File ${APPSPLASH} does not exist" $SPLASHEXIST
 	fi
-	
-	assertTrue $SPLASHEXIST
 }
 
 function testLogoExist() {
-	LOGOEXIST=0;
-	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
-		LOGOEXIST=1
-	fi
+	if [ "X$APPICON" != "X" ] ; then
+		LOGOEXIST=0;
+		if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPICON}" ]; then
+			LOGOEXIST=1
+		fi
 	
-	assertTrue $LOGOEXIST
+		assertTrue "File ${APPICON} does not exist" $LOGOEXIST
+	fi
 }
 
 function testBuildWorking() {
 	pushd ../
 	./build.sh -p $PY4APATH > /dev/null
 	popd
-	assertEquals 0 $?
+	assertEquals "Build is failing" 0 $?
 }
 
 # Call and Run all Tests

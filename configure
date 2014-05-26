@@ -1,0 +1,35 @@
+#!/bin/bash
+
+function checkParameters() {
+
+	# Check for parameters
+	if [ "X$PY4APATH" == "X" ] ; then
+		echo "No python for android defined, please specify it using the -p flag"
+		exit 1
+	fi
+
+	if [ "X$APPNAME" == "X" ] ; then
+		echo "No appname defined, please specify it using the -a flag"
+		exit 1
+	fi
+
+}
+
+function writeToConfiguration() {
+	eval "echo \"$(< configuration.in)\"" > configuration
+}
+
+# Get parameters
+while getopts ":p:a:" opt; do
+	case $opt in
+		p)
+			PY4APATH="$OPTARG"
+			;;
+		a)
+			APPNAME="$OPTARG"
+			;;
+	esac
+done
+
+checkParameters
+writeToConfiguration

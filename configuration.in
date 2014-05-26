@@ -1,0 +1,7 @@
+# Variables
+CURRENTFOLDERPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+APPNAME=${APPNAME}
+PY4APATH=$(readlink -f "${PY4APATH}")
+DIRNAME="AT3"
+APPICON="images/tribler_applogo.png"
+APPSPLASH="images/splash.jpg"

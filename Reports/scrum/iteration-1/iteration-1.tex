@@ -69,8 +69,63 @@
 		
 		We also found out that some files were missing and not copied into the APK. The curves.ec file was missing and is needed by the cryptography classes found in the Tribler core. We also needed the configuration file of the logger, logger.conf. To make sure these files are part of the application, we copy them into the final application in our build script.
 		
-	\subsection{Attempt (?) to compile Libtorrent for Android}
-		\textbf{TO DO:} Hier iets over onze uitdaging om Libtorrent werkend te krijgen in Python for Android
+	\subsection{Attempt to compile Libtorrent for Android}
+		To get libtorrent working on Android there are several big obstacles:
+		\begin{itemize}
+			\item Compiling boost for the ARM architecture
+			\item Compiling libtorrent for the ARM architecture
+			\item Compiling libtorrent's python bindings for the ARM architecture
+		\end{itemize}
+		
+		The official documentation of libtorrent states multiple ways to build libtorrent. The first is using boost's build system \emph{Jam}. The second is using \emph{automake}. However, before we can compile the libtorrent source code with either of these methods, several modifications had to be applied.
+		
+		\subsubsection{Source code modifications}
+				
+		We found several modifications to the source code to be necessary to compile libtorrent. A special thanks to steeve (\url{https://github.com/steeve/libtorrent/}) for these modifications:
+		
+		\begin{itemize}
+		\item \texttt{INT64\_MAX} is not defined for Android, so we have to specifically define it.
+		\item Multiple environments are defined in \texttt{include/libtorrent/config.hpp}. We add an environment for \texttt{ANDROID}, which sets the following options:
+			\begin{itemize}
+				\item \texttt{FALLOCATE} is disabled
+				\item \texttt{ICONV} is disabled
+				\item \texttt{IFADDRS} is disabled
+				\item \texttt{MEMALIGN} is enabled
+			\end{itemize}
+		\item Instead of \texttt{<sys/statvfs.h>} we include \texttt{<sys/vfs.h>}, and redefine \texttt{statvfs} and \texttt{fstatvfs}. This is necessary because Android's libraries only have \texttt{sys/vfs.h} and not \texttt{sys/statvfs}.
+		\item Finally, we add an include for \texttt{<sys/syscall.h>} and redefine \texttt{lseek} to \texttt{lseek64}.
+		\end{itemize}
+		
+		\subsubsection{Boost Jam}
+		Boost jam is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
+		
+		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. This file contains particular compiler flags and instructions for the android ARM gnu compiler. The resulting .so or .a files are compatible with the android device and work.
+		
+		Compiling libtorrent using this method is far more difficult. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because Android's ARM compiler and libraries differ from the normal GNU compiler and libraries. After modifying the source code, the build still fails. Linker errors start to creep in when you try to compile the python-bindings. The standard unix libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the python-binding compilation. Due to the complexity of boost's jam build environment we decided to try using automake.
+		
+		\subsubsection{Automake}
+		Automake is a standard set of tools for unix-based systems that makes it easy to configure and compile software on a wide variety of systems. The tools are designed such that it is possible to configure the build process using a simple script.
+		
+		Following libtorrent's official documentation we first run \texttt{bootstrap.sh}. Now, in order to configure and compile we will have to set up an environment in which it will use the Android GNU ARM compiler. To do this, we set the following environment variables:
+		
+		\begin{lstlisting}
+export SYSROOT=$ANDROIDNDK/platforms/android-14/arch-arm
+export PATH=/usr/local/gcc-4.8.0-arm-linux-androideabi/bin:$PATH
+export CC=arm-linux-androideabi-gcc
+export CXX=arm-linux-androideabi-g++
+export CROSSHOST=arm-linux-androideabi
+export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
+		\end{lstlisting}
+		
+		Note that we have set up a custom NDK toolchain under /usr/local/gcc-4.8.0-arm-linux-androideabi. 
+		
+		Compiling libtorrent under this setup works, but the python-bindings still gives linker errors. These are the same as the boost jam errors. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
+		
+		We will move several items involving libtorrent to the next scrum iterations:
+		\begin{itemize}
+		\item Compiling python-bindings for libtorrent
+		\item Creating a proof-of-concept application to test if libtorrent works natively and with python-bindings.
+		\end{itemize}
 	
 	\subsection{Creating a GUI with Kivy}
 		The first version of the anonymous tunnels used the standard output for printing information about what’s going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That’s why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what's happening.

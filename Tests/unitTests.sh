@@ -2,9 +2,19 @@
  
 ### unitTest.sh ###
 
+PREVPATH=/
+function pushd() {
+	PREVPATH=`pwd`
+	cd $1
+}
+
+function popd() {
+	cd $PREVPATH
+}
+
 # This function loads the environment variables and functions once
 function oneTimeSetUp() {
-	source ../buildconfig.conf
+	source ../configuration
 	source ../functions.sh 
 
 	# Remove the app folder to enforce a clean environment.
@@ -22,11 +32,6 @@ function oneTimeSetUp() {
 
 function testAnontunnelDirectoryExistTrue() {
 	checkDirectoryExist > /dev/null 2>&1
-	assertEquals 0 $?
-}
-
-function testImageExistTrue() {
-	checkImagesExist > /dev/null 2>&1
 	assertEquals 0 $?
 }
 
@@ -55,12 +60,6 @@ function testDirectoriesMissingFalse() {
 
 	assertFalse $DIRECTORYMISSING
 	
-	DIRECTORYMISSING=1
-	if [ ! -e "${CURRENTFOLDERPATH}/app/service" ]; then
-		DIRECTORYMISSING=0
-	fi
-
-	assertFalse $DIRECTORYMISSING
 }
 
 function testMainExistFail() {
@@ -91,10 +90,8 @@ function serviceMainexistFail() {
 }
 
 function testMainExistTrue() {
-	# Run the function that copies the files from the anontunnel folder
-	checkAppFiles > /dev/null 2>&1
 	MAINEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/main.py" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/main.py" ]; then
 		MAINEXIST=1
 	fi
 
@@ -103,7 +100,7 @@ function testMainExistTrue() {
 
 function testKivyFileExistTrue() {
 	KIVYEXIST=0
-	if [ ! -f "${CURRENTFOLDERPATH}/app/anontunnel.kv" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/anontunnel.kv" ]; then
 		KIVYEXIST=1
 	fi
 
@@ -112,11 +109,29 @@ function testKivyFileExistTrue() {
 
 function serviceMainexistTrue() {
 	SERVICEMAINEXIST=0;
-	if [ ! -f "${CURRENTFOLDERPATH}/app/service/main.py" ]; then
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/service/main.py" ]; then
 		SERVICEMAINEXIST=1
 	fi
 	
 	assertTrue $SERVICEMAINEXIST
+}
+
+function testSplashExist() {
+	SPLASHEXIST=0;
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+		SPLASHEXIST=1
+	fi
+	
+	assertTrue $SPLASHEXIST
+}
+
+function testLogoExist() {
+	LOGOEXIST=0;
+	if [ ! -f "${CURRENTFOLDERPATH}/${APPNAME}/${APPSPLASH}" ]; then
+		LOGOEXIST=1
+	fi
+	
+	assertTrue $LOGOEXIST
 }
 
 function testBuildWorking() {

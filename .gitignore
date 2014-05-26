@@ -26,8 +26,15 @@
 *.out
 *.synctex.gz
 
+# Compiled python objects
+*.pyo
+
 # Temporary gedit files
 *.*~
 
 # Generated app folder
 /app/*
+
+# Generated configuration file
+/configuration
+

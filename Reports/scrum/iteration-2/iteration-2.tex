@@ -7,6 +7,7 @@
 	
 		\begin{enumerate}
 			\item Get libtorrent from sprint 1 working.
+			\item Start with unit testing.
 			\item Get the anon tunnels running,relaying and downloading.
 			\item Merge our work with the other group to create a first prototype of the complete application.
 		\end{enumerate}
@@ -28,7 +29,22 @@
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
 		
+	\subsection{Shell script unit tests}
+		As we make use of shell scripts to set up variables, run checks and build the application with, we decided to also create some unit tests.
 		
+		The first thing we had to do is look for a decent shell script test framework. As there is not an official test framework, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2 test framework. This framework is lightweight and has some of the standard testing functions such as 'AssertEqual', 'AssertTrue' and 'AssertFalse' which are all we need. 
+		
+		In total we've created 14 tests that checks the following points:
+		
+		\begin{itemize}
+			\item The required export variables
+			\item Check if certain necessary files exist
+			\item Build the application and check if everything runs well
+		\end{itemize}
+		
+		These test cover all functions present in our function.sh file and all possible subroutines. 
+		
+		All of these tests are integrated in Jenkins described in the previous subsection. This means whenever a pull request comes in that modifies code or packages that the application is dependent on, it will run the test to ensure the application still can be built and does not throw errors while building.
 	
 	\subsection{Conclusion}
 		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

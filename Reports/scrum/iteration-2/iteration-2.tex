@@ -6,9 +6,9 @@
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
-			\item Get libtorrent from sprint 1 working.
-			\item Get the anon tunnels running,relaying and downloading.
-			\item Merge our work with the other group to create a first prototype of the complete application.
+			\item Get libtorrent from sprint 1 working (must have, libtorrent is a high priority and we need libtorrent for our further work).
+			\item Get the anon tunnels running, relaying and downloading (should have, we should investigate how these tunnels are working and how we can trigger a download, even if libtorrent is not working yet).
+			\item Merge our work with the other group to create a first prototype of the complete application (would have, this is very dependent on the work and progress of the other group).
 		\end{enumerate}
 	
 	\subsection{Jenkins}
@@ -28,7 +28,18 @@
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
 		
-		
+	\subsection{Downloading over the anonymous tunnels}
+	One of the goals of this sprint was to find out how we can trigger a download of a torrent. We started to do this shortly after the libtorrent library worked on Android.
+	
+	The anonymous tunnels can be run as a standalone executable by navigating to the Tribler folder and running the following command: \emph{python -m Tribler.community.anontunnel.Main}. The anontunnel package contains a main.py file which is being run. This file also defines the AnonTunnel class (which we moved to a seperate file, atunnel.py). When running the tunnels by this command, they can only relay. Our goal is to modify this standalone package to support downloads of torrent files.
+	
+	We soon discovered that a Tribler session is required to start the download of torrent files. The download itself is managed in the LibtorrentMgr class which is part of the Tribler core package. The libtorrent calls can be found in the session.py file, also part of the Tribler core package. The Tribler session is initialized when starting up Tribler with the GUI. This session also initializes Dispersy and handles the loading of the ProxyCommunity (among other communities).
+	
+	We have written some code to start the Tribler session in the run method of the AnonTunnel class. Here we define the Tribler session, grab a reference to the Dispersy object and start the Socks5 server. We first tested this on the computer to ensures everything works. It did after we removed the calls to wx because this framework is not available when working on the command line. It is also unavailable on Android (we use Kivy for the graphical user interface). This means we were able to download a torrent file from command line with the anonymous tunnels. We also verified the md5 sum of the file to ensure everything worked. For this test, we reduced the amount of circuits and hops to one.
+	
+	Our next step was to port this code to Android. We updated our Tribler core package with the modifications to the AnonTunnel class and tried again. After several import errors (for example, we had to remove the ncurses import and use apsw for the database transactions), they started to run. We first tried to download a torrent file with the computer as proxy. In some cases, this download triggers a segmentation fault which means that there goes something wrong with regards to the libtorrent library (or the Python bindings). The error does not always show up: most of the time it occurred during the download. The application crashes and the download is stopped.
+	
+	This is a serious issue we should further look into. Since the segmentation fault is quite random, it's hard to debug it. We tried several attempts to trace down the error, by disabling the anonymous download and using the Tribler session with minimal settings. The download still crashes.
 	
 	\subsection{Conclusion}
 		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

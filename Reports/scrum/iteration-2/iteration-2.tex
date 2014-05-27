@@ -40,6 +40,23 @@
 	Our next step was to port this code to Android. We updated our Tribler core package with the modifications to the AnonTunnel class and tried again. After several import errors (for example, we had to remove the ncurses import and use apsw for the database transactions), they started to run. We first tried to download a torrent file with the computer as proxy. In some cases, this download triggers a segmentation fault which means that there goes something wrong with regards to the libtorrent library (or the Python bindings). The error does not always show up: most of the time it occurred during the download. The application crashes and the download is stopped.
 	
 	This is a serious issue we should further look into. Since the segmentation fault is quite random, it's hard to debug it. We tried several attempts to trace down the error, by disabling the anonymous download and using the Tribler session with minimal settings. The download still crashes.
+
+	\subsection{Shell script unit tests}
+		As we make use of shell scripts to set up variables, run checks and build the application with, we decided to also create some unit tests.
+		
+		The first thing we had to do is look for a decent shell script test framework. As there is not an official test framework, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2 test framework. This framework is lightweight and has some of the standard testing functions such as 'AssertEqual', 'AssertTrue' and 'AssertFalse' which are all we need. 
+		
+		In total we've created 14 tests that checks the following points:
+		
+		\begin{itemize}
+			\item The required export variables
+			\item Check if certain necessary files exist
+			\item Build the application and check if everything runs well
+		\end{itemize}
+		
+		These test cover all functions present in our function.sh file and all possible subroutines. 
+		
+		All of these tests are integrated in Jenkins described in the previous subsection. This means whenever a pull request comes in that modifies code or packages that the application is dependent on, it will run the test to ensure the application still can be built and does not throw errors while building.
 	
 	\subsection{Conclusion}
 		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

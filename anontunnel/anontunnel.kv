@@ -88,11 +88,17 @@
                 color: 0,0,0,1
 <SettingsScreen>:
     BoxLayout:
-        size: self.size
-        Button:
-            text: '#EXPLOSION'
-            size: root.width * 0.25, root.height * 0.05
-        Button:
-            text: 'Back to main scren'
-            size: root.width * 0.25, root.height * 0.05
-            on_press: root.manager.current = 'anontunnels'
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: '#EXPLOSION'
+                size: root.size[0] * 0.25, root.size[1] * 0.05
+            Button:
+                text: 'Back to main screen'
+                size: root.size[0] * 0.25, root.size[1] * 0.05
+                on_press: root.manager.current = 'anontunnels'
+        BoxLayout:
+            orientation: 'horizontal'
+            Checkbox:
+                text: "wtf"

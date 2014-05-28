@@ -87,18 +87,12 @@
                 text_size: self.width, None
                 color: 0,0,0,1
 <SettingsScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            orientation: 'horizontal'
-            Button:
-                text: '#EXPLOSION'
-                size: root.size[0] * 0.25, root.size[1] * 0.05
-            Button:
-                text: 'Back to main screen'
-                size: root.size[0] * 0.25, root.size[1] * 0.05
-                on_press: root.manager.current = 'anontunnels'
-        BoxLayout:
-            orientation: 'horizontal'
-            Checkbox:
-                text: "wtf"
+    GridLayout:
+        cols: 3
+        CheckBox:
+    Label:
+        text: "A checkbox"
+    CheckBox:
+        active: True
+    Label:
+        text: "Another checkbox"

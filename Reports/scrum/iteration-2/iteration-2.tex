@@ -28,7 +28,36 @@
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
 		
+	\subsection{Libtorrent}
+		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using steeve's help from last sprint we were able to get a basic version of libtorrent to compile and link for android. In this sprint we wanted to test the compiled version and create python bindings.
 		
+		\subsubsection{Testing libtorrent with a simple application}
+			We have built a simple test application with JNI C++ bindings in order to test whether libtorrent actually works. This application does the minimal work required for downloading a torrent:
+			\begin{itemize}
+			\item It sets up a session
+			\item It starts listening
+			\item It opens a torrent file
+			\item It keeps looping while requesting status updates to keep track of the progress
+			\end{itemize}
+			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu 14.04 distribution without problems. By manually checking the md5 checksum of the file we were able to verify that it was downloaded successfully.
+		
+		\subsubsection{Compiling python bindings}
+			Normally, to compile python bindings, one has to simply add the \texttt{--enable-python-binding} to the \texttt{configure} call and that's all. However, doing that in our case causes the configure process to fail. It starts complaining that the gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}. We were kind of stumped by this since these are standard C++ libraries.
+			
+			After much research we have finally found out what causes this. Essentially the configure process calls a bunch of \texttt{m4} files which try to find out your python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This obviously does not match the same settings of Python for Android's interpreter. To solve this we had to set some environment variables to point to Python for Android's interpreter:
+			
+			\begin{itemize}
+				\item \texttt{PYTHON = /path/to/python-for-android/build/python/Python2.7.2/hostpython}
+				\item \texttt{PYTHON\_CPP\_FLAGS="-I/path/to/python-for-android/python/Python2.7.2/Include"}
+			\end{itemize}
+			
+			After setting this the configure and compilation process runs fine and is able to create a libtorrent.so file with python bindings. The compiled library works on a Galaxy S2 device. We created a simple python application that downloaded the Ubuntu distribution. This again went without problems.
+			
+		\subsubsection{Segmentation faults on other devices}
+			Running libtorrent, either the native JNI/C++ version or the Python bindings version results in segmentation faults on some devices but not others. For example, the Sony Xperia Z throws segmentation faults frequently, whereas this never occurs on the Samsung Galaxy S2. 
+			
+			After a lot of debugging it is still not exactly clear what triggers these segmentation faults. They seem to be very random.
+			
 	
 	\subsection{Conclusion}
 		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

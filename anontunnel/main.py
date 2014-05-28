@@ -2,7 +2,7 @@ import os
 import logging
 
 import kivy
-kivy.require('1.0.9')
+kivy.require('1.8.0')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
@@ -24,12 +24,13 @@ AnonTunnel CLI interface
 
 # set the background color to white
 from kivy.core.window import Window
+from kivy.uix.screenmanager import ScreenManager, Screen
 Window.clearcolor = (1, 1, 1, 1)
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
 
-class AnonTunnelScreen(BoxLayout):
+class AnonTunnelScreen(Screen):
     def __init__(self, **kwargs):
         self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
@@ -55,13 +56,23 @@ class AnonTunnelScreen(BoxLayout):
             self.isRunning = False
             self.service.stop()
 
+# Set the SettingScreen
+class SettingsScreen(Screen):
+    pass
+
+# Define our windows
+sm = ScreenManager()
+sm.add_widget(AnonTunnelScreen(name='anontunnels'))
+sm.add_widget(SettingsScreen(name='settings'))
+
 class AnonTunnelApp(App):
     def build(self):
         osc.init()
         oscid = osc.listen(port=3002)
         osc.bind(oscid, self.receivedLog, '/log')
-        self.ats = AnonTunnelScreen()
-        return self.ats
+        #self.ats = AnonTunnelScreen()
+        #return self.ats
+        return sm
 
     def receivedLog(self, message, *args):
         self.ats.log_textview.text += '%s' % message[2]

@@ -13,6 +13,7 @@ from kivy.app import App
 from kivy.lib import osc
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
+from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
 

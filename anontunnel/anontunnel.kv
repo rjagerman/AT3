@@ -87,12 +87,77 @@
                 text_size: self.width, None
                 color: 0,0,0,1
 <SettingsScreen>:
-    GridLayout:
-        cols: 3
-        CheckBox:
-    Label:
-        text: "A checkbox"
-    CheckBox:
-        active: True
-    Label:
-        text: "Another checkbox"
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint: None, None
+            size: root.width, root.size[1] * 0.1167
+            orientation: 'horizontal'
+            Image:
+                size_hint: None, None
+                size: root.size[0] * 0.0875, root.size[1] * 0.1167
+            Image:
+                size_hint: None, None
+                size: root.size[0] * 0.0875, root.size[1] * 0.1167
+                source: 'images/tribler_logo.png'
+                mipmap: True
+            Label:
+                text: 'AT3'
+                font_size: '28dp'
+                bold: True
+                color: 0,0,0,1
+                size_hint: None, None
+                size: root.size[0] * 0.125, root.size[1] * 0.1167
+            Image:
+                size_hint: None, None
+                size: root.size[0] * 0.125, root.size[1] * 0.1167
+            Label:
+                text: 'Settings:'
+                font_size: '19dp'
+                color: 0,0,0,1
+                size_hint: None, None
+                size: root.size[0] * 0.225, root.size[1] * 0.1167
+            BoxLayout:
+                Image:
+                    size_hint: None, None
+                    size: 23, 21
+                Button:
+                    text: 'Back to main'
+                    size: root.size[0] * 0.125, root.size[1] * 0.08
+                    on_press: root.manager.current = 'anontunnels'
+                Image:
+                    size_hint: None, None
+                    size: 23, 17
+        AnchorLayout:
+            GridLayout:
+                cols: 3
+                size: root.width, root.size[1] * 0.8833
+                size_hint: None, None
+                bgcolor: 1,1,1,0.4
+                BoxLayout:
+                    size_hint: None, None
+                    orientation: 'vertical'
+                    CheckBox:
+                        active: True
+                    Label:
+                        text: "Wifi only"
+                        color: 0,0,0,1
+                        height: self.texture_size[1]
+                BoxLayout:
+                    size_hint: None, None
+                    orientation: 'vertical'
+                    CheckBox:
+                        active: True
+                    Label:
+                        text: "Relay"
+                        color: 0,0,0,1
+                        height: self.texture_size[1]
+                BoxLayout:
+                    size_hint: None, None
+                    orientation: 'vertical'
+                    CheckBox:
+                        active: True
+                    Label:
+                        text: "Download only"
+                        color: 0,0,0,1
+                        height: self.texture_size[1]

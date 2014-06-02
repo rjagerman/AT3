@@ -1,30 +1,32 @@
 #!/usr/bin/env python
 import re
+import matplotlib.pyplot as plt
 
+datapoints = []
 f = open('anontunnel_log_creating_circuits.txt')
 
-RPlotString = "plot(c("
-
 for line1 in f:
-	line2 = f.next()
+    line2 = f.next()
 
-	firstPercentage = 0
-	secondsPercentage = 0
+    firstPercentage = 0
+    secondsPercentage = 0
 
-	for col in line1.split():
-		if '%' in col:
-			firstPercentage = int(col.strip('%'))
+    for col in line1.split():
+        if '%' in col:
+            firstPercentage = int(col.strip('%'))
 
-	for col in line2.split():
-		if '%' in col:
-			secondsPercentage = int(col.strip('%'))
+    for col in line2.split():
+        if '%' in col:
+            secondsPercentage = int(col.strip('%'))
 
-	RPlotString += str(firstPercentage+secondsPercentage)+','
+    datapoints.append(firstPercentage+secondsPercentage)
 
-RPlotString = RPlotString[:-1]
-RPlotString += "), type=\"o\", col=\"blue\", main=\"AT3 CPU Usage\"," + \
-"xlab=\"Running time in seconds\", ylab=\"CPU usage in percentage\",  xlim=c(0, 100), ylim=c(0, 100))"
-
-print RPlotString
+plt.title('AT3 CPU Usage')
+plt.xlabel('Running time in seconds')
+plt.ylabel('CPU usage in percentage')
+plt.xlim([0,100])
+plt.ylim([0,100])
+plt.plot(datapoints, marker='o', mfc='none', linestyle='-') 
+plt.show()
 
 f.close()

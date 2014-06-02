@@ -8,10 +8,12 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
+from kivy.uix.checkbox import CheckBox
 from kivy.app import App
 from kivy.lib import osc
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
+from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
 
@@ -65,14 +67,12 @@ class AnonTunnelApp(App):
     sm = None
 
     def build(self):
-        #osc.init()
-        #oscid = osc.listen(port=3002)
-        #osc.bind(oscid, self.receivedLog, '/log')
-        #self.ats = AnonTunnelScreen()
-        #return self.ats
+        osc.init()
+        oscid = osc.listen(port=3002)
+        osc.bind(oscid, self.receivedLog, '/log')
 
         self.sm = ScreenManager()
-        self.sm.add_widget(AnonTunnelScreen())
+        self.sm.add_widget(AnonTunnelScreen(name='anontunnels'))
         self.sm.add_widget(SettingsScreen(name='settings'))
 
         return self.sm

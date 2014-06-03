@@ -70,6 +70,21 @@ plt.xlim([0,100])
 plt.ylim([0,100])
 plt.plot(datapoints, linestyle='-') 
 
+# create download rate plot
+datapoints = []
+f = open('anontunnel_log_download_rate_kbs.txt')
+
+for line in f:
+    download_rate = float(line.split()[3])
+    datapoints.append(download_rate)
+
+plt.figure(2)
+plt.title('AT3 Download rate in KB/s')
+plt.xlabel('Running time in seconds')
+plt.ylabel('Download rate in KB/s')
+plt.plot(datapoints, linestyle='-') 
+
+
 # Show the plots
 plt.show()
 

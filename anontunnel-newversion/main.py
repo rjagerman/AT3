@@ -10,6 +10,9 @@ from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
 from kivy.app import App
 from kivy.lib import osc
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.core.window import Window
+from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
 
@@ -33,7 +36,7 @@ Window.clearcolor = (1, 1, 1, 1)
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
 
-class AnonTunnelScreen(BoxLayout):
+class AnonTunnelScreen(Screen):
     def __init__(self, **kwargs):
         self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
@@ -59,13 +62,24 @@ class AnonTunnelScreen(BoxLayout):
             self.isRunning = False
             self.service.stop()
 
+# Set the SettingScreen
+class SettingsScreen(Screen):
+    pass
+
 class AnonTunnelApp(App):
+
+    sm = None
+
     def build(self):
         osc.init()
         oscid = osc.listen(port=3002)
         osc.bind(oscid, self.receivedLog, '/log')
-        self.ats = AnonTunnelScreen()
-        return self.ats
+        
+        self.sm = ScreenManager()
+        self.sm.add_widget(AnonTunnelScreen(name='anontunnels'))
+        self.sm.add_widget(SettingsScreen(name='settings'))
+
+        return self.sm
 
     def receivedLog(self, message, *args):
         self.ats.log_textview.text += '%s' % message[2]

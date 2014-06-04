@@ -19,7 +19,7 @@ import sys
 print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
 #adjust the TRIBLER_STATE_DIR
 os.environ['TRIBLER_STATE_DIR'] = "/storage/emulated/0/com.devos.anontunnel1/.Tribler"

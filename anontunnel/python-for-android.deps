@@ -1,1 +1,1 @@
-kivy openssl pycrypto m2crypto twisted sqlite3 pyasn1 tribler netifaces
+kivy openssl pycrypto m2crypto twisted sqlite3 pyasn1 apsw tribler netifaces

@@ -2,13 +2,12 @@ import os
 import logging
 
 import kivy
-kivy.require('1.8.0')
+kivy.require('1.0.9')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
-from kivy.uix.checkbox import CheckBox
 from kivy.app import App
 from kivy.lib import osc
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -20,13 +19,18 @@ import sys
 print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
 
 #adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+
+#adjust the TRIBLER_STATE_DIR
+os.environ['TRIBLER_STATE_DIR'] = "/storage/emulated/0/com.devos.anontunnel1/.Tribler"
+#os.environ['TRIBLER_STATE_DIR'] = "/storage/sdcard0/com.devos.anontunnel1/.Tribler"
 
 """
 AnonTunnel CLI interface
 """
 
 # set the background color to white
+from kivy.core.window import Window
 Window.clearcolor = (1, 1, 1, 1)
 
 class ScrollableLabel(ScrollView):
@@ -70,7 +74,7 @@ class AnonTunnelApp(App):
         osc.init()
         oscid = osc.listen(port=3002)
         osc.bind(oscid, self.receivedLog, '/log')
-
+        
         self.sm = ScreenManager()
         self.sm.add_widget(AnonTunnelScreen(name='anontunnels'))
         self.sm.add_widget(SettingsScreen(name='settings'))

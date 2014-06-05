@@ -13,13 +13,10 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
 
 
 #adjust the PYTHON_EGG_CACHE
-#os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.devos.anontunnel1/cache"
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
 
 #adjust the TRIBLER_STATE_DIR
-os.environ['TRIBLER_STATE_DIR'] = "/storage/emulated/0/com.devos.anontunnel1/.Tribler"
-#os.environ['TRIBLER_STATE_DIR'] = "/storage/sdcard0/com.devos.anontunnel1/.Tribler"
-#os.environ['TRIBLER_STATE_DIR'] = "/sdcard/com.AT3.anontunnel/.Tribler"
+os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 from Tribler.community.anontunnel.atunnel import AnonTunnel
 from Tribler.community.anontunnel.community import ProxyCommunity, ProxySettings

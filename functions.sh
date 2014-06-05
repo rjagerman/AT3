@@ -85,7 +85,7 @@ function build() {
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"
 	info "Building the APK"
-	try ./build.py --package com.AT3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG &> $logfile
+	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG &> $logfile
 
 	# Copy the .apk files to our own app folder
 	info "Copying the APK"

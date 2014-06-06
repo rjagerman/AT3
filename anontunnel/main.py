@@ -1,8 +1,12 @@
 import os
+<<<<<<< HEAD
 #adjust the PYTHON_EGG_CACHE
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
 
 #adjust the TRIBLER_STATE_DIR
+=======
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
+>>>>>>> 23905f27ab1be3eacdd21086d1db900fe5bd1e7c
 os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 import logging

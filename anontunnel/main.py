@@ -16,8 +16,6 @@ from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
 
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-
 #adjust the PYTHON_EGG_CACHE
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
 

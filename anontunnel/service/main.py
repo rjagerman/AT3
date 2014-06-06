@@ -3,6 +3,8 @@ from kivy.lib import osc
 import logging
 import logging.config
 
+import Tribler.community.anontunnel.* 
+
 class IORedirector(object): # A general class for redirecting I/O to this Text widget.
     def __init__(self):
         pass
@@ -19,7 +21,6 @@ os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
 os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 from Tribler.community.anontunnel.atunnel import AnonTunnel
-from Tribler.community.anontunnel.community import ProxyCommunity, ProxySettings
 
 class AnonTunnelService():
 

@@ -79,17 +79,17 @@ function build() {
 	info "Building a python-for-android distribution"
 	PREVPATH=`pwd`
 	cd $PY4APATH
-	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME &> $logfile
+	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME #&> $logfile
 	cd $PREVPATH
 
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"
 	info "Building the APK"
-	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG &> $logfile
+	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG #&> $logfile
 
 	# Copy the .apk files to our own app folder
 	info "Copying the APK"
-	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \; &> $logfile
+	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \; #&> $logfile
 
 	# Delete the distribute and build now that the app has been made in the AT3 folder
 	#rm -rf "${PY4APATH}/dist/${DIRNAME}"

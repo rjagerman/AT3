@@ -1,4 +1,7 @@
 import os
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
+os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
+
 from kivy.lib import osc
 import logging
 import logging.config
@@ -14,11 +17,6 @@ class StdoutRedirector(IORedirector): # A class for redirecting stdout to this T
         osc.sendMsg('/log', [str], port=3002)
 
 
-#adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
-
-#adjust the TRIBLER_STATE_DIR
-os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 from Tribler.community.anontunnel.atunnel import AnonTunnel
 

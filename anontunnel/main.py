@@ -1,4 +1,7 @@
 import os
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
+os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
+
 import logging
 
 import kivy
@@ -15,12 +18,6 @@ from kivy.core.window import Window
 from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
-
-#adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
-
-#adjust the TRIBLER_STATE_DIR
-os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 """
 AnonTunnel CLI interface

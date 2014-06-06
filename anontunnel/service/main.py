@@ -3,7 +3,7 @@ from kivy.lib import osc
 import logging
 import logging.config
 
-import Tribler.community.anontunnel.* 
+from Tribler.community.anontunnel.community import ProxySettings
 
 class IORedirector(object): # A general class for redirecting I/O to this Text widget.
     def __init__(self):

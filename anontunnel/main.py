@@ -1,8 +1,14 @@
 import os
+#adjust the PYTHON_EGG_CACHE
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
+
+#adjust the TRIBLER_STATE_DIR
+os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
+
 import logging
 
 import kivy
-kivy.require('1.0.9')
+kivy.require('1.8.0')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
@@ -15,12 +21,6 @@ from kivy.core.window import Window
 from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
-
-#adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
-
-#adjust the TRIBLER_STATE_DIR
-os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 """
 AnonTunnel CLI interface

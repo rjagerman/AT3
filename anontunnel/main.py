@@ -1,12 +1,9 @@
 import os
-<<<<<<< HEAD
+
 #adjust the PYTHON_EGG_CACHE
 os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
 
 #adjust the TRIBLER_STATE_DIR
-=======
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
->>>>>>> 23905f27ab1be3eacdd21086d1db900fe5bd1e7c
 os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 
 import logging
@@ -86,12 +83,12 @@ class AnonTunnelApp(App):
         self.ats.log_textview.text += '%s' % message[2]
 
     def on_pause(self):
-        logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
+        #logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         return True
 
     # we willen dat deze wordt aangeroepen zodra de app wordt gekilled
     def on_stop(self):
-        logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
+        #logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         self.ats.stopAnonTunnel()
 
 if __name__ == '__main__':

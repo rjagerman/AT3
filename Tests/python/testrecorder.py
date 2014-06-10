@@ -20,5 +20,5 @@ from kivy.modules.recorder import Recorder
 
 if __name__ == "__main__":
     Window.clearcolor = (1, 1, 1, 1)
-    record = Recorder(record=True, filename='settings_wifi.kvi')
+    record = Recorder(play=True, filename='settings_wifi.kvi')
     main.AnonTunnelApp().run()

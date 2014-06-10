@@ -27,7 +27,6 @@ function try () {
     if [ ! $? -eq 0 ] ; then
     	error "Failure while running:"
     	echo -e "$@"
-    	error "See ${logfile} for more details"
     	exit 1
     fi
 }
@@ -73,23 +72,29 @@ function setIcon() {
 	fi
 }
 
+function clean() {
+	# Clean the environment from previously compiled files
+	cd ${CURRENTFOLDERPATH}
+	try find ${CURRENTFOLDERPATH} -iname "*.pyo" -exec rm '{}' ';'
+	try find ${CURRENTFOLDERPATH} -iname "*.pyc" -exec rm '{}' ';'
+}
 
 function build() {
 	# Build a distribute folder with all the packages now that kivy has been set
 	info "Building a python-for-android distribution"
 	PREVPATH=`pwd`
 	cd $PY4APATH
-	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME &> $logfile
+	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME #&> $logfile
 	cd $PREVPATH
 
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"
 	info "Building the APK"
-	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG &> $logfile
+	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG
 
 	# Copy the .apk files to our own app folder
 	info "Copying the APK"
-	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \; &> $logfile
+	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \; # &> $logfile
 
 	# Delete the distribute and build now that the app has been made in the AT3 folder
 	#rm -rf "${PY4APATH}/dist/${DIRNAME}"
@@ -105,5 +110,6 @@ function main() {
 	try setSplash &&
 	try setIcon &&
 	try generateFolders &&
+	try clean &&
 	try build
 }

@@ -5,8 +5,6 @@
 
 # Load configuration
 source configuration
-rm -r "${APPNAME}/main.pyo"
-rm -r "${APPNAME}/service/main.pyo"
 source functions.sh
 
 main

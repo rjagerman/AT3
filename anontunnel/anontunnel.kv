@@ -49,7 +49,7 @@
                     id: tunnelToggleButton
                     text: 'Off'
                     group: 'g1'
-                    on_release: root.toggleAnonTunnel()
+                    on_release: root.toggle_anontunnel()
                 Button:
                     text: 'Settings'
                     on_press: root.manager.current = 'settings'
@@ -91,8 +91,14 @@
                 text_size: self.width, None
                 color: 0,0,0,1
 <SettingsScreen>:
+
     BoxLayout:
+
         orientation: 'vertical'
+        Image:
+            size_hint: None, None
+            size: root.width, root.size[1] * 0.015
+            color: 1,0.2,0,1
         BoxLayout:
             size_hint: None, None
             size: root.width, root.size[1] * 0.1167
@@ -116,7 +122,7 @@
                 size_hint: None, None
                 size: root.size[0] * 0.125, root.size[1] * 0.1167
             Label:
-                text: 'Settings:'
+                text: 'Settings'
                 font_size: '19dp'
                 color: 0,0,0,1
                 size_hint: None, None
@@ -132,36 +138,57 @@
                 Image:
                     size_hint: None, None
                     size: 23, 17
-        AnchorLayout:
-            GridLayout:
-                cols: 3
-                size: root.width, root.size[1] * 0.8833
+            Image:
                 size_hint: None, None
-                bgcolor: 1,1,1,0.4
-                BoxLayout:
-                    size_hint: None, None
-                    orientation: 'vertical'
-                    CheckBox:
-                        active: True
-                    Label:
-                        text: "Wifi only"
-                        color: 0,0,0,1
-                        height: self.texture_size[1]
-                BoxLayout:
-                    size_hint: None, None
-                    orientation: 'vertical'
-                    CheckBox:
-                        active: True
-                    Label:
-                        text: "Relay"
-                        color: 0,0,0,1
-                        height: self.texture_size[1]
-                BoxLayout:
-                    size_hint: None, None
-                    orientation: 'vertical'
-                    CheckBox:
-                        active: True
-                    Label:
-                        text: "Download only"
-                        color: 0,0,0,1
-                        height: self.texture_size[1]
+                size: root.size[0] * 0.02, root.size[1] * 0.1167
+        Image:
+            size_hint: None, None
+            size: root.width, root.size[1] * 0.008
+            color: 1,1,1,1
+        Label:
+            text: 'Log'
+            size_hint: None, None
+            size: root.width, root.size[1] * 0.05
+            bgcolor: 0.4,0.4,0.4,1
+            canvas.before:
+                Color:
+                    rgb: self.bgcolor
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color: 1,1,1,1
+        BoxLayout:
+            color: 1,1,1,1
+        GridLayout:
+            size_hint_y: None
+            height: "100dp"
+            cols: 3
+            #size: root.width, root.size[1] * 0.8833
+            #size_hint: None, None
+            bgcolor: 1,1,1,0.4
+            BoxLayout:
+                orientation: 'vertical'
+                CheckBox:
+                    active: True
+                Label:
+                    text: "Wifi only"
+                    color: 0,0,0,1
+                    height: self.texture_size[1]
+            BoxLayout:
+                orientation: 'vertical'
+                CheckBox:
+                    active: True
+                Label:
+                    text: "Relay"
+                    color: 0,0,0,1
+                    height: self.texture_size[1]
+            BoxLayout:
+                orientation: 'vertical'
+                CheckBox:
+                    active: True
+                Label:
+                    text: "Download only"
+                    color: 0,0,0,1
+                    height: self.texture_size[1]
+        BoxLayout:
+            color: 1,1,1,1

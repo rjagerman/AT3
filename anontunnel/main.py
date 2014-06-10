@@ -11,6 +11,7 @@ import sys
 import kivy
 kivy.require('1.8.0')
 from kivy.app import App
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from screens import AnonTunnelScreen, SettingsScreen
@@ -23,10 +24,15 @@ class AnonTunnelApp(App):
 
     screen_manager = None
 
+    def load_kv(self, filename=''):
+        Builder.load_file(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'anontunnel.kv'))
+
     def build(self):
         """
         Construct the screen manager with the appropriate screens
         """
+        Window.clearcolor = (1, 1, 1, 1)
+        
         self.screen_manager = ScreenManager()
         self.screen_manager.add_widget(AnonTunnelScreen(name='anontunnels'))
         self.screen_manager.add_widget(SettingsScreen(name='settings'))
@@ -49,8 +55,8 @@ class AnonTunnelApp(App):
         """
         Do nothing when the application is stopped
         """
+        Builder.unload_file(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'anontunnel.kv'))
         return True
 
 if __name__ == '__main__':
-    Window.clearcolor = (1, 1, 1, 1)
     AnonTunnelApp().run()

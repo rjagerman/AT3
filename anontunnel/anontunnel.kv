@@ -4,8 +4,8 @@
     tunnel_togglebutton: tunnelToggleButton
 
     BoxLayout:
-        log_textview: logTextView
-        tunnel_togglebutton: tunnelToggleButton
+        #log_textview: logTextView
+        #tunnel_togglebutton: tunnelToggleButton
 
         orientation: 'vertical'
         Image:
@@ -92,6 +92,10 @@
                 color: 0,0,0,1
 <SettingsScreen>:
 
+    checkbox_wifi: checkboxWifi
+    checkbox_relay: checkboxRelay
+    checkbox_download: checkboxDownload
+
     BoxLayout:
 
         orientation: 'vertical'
@@ -169,6 +173,7 @@
             BoxLayout:
                 orientation: 'vertical'
                 CheckBox:
+                    id: checkboxWifi
                     active: True
                 Label:
                     text: "Wifi only"
@@ -177,6 +182,7 @@
             BoxLayout:
                 orientation: 'vertical'
                 CheckBox:
+                    id: checkboxRelay
                     active: True
                 Label:
                     text: "Relay"
@@ -185,6 +191,7 @@
             BoxLayout:
                 orientation: 'vertical'
                 CheckBox:
+                    id: checkboxDownload
                     active: True
                 Label:
                     text: "Download only"

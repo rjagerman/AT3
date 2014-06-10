@@ -28,6 +28,7 @@
 
 # Compiled python objects
 *.pyo
+*.pyc
 
 # Temporary gedit files
 *.*~
@@ -38,3 +39,5 @@
 # Generated configuration file
 /configuration
 
+# Tribler state directory
+.tribler/

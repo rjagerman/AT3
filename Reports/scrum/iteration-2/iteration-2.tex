@@ -23,7 +23,7 @@
 			\item Optionally, if the build is from a pull request, merge the pull request with the master branch.
 			\item Jenkins then starts up an Android emulator where the application can be installed and tested on with application tests.
 			\item Once the emulator is started up, the unit and application tests are run. If one of the tests fail, Jenkins will mark the build as failed. Else the build succeeds.
-			\item Finally once the tests are done the Tribler bot comments the result on the pull request if that's what was running, else it reports the result of the project in our IRC channel.
+			\item Finally once the tests are done the Tribler bot comments the result on the pull request if that is what was running, else it reports the result of the project in our IRC channel.
 		\end{enumerate} 
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
@@ -39,14 +39,14 @@
 	
 	Our next step was to port this code to Android. We updated our Tribler core package with the modifications to the AnonTunnel class and tried again. After several import errors (for example, we had to remove the ncurses import and use apsw for the database transactions), they started to run. We first tried to download a torrent file with the computer as proxy. In some cases, this download triggers a segmentation fault which means that there goes something wrong with regards to the libtorrent library (or the Python bindings). The error does not always show up: most of the time it occurred during the download. The application crashes and the download is stopped.
 	
-	This is a serious issue we should further look into. Since the segmentation fault is quite random, it's hard to debug it. We tried several attempts to trace down the error, by disabling the anonymous download and using the Tribler session with minimal settings. The download still crashes.
+	This is a serious issue we should further look into. Since the segmentation fault is quite random, it is hard to debug it. We tried several attempts to trace down the error, by disabling the anonymous download and using the Tribler session with minimal settings. The download still crashes.
 
 	\subsection{Shell script unit tests}
 		As we make use of shell scripts to set up variables, run checks and build the application with, we decided to also create some unit tests.
 		
 		The first thing we had to do is look for a decent shell script test framework. As there is not an official test framework, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2 test framework. This framework is lightweight and has some of the standard testing functions such as 'AssertEqual', 'AssertTrue' and 'AssertFalse' which are all we need. 
 		
-		In total we've created 14 tests that checks the following points:
+		In total we have created 14 tests that checks the following points:
 		
 		\begin{itemize}
 			\item The required export variables
@@ -59,7 +59,7 @@
 		All of these tests are integrated in Jenkins described in the previous subsection. This means whenever a pull request comes in that modifies code or packages that the application is dependent on, it will run the test to ensure the application still can be built and does not throw errors while building.
 	
 	\subsection{Libtorrent}
-		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using steeve's help from last sprint we were able to get a basic version of libtorrent to compile and link for android. In this sprint we wanted to test the compiled version and create python bindings.
+		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using Steeve his help from last sprint we were able to get a basic version of libtorrent to compile and link for android. In this sprint we wanted to test the compiled version and create python bindings.
 		
 		\subsubsection{Testing libtorrent with a simple application}
 			We have built a simple test application with JNI C++ bindings in order to test whether libtorrent actually works. This application does the minimal work required for downloading a torrent:
@@ -72,9 +72,9 @@
 			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu 14.04 distribution without problems. By manually checking the md5 checksum of the file we were able to verify that it was downloaded successfully.
 		
 		\subsubsection{Compiling python bindings}
-			Normally, to compile python bindings, one has to simply add the \texttt{--enable-python-binding} to the \texttt{configure} call and that's all. However, doing that in our case causes the configure process to fail. It starts complaining that the gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}. We were kind of stumped by this since these are standard C++ libraries.
+			Normally, to compile python bindings, one has to simply add the \texttt{--enable-python-binding} to the \texttt{configure} call and that is all. However, doing that in our case causes the configure process to fail. It starts complaining that the gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}. We were kind of stumped by this since these are standard C++ libraries.
 			
-			After much research we have finally found out what causes this. Essentially the configure process calls a bunch of \texttt{m4} files which try to find out your python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This obviously does not match the same settings of Python for Android's interpreter. To solve this we had to set some environment variables to point to Python for Android's interpreter:
+			After much research we have finally found out what causes this. Essentially the configure process calls a bunch of \texttt{m4} files which try to find out your python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This obviously does not match the same settings of Python for Androids its interpreter. To solve this we had to set some environment variables to point to Python for Androids its interpreter:
 			
 			\begin{itemize}
 				\item \texttt{PYTHON = /path/to/python-for-android/build/python/Python2.7.2/hostpython}

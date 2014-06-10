@@ -6,18 +6,28 @@
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
-			\item TODO
+			\item Update to the new Tribler code
+			\item Write unit tests for our Python code and application tests for our application
+			\item Get libtorrent stable and check for alternatives
 		\end{enumerate}
 		
 	\subsection{RUTracker libtorrent}
-		Since we would like to have a stable libtorrent library that downloads a torrent without segmentation faults, we decided to try out the libtorrent that Jaap used in his Bachelor thesis. This is most probably an older version of libtorrent but has proven to be succesful in his project. Jaap provided us with a link to a Github page that contains instructions on how to build libtorrent from source (https://github.com/pepibumur/Torrent-Movies). This libtorrent version is used in an Android application called RUTracker, an Android application that allows users to download and upload torrent files in the background. We thought it would be a good idea to try out this libtorrent because it seemed to be quite stable.
+		Since we would like to have a stable libtorrent library that downloads a torrent without segmentation faults, we decided to try out the libtorrent that Jaap used in his Bachelor thesis. This is an older version of libtorrent but has proven to be successful in his project. Jaap provided us with a link to a Github page that contains instructions on how to build libtorrent from source (https://github.com/pepibumur/Torrent-Movies). This libtorrent version is used in an Android application called RUTracker, an Android application that allows users to download and upload torrent files in the background. We thought it would be a good idea to try out this libtorrent because it seemed to be quite stable.
 		
 		Instead of using a custom toolchain like we did to compile libtorrent-rasterbar, we used the toolchain that ships with the NDK. The first step was to build some Boost libraries libtorrent depends on (Boost.filesystem, Boost.system and Boost.thread). We used the Boost for Android project (https://github.com/MysticTreeGames/Boost-for-Android) to build Boost 1.49. After that, we compiled libtorrent according to the instruction given by the Torrent Movies project. We linked against the Boost libraries we just compiled and we got a shared object file we can use in our Android application.
 		
-			\subsubsection{Python bindings}
-				After writing a small example to test if our compiled libtorrent library is stable, we came to the conclusion that it does not crash. Since this libtorrent version looks promising, we delved into the Python bindings we need to communicate between Python and a native C library. Importing this library without Python bindings, results in an error that an initializer function could not been found.
+		\subsubsection{Python bindings}
+			After writing a small example to test if our compiled libtorrent library is stable, we came to the conclusion that it does not crash. Since this libtorrent version looks promising, we delved into the Python bindings we need to communicate between Python and a native C library. Importing this library without Python bindings, results in an error that an initializer function could not been found.
 		
-				For the Python bindings, it is convenient to use the Boost.python library. This library contains several macro's and methods to easily define our Python calls. The macro BOOST\_PYTHON\_MODULE, declared in boost/python.hpp, initializes our Python library and makes it ready for an import in Python. However, when running a minimal Python script that only imports libtorrent, a segmentation fault is thrown. This means that we are unable to use this version of libtorrent in Python. We're not sure what's the cause of this error. If the initialization and import of the library would work correctly, we could write our own bindings for the libtorrent functions and methods we need in Tribler.
+			For the Python bindings, it is convenient to use the Boost.python library. This library contains several macros and methods to easily define our Python calls. The macro BOOST\_PYTHON\_MODULE, declared in boost/python.hpp, initializes our Python library and makes it ready for an import in Python. However, when running a minimal Python script that only imports libtorrent, a segmentation fault is thrown. This means that we are unable to use this version of libtorrent in Python. We are not sure what is the cause of this error. If the initialization and import of the library would work correctly, we could write our own bindings for the libtorrent functions and methods we need in Tribler.
+				
+	\subsection{Updating the Tribler package}
+		This sprint had also the goal to update the Tribler package we are using. The Tribler repository was updated with a huge change, the package Twisted was updated to version 14.0.0, certain callbacks were removed and a Twisted reactor was introduced. This meant we had to update our Twisted version as well and update our package.
+		When we began updating, we discovered that the default recipe in the Python for Android framework required adaptation, simply upgrading the version number did not work. After inspecting the recipe we asked for advice on the Kivy repository, and luckily a member had updated his Twisted to version 13.1.0. He showed his adaptations and fortunately these were also compatible with the latest Twisted release.
+		
+		The next step was updating the package. Previously, we downloaded the package and and adapted it. Because it was not forked on gitHub we could not automatically update it. We decided to fix this issue immediately and thus created a fork of the main Tribler branch. From this fresh fork we added some path changes to make the new Tribler code compatible with our application. This is necessary because several files that get opened by Tribler assume the working directory is the Tribler root. This does not work when executing on more exotic environments such as Android, where the working directory might be different. We have made a pull request to merge our changes with the official Tribler repository.
+		
+		Since our package is now a fork, future updates are more easy to merge into our package using the gitHub merge functionality.
 			
 	\subsection{Conclusion}
 		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)

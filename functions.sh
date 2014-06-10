@@ -4,19 +4,39 @@
 # As this script will be tested, functions are separated from the build.sh
 
 red="\x1B[0;31m"
-yellow="\x1B[1;33m"
+yellow="\x1B[0;33m"
 green="\x1B[0;32m"
+blue="\x1B[0;34m"
 NC="\x1B[0m"
+logfile="${CURRENTFOLDERPATH}/build.log"
+
+function error() {
+	echo -e "${red}$@${NC}"
+}
+
+function warning() {
+	echo -e "${yellow}$@${NC}"
+}
+
+function info() {
+	echo -e "${blue}$@${NC}"
+}
 
 function try () {
-    "$@" || exit -1
+    "$@"
+    if [ ! $? -eq 0 ] ; then
+    	error "Failure while running:"
+    	echo -e "$@"
+    	error "See ${logfile} for more details"
+    	exit 1
+    fi
 }
 
 function checkDirectoryExist() {
 	# If the specified app folder does not exist, we throw an error.
 	if [ ! -e "${CURRENTFOLDERPATH}/${APPNAME}/" ]; then
 		# Throw an error since folders are missing
-		echo -e "${red}You need to have a folder ${CURRENTFOLDERPATH}, aborting.${NC}"
+		error "You need to have a folder ${CURRENTFOLDERPATH}/${APPNAME}/, aborting."
 		exit 1
 	fi
 }
@@ -24,7 +44,7 @@ function checkDirectoryExist() {
 function generateFolders() {
 	# If the app folder in AT3 does not exist, create it.
 	if [ ! -e "${CURRENTFOLDERPATH}/app" ]; then
-		echo -e "${yellow}${CURRENTFOLDERPATH}/app does not exist! Attempting to create it${NC}"
+		warning "${CURRENTFOLDERPATH}/app does not exist! Attempting to create it"
 		try mkdir -p "${CURRENTFOLDERPATH}/app"
 	fi
 }
@@ -32,8 +52,8 @@ function generateFolders() {
 function checkDistFolderExist() {
 	# Check if destination exist
 	if [ -e "${PY4APATH}/dist/${DIRNAME}" ]; then
-		echo -e "${red}The distribution ${PY4APATH}/dist/${DIRNAME} already exist${NC}"
-		echo -e "${red}Press a key to remove it, or Control + C to abort.${NC}"
+		error "The distribution ${PY4APATH}/dist/${DIRNAME} already exist"
+		error "Press a key to remove it, or Control + C to abort."
 		read
 		try rm -rf "${PY4APATH}/dist/${DIRNAME}"
 	fi
@@ -56,17 +76,20 @@ function setIcon() {
 
 function build() {
 	# Build a distribute folder with all the packages now that kivy has been set
+	info "Building a python-for-android distribution"
 	PREVPATH=`pwd`
 	cd $PY4APATH
-	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME
+	try ./distribute.sh -m "`cat ${CURRENTFOLDERPATH}/${APPNAME}/python-for-android.deps`" -d $DIRNAME &> $logfile
 	cd $PREVPATH
 
 	# Build the .apk
 	cd "${PY4APATH}/dist/${DIRNAME}/"
-	try ./build.py --package com.AT3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG
+	info "Building the APK"
+	try ./build.py --package org.tribler.at3.${APPNAME} --name "AT3 ${APPNAME}" --version 1.0 --dir "${CURRENTFOLDERPATH}/${APPNAME}" debug --permission INTERNET $APPICONFLAG $APPSPLASHFLAG &> $logfile
 
 	# Copy the .apk files to our own app folder
-	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \;
+	info "Copying the APK"
+	try find "${PY4APATH}/dist/${DIRNAME}/bin" -type f -name '*.apk' -exec cp {} "${CURRENTFOLDERPATH}/app" \; &> $logfile
 
 	# Delete the distribute and build now that the app has been made in the AT3 folder
 	#rm -rf "${PY4APATH}/dist/${DIRNAME}"

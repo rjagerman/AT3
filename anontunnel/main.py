@@ -1,8 +1,15 @@
 import os
+
+#adjust the PYTHON_EGG_CACHE
+os.environ["PYTHON_EGG_CACHE"] = "/data/data/org.tribler.at3.anontunnel/cache"
+
+#adjust the TRIBLER_STATE_DIR
+os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
+
 import logging
 
 import kivy
-kivy.require('1.0.9')
+kivy.require('1.8.0')
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
@@ -10,13 +17,11 @@ from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
 from kivy.app import App
 from kivy.lib import osc
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.core.window import Window
+from kivy.uix.anchorlayout import AnchorLayout
 
 import sys
-
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-
-#adjust the PYTHON_EGG_CACHE
-os.environ["PYTHON_EGG_CACHE"] = "/data/data/com.AT3.anontunnel/cache"
 
 """
 AnonTunnel CLI interface
@@ -29,7 +34,7 @@ Window.clearcolor = (1, 1, 1, 1)
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
 
-class AnonTunnelScreen(BoxLayout):
+class AnonTunnelScreen(Screen):
     def __init__(self, **kwargs):
         self.isRunning = False
         super(AnonTunnelScreen, self).__init__(**kwargs)
@@ -55,24 +60,35 @@ class AnonTunnelScreen(BoxLayout):
             self.isRunning = False
             self.service.stop()
 
+# Set the SettingScreen
+class SettingsScreen(Screen):
+    pass
+
 class AnonTunnelApp(App):
+
+    sm = None
+
     def build(self):
         osc.init()
         oscid = osc.listen(port=3002)
         osc.bind(oscid, self.receivedLog, '/log')
-        self.ats = AnonTunnelScreen()
-        return self.ats
+        
+        self.sm = ScreenManager()
+        self.sm.add_widget(AnonTunnelScreen(name='anontunnels'))
+        self.sm.add_widget(SettingsScreen(name='settings'))
+
+        return self.sm
 
     def receivedLog(self, message, *args):
         self.ats.log_textview.text += '%s' % message[2]
 
     def on_pause(self):
-        logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
+        #logging.warn('PAUSING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         return True
 
     # we willen dat deze wordt aangeroepen zodra de app wordt gekilled
     def on_stop(self):
-        logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
+        #logging.warn('STOPPING -----------------------------@@@@@@@@@@@@@@@@@@@@@@----------------------')
         self.ats.stopAnonTunnel()
 
 if __name__ == '__main__':

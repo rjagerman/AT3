@@ -1,0 +1,7 @@
+#RECORDER1.0
+(1.0, 'begin', 1, {'is_touch': True, 'profile': ['pos'], 'sy': 0.8983333333333333, 'sx': 0.86375})
+(1.05, 'end', 1, {'is_touch': True, 'profile': ['pos'], 'sy': 0.8983333333333333, 'sx': 0.86375})
+(2.0, 'begin', 2, {'is_touch': True, 'profile': ['pos'], 'sy': 0.45166666666666666, 'sx': 0.835})
+(2.05, 'end', 2, {'is_touch': True, 'profile': ['pos'], 'sy': 0.45166666666666666, 'sx': 0.835})
+(2.5, 'begin', 3, {'is_touch': True, 'profile': ['pos'], 'sy': 0.45333333333333337, 'sx': 0.835})
+(2.55, 'end', 3, {'is_touch': True, 'profile': ['pos'], 'sy': 0.45333333333333337, 'sx': 0.835})

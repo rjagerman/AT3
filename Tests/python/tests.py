@@ -85,6 +85,22 @@ class TestUserInterface(unittest.TestCase):
             self.assertTrue(self.ata.screen_manager.get_screen('settings').checkbox_relay.active)
         self.run_recorded_test('settings_relay_on.kvi', asserts)
 
+    def test_settings_download_off(self):
+        """
+        Tests toggling the download setting checkbox off
+        """
+        def asserts():
+            self.assertFalse(self.ata.screen_manager.get_screen('settings').checkbox_download.active)
+        self.run_recorded_test('settings_download_off.kvi', asserts)
+
+    def test_settings_download_on(self):
+        """
+        Tests toggling the download setting checkbox on
+        """
+        def asserts():
+            self.assertTrue(self.ata.screen_manager.get_screen('settings').checkbox_download.active)
+        self.run_recorded_test('settings_download_on.kvi', asserts)
+
     def run_recorded_test(self, kvi_file, assert_function):
         """
         Runs a recorded application test

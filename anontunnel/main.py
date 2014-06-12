@@ -5,15 +5,18 @@ try:
     os.environ['TRIBLER_STATE_DIR'] = "/sdcard/org.tribler.at3.anontunnel/.tribler"
 except ImportError:
     os.environ['TRIBLER_STATE_DIR'] = "./.tribler"
-    import Tribler
 import logging
 import sys
 import kivy
 kivy.require('1.8.0')
+from collections import deque
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.lang import Builder
+from kivy.lib import osc
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
+from kivy.resources import resource_add_path, resource_remove_path
 from screens import AnonTunnelScreen, SettingsScreen
 
 
@@ -23,8 +26,13 @@ class AnonTunnelApp(App):
     """
 
     screen_manager = None
+    max_lines = 128
 
     def load_kv(self, filename=''):
+        """
+        Loads a kivy language file manually
+        """
+        resource_add_path(os.path.dirname(os.path.abspath(__file__)))
         Builder.load_file(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'anontunnel.kv'))
 
     def build(self):
@@ -33,9 +41,18 @@ class AnonTunnelApp(App):
         """
         Window.clearcolor = (1, 1, 1, 1)
         
+        self.lines = deque([])
+        self.screens = {'anontunnels': AnonTunnelScreen(name='anontunnels'),
+                        'settings': SettingsScreen(name='settings')}
         self.screen_manager = ScreenManager()
-        self.screen_manager.add_widget(AnonTunnelScreen(name='anontunnels'))
-        self.screen_manager.add_widget(SettingsScreen(name='settings'))
+        for screen in self.screens.values():
+            self.screen_manager.add_widget(screen)
+        
+        osc.init()
+        self.oscid = osc.listen(ipAddr='127.0.0.1', port=9000)
+        osc.bind(self.oscid, self.received_log, '/logger')
+        osc.bind(self.oscid, self.received_status, '/status')
+        Clock.schedule_interval(lambda *x: osc.readQueue(), 0)
 
         return self.screen_manager
 
@@ -43,7 +60,25 @@ class AnonTunnelApp(App):
         """
         When receiving log messages write them to the text view
         """
-        self.ats.log_textview.text += '%s' % message[2]
+        #self.screens['anontunnels'].log_textview.text += message[2]
+        self.lines.append(message[2])
+        text = ''
+        if len(self.lines) > self.max_lines:
+            self.lines.popleft()
+        for line in self.lines:
+            text += '%s' % line
+        self.screens['anontunnels'].log_textview.text = text
+
+
+    def received_status(self, status, *args):
+        """
+        When receiving status updates, update the correct labels
+        """
+        self.screens['anontunnels'].circuits.text = '%d' % status[2]
+        self.screens['anontunnels'].relays.text = '%d' % status[3]
+        self.screens['anontunnels'].enter_speed.text = '%.2f KB/s' % status[4]
+        self.screens['anontunnels'].relay_speed.text = '%.2f KB/s' % status[5]
+        self.screens['anontunnels'].exit_speed.text = '%.2f KB/s' % status[6]
 
     def on_pause(self):
         """
@@ -53,9 +88,11 @@ class AnonTunnelApp(App):
     
     def on_stop(self):
         """
-        Do nothing when the application is stopped
+        Unload the kivy language file when the application stops
         """
         Builder.unload_file(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'anontunnel.kv'))
+        resource_remove_path(os.path.dirname(os.path.abspath(__file__)))
+        osc.dontListen(self.oscid)
         return True
 
 if __name__ == '__main__':

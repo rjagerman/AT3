@@ -1,11 +1,19 @@
 <AnonTunnelScreen>:
 
+    status_text: statusText
+    status_view: statusView
+    circuits: circuitsLabel
+    relays: relaysLabel
+    enter_speed: enterSpeedLabel
+    relay_speed: relaySpeedLabel
+    exit_speed: exitSpeedLabel
+
     log_textview: logTextView
     tunnel_togglebutton: tunnelToggleButton
 
     BoxLayout:
-        #log_textview: logTextView
-        #tunnel_togglebutton: tunnelToggleButton
+        log_textview: logTextView
+        tunnel_togglebutton: tunnelToggleButton
 
         orientation: 'vertical'
         Image:
@@ -64,6 +72,71 @@
             size: root.width, root.size[1] * 0.008
             color: 1,1,1,1
         Label:
+            text: 'Status'
+            size_hint: None, None
+            size: root.width, root.size[1] * 0.05
+            bgcolor: 0.4,0.4,0.4,1
+            canvas.before:
+                Color:
+                    rgb: self.bgcolor
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color: 1,1,1,1
+        BoxLayout:
+            size_hint: None, None
+            size: root.width, root.height * 0.3
+            orientation: 'vertical'
+            Label:
+                id: statusText
+                text: 'No anontunnels running...'
+                color: 0.1,0.1,0.1,1
+            BoxLayout:
+                id: statusView
+                opacity: 0.0
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: 'Circuits'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Relays'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Enter speed'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Relay speed'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Exit speed'
+                        color: 0.1,0.1,0.1,1
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: '0'
+                        id: circuitsLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0'
+                        id: relaysLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0.0 KB/s'
+                        id: enterSpeedLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0.0 KB/s'
+                        id: relaySpeedLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0.0 KB/s'
+                        id: exitSpeedLabel
+                        color: 0.1,0.1,0.1,1
+                Label:
+                    text: ''
+        Label:
             text: 'Log'
             size_hint: None, None
             size: root.width, root.size[1] * 0.05
@@ -87,6 +160,8 @@
             Label:
                 id: logTextView
                 size_hint_y: None
+                font_name: 'DroidSansMono.ttf'
+                font_size: 14
                 height: self.texture_size[1]
                 text_size: self.width, None
                 color: 0,0,0,1

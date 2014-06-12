@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#
+# Tests for the build tools
  
 ### unitTest.sh ###
 

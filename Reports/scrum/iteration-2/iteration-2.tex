@@ -1,8 +1,8 @@
-\section{Iteration 2}
+\chapter{Iteration 2}
 \label{iteration2}
-	In this section we describe our second sprint, starting in week 4.5 (19$^{th}$ of May) and ending in week 4.6 (30$^{th}$ of May).
+	In this chapter we describe our second sprint, starting in week 4.5 (19$^{th}$ of May) and ending in week 4.6 (30$^{th}$ of May).
 
-	\subsection{Goals}
+	\section{Goals}
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
@@ -11,8 +11,8 @@
 			\item Merge our work with the other group to create a first prototype of the complete application (would have, this is very dependent on the work and progress of the other group).
 		\end{enumerate}
 	
-	\subsection{Jenkins}
-		In this sprint we decided to make use of the continuous integration system called Jenkins. Jenkins automatically runs your tests when a build has been changed or a pull request comes in/has changed. 
+	\section{Jenkins}
+		In this sprint we decided to make use of the continuous integration system called Jenkins, which is already in use by the Tribler development team. Jenkins automatically runs specified tests when a build has been changed or a pull request comes in/has changed. 
 		Even though this was not specified in our plan of action initially, we think this is a good addition to improve and maintain the (code) quality of our application.
 		
 		Jenkins allows for an own environment to run tests in, which is perfect for our setup. Currently Jenkins executes the following steps:
@@ -28,20 +28,20 @@
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
 		
-	\subsection{Downloading over the anonymous tunnels}
+	\section{Downloading over the anonymous tunnels}
 	One of the goals of this sprint was to find out how we can trigger a download of a torrent. We started to do this shortly after the libtorrent library worked on Android.
 	
-	The anonymous tunnels can be run as a standalone executable by navigating to the Tribler folder and running the following command: \emph{python -m Tribler.community.anontunnel.Main}. The anontunnel package contains a main.py file which is being run. This file also defines the AnonTunnel class (which we moved to a seperate file, atunnel.py). When running the tunnels by this command, they can only relay. Our goal is to modify this standalone package to support downloads of torrent files.
+	The anonymous tunnels can be run as a standalone executable by navigating to the Tribler folder and running the following command: \emph{python -m Tribler.community.anontunnel.Main}. The anontunnel package contains a main.py file which is being run. This file also defines the AnonTunnel class (which we moved to a separate file, atunnel.py). When running the tunnels by this command, they can only relay. Our goal is to modify this standalone package to support downloads of torrent files.
 	
 	We soon discovered that a Tribler session is required to start the download of torrent files. The download itself is managed in the LibtorrentMgr class which is part of the Tribler core package. The libtorrent calls can be found in the session.py file, also part of the Tribler core package. The Tribler session is initialized when starting up Tribler with the GUI. This session also initializes Dispersy and handles the loading of the ProxyCommunity (among other communities).
 	
-	We have written some code to start the Tribler session in the run method of the AnonTunnel class. Here we define the Tribler session, grab a reference to the Dispersy object and start the Socks5 server. We first tested this on the computer to ensures everything works. It did after we removed the calls to wx because this framework is not available when working on the command line. It is also unavailable on Android (we use Kivy for the graphical user interface). This means we were able to download a torrent file from command line with the anonymous tunnels. We also verified the md5 sum of the file to ensure everything worked. For this test, we reduced the amount of circuits and hops to one.
+	We have written some code to start the Tribler session in the run method of the AnonTunnel class. Here we define the Tribler session, grab a reference to the Dispersy object and start the Socks5 server. We first tested this on the computer to ensures everything works. It did after we removed the calls to wx because this framework is not available when working on the command line. It is also unavailable on Android (we use Kivy for the graphical user interface). This means we were able to download a torrent file from command line with the anonymous tunnels. We also verified the MD5 sum of the file to ensure everything worked. For this test, we reduced the amount of circuits and hops to one.
 	
 	Our next step was to port this code to Android. We updated our Tribler core package with the modifications to the AnonTunnel class and tried again. After several import errors (for example, we had to remove the ncurses import and use apsw for the database transactions), they started to run. We first tried to download a torrent file with the computer as proxy. In some cases, this download triggers a segmentation fault which means that there goes something wrong with regards to the libtorrent library (or the Python bindings). The error does not always show up: most of the time it occurred during the download. The application crashes and the download is stopped.
 	
 	This is a serious issue we should further look into. Since the segmentation fault is quite random, it is hard to debug it. We tried several attempts to trace down the error, by disabling the anonymous download and using the Tribler session with minimal settings. The download still crashes.
 
-	\subsection{Shell script unit tests}
+	\section{Shell script unit tests}
 		As we make use of shell scripts to set up variables, run checks and build the application with, we decided to also create some unit tests.
 		
 		The first thing we had to do is look for a decent shell script test framework. As there is not an official test framework, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2 test framework. This framework is lightweight and has some of the standard testing functions such as 'AssertEqual', 'AssertTrue' and 'AssertFalse' which are all we need. 
@@ -58,20 +58,20 @@
 		
 		All of these tests are integrated in Jenkins described in the previous subsection. This means whenever a pull request comes in that modifies code or packages that the application is dependent on, it will run the test to ensure the application still can be built and does not throw errors while building.
 	
-	\subsection{Libtorrent}
-		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using Steeve his help from last sprint we were able to get a basic version of libtorrent to compile and link for android. In this sprint we wanted to test the compiled version and create python bindings.
+	\section{Libtorrent}
+		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using Steeve's help from last sprint we were able to get a basic version of libtorrent to compile and link for android. In this sprint we wanted to test the compiled version and create python bindings.
 		
-		\subsubsection{Testing libtorrent with a simple application}
+		\subsection{Testing libtorrent with a simple application}
 			We have built a simple test application with JNI C++ bindings in order to test whether libtorrent actually works. This application does the minimal work required for downloading a torrent:
 			\begin{itemize}
-			\item It sets up a session
-			\item It starts listening
-			\item It opens a torrent file
-			\item It keeps looping while requesting status updates to keep track of the progress
+				\item It sets up a session
+				\item It starts listening
+				\item It opens a torrent file
+				\item It keeps looping while requesting status updates to keep track of the progress
 			\end{itemize}
-			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu 14.04 distribution without problems. By manually checking the md5 checksum of the file we were able to verify that it was downloaded successfully.
+			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu 14.04 distribution without problems. By manually checking the MD5 checksum of the file we were able to verify that it was downloaded successfully.
 		
-		\subsubsection{Compiling python bindings}
+		\subsection{Compiling python bindings}
 			Normally, to compile python bindings, one has to simply add the \texttt{--enable-python-binding} to the \texttt{configure} call and that is all. However, doing that in our case causes the configure process to fail. It starts complaining that the gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}. We were kind of stumped by this since these are standard C++ libraries.
 			
 			After much research we have finally found out what causes this. Essentially the configure process calls a bunch of \texttt{m4} files which try to find out your python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This obviously does not match the same settings of Python for Androids its interpreter. To solve this we had to set some environment variables to point to Python for Androids its interpreter:
@@ -83,10 +83,12 @@
 			
 			After setting this the configure and compilation process runs fine and is able to create a libtorrent.so file with python bindings. The compiled library works on a Galaxy S2 device. We created a simple python application that downloaded the Ubuntu distribution. This again went without problems.
 			
-		\subsubsection{Segmentation faults on other devices}
-			Running libtorrent, either the native JNI/C++ version or the Python bindings version results in segmentation faults on some devices but not others. For example, the Sony Xperia Z throws segmentation faults frequently, whereas this never occurs on the Samsung Galaxy S2. 
+		\subsection{Segmentation faults on other devices}
+			Running libtorrent, either the native JNI/C++ or the Python bindings version results in segmentation faults on some devices but not others. For example, the Sony Xperia Z throws segmentation faults frequently, whereas this never occurs on the Samsung Galaxy S2. 
 			
 			After a lot of debugging it is still not exactly clear what triggers these segmentation faults. They seem to be very random.
 			
-	\subsection{Conclusion}
-		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)
+	\section{Conclusion}
+		This Sprint was a struggle on many points for us. Even though libtorrent segfaults from time to time, we still managed to complete some download runs that give us some information about e.g. the download speed. Now that we have Jenkins up and running, we can focus on writing more automatic tests to measure changes and maintain a working prototype. The shell script tests we wrote during this sprint should provide a good way to ensure that our builds are correctly configured.
+		
+		For the next sprint, we will look into the issue of the segfaults and hopefully come up with a way to fix these. As for Jenkins, we will write unit tests to test our written Python code and using the Kivy recorder to apply application tests on our application. These tests will also be sent to the Software Improvement Group (SIG) for evaluation.

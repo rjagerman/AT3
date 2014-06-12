@@ -1,6 +1,7 @@
 \section{Python for Android}
-The capability of running Python applications on Android devices is of paramount importance to the success of this project. Tribler is mostly written in the Python programming language and has dependencies on many Python libraries. Fortunately a tool called Python for Android allows us to build and bundle Python code and its dependencies into standalone Android APK packages.
+	\label{scc:p4a}
+	The capability of running Python applications on Android devices is of paramount importance to the success of this project. Tribler is mostly written in the Python programming language and has dependencies on many Python libraries. Fortunately a tool called Python for Android allows us to build and bundle Python code and its dependencies into standalone Android APK packages.
 
-Python for Android uses Scripting Layer 4 Android (SL4A) to run Python in an Android environment. For performance reasons this layer uses the CPython binary compiled for the ARM architecture. This means that running python scripts will not work on other mobile architectures such as Intel Atom x86. This restriction however allows us to focus the development solely on the ARM architecture. This mitigates some of the difficulty of getting Tribler dependencies such as libtorrent to work cross-platform.
+	Python for Android uses Scripting Layer 4 Android (SL4A) to run Python in an Android environment. For performance reasons this layer uses the CPython binary compiled for the ARM architecture. This means that running python scripts will not work on other mobile architectures such as Intel Atom x86. This restriction however allows us to focus the development solely on the ARM architecture. This mitigates some of the difficulty of getting Tribler dependencies such as libtorrent to work cross-platform.
 
-Python for Android provides so called facades that interface python code with Android APIs. This makes it easy to utilize basic Android functionality directly from within Python.
+	Python for Android provides so called facades that interface python code with Android APIs. This makes it easy to utilize basic Android functionality directly from within Python.

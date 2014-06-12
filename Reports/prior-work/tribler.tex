@@ -1,4 +1,5 @@
 \section{Tribler}
+	\label{scc:tribler}
 	In this section an overview of Tribler and its components is presented. We describe the new beta version that uses anonymous tunnels in depth. Furthermore we look at what specific dependencies Tribler relies on.
 
 	\subsection{What is Tribler?}
@@ -7,7 +8,7 @@
 		A new version of Tribler is currently in beta that includes a python implementation of a tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location. More details about these anonymous tunnels can be found in section \ref{sec:anonymoustunnels}.
 
 	\subsection{M2Crypto}
-		Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
+		Tribler makes use of cryptographic functions to encrypt data and make their application secure. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the Internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
 		
 		Some popular open source frameworks exists for these cryptographic tasks. A popular project is OpenSSL \cite{openssl}. OpenSSL implements the popular SSL and TLS protocols. These are cryptographic protocols that provides security when communicating over the internet. Besides that, OpenSSL provides libraries for various encryption and decryption protocols such as DES, RSA and RC4. OpenSSL also supports key exchange protocols such as Diffie-Hellman.
 		
@@ -16,7 +17,7 @@
 		\emph{M2Crypto is the most complete Python wrapper for OpenSSL featuring RSA, DSA, DH, HMACs, message digests, symmetric ciphers (including AES); SSL functionality to implement clients and servers; HTTPS extensions to Python's httplib, urllib, and xmlrpclib; unforgeable HMAC'ing AuthCookies for web session management; FTP/TLS client and server; S/MIME; ZServerSSL: A HTTPS server for Zope and ZSmime: An S/MIME messenger for Zope. M2Crypto can also be used to provide SSL for Twisted.}
 		
 	\subsection{Dispersy}
-		Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a challenged network environment. Such an environment is often characterized by:
+		Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a network environment. Such an environment is often characterized by:
 		\begin{itemize}
 			\item Nodes randomly joining and leaving.
 			\item Delays in the network.
@@ -44,7 +45,7 @@
 		
 	\subsection{Anonymous tunnels}
 	\label{sec:anonymoustunnels}
-		Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achived by using the Tor protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only the Tor protocol. More information about Tor can be found in section II.
+		Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achived by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only the Tor-like protocol.
 		
 		The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
 		

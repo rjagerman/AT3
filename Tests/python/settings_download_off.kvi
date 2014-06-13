@@ -1,0 +1,5 @@
+#RECORDER1.0
+(1.0, 'begin', 1, {'is_touch': True, 'profile': ['pos'], 'sy': 0.9216666666666666, 'sx': 0.9025})
+(1.05, 'end', 1, {'is_touch': True, 'profile': ['pos'], 'sy': 0.9216666666666666, 'sx': 0.9025})
+(2.0, 'begin', 2, {'is_touch': True, 'profile': ['pos'], 'sy': 0.4666666666666667, 'sx': 0.825})
+(2.05, 'end', 2, {'is_touch': True, 'profile': ['pos'], 'sy': 0.4666666666666667, 'sx': 0.825})

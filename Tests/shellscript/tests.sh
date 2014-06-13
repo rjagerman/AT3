@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#
+# Tests for the build tools
  
 ### unitTest.sh ###
 
@@ -14,11 +17,11 @@ function popd() {
 
 # This function loads the environment variables and functions once
 function oneTimeSetUp() {
-	source ../configuration
-	source ../functions.sh 
+	source ../../configuration
+	source ${CURRENTFOLDERPATH}/functions.sh 
 
 	# Remove the app folder to enforce a clean environment.
-	pushd ../
+	pushd ${CURRENTFOLDERPATH} 
 	rm -rf app
 	popd
 
@@ -58,21 +61,21 @@ function testPythonpathNotEmpty() {
 }
 
 function testPFlagError() {
-	pushd ../
+	pushd ${CURRENTFOLDERPATH}
 	./configure -a "test" > /dev/null 2>&1
 	assertEquals "Missing the -p flag should throw an error" 1 $?
 	popd
 }
 
 function testAFlagErorr() {
-	pushd ../
+	pushd ${CURRENTFOLDERPATH}
 	./configure -p "test" > /dev/null 2>&1
 	assertEquals "Missing the -a flag should throw an error" 1 $?
 	popd
 }
 
 function testNoFlags() {
-	pushd ../
+	pushd ${CURRENTFOLDERPATH}
 	./configure > /dev/null 2>&1
 	assertEquals "No flags provided should throw an error" 1 $?
 	popd
@@ -153,11 +156,11 @@ function testLogoExist() {
 }
 
 function testBuildWorking() {
-	pushd ../
+	pushd ${CURRENTFOLDERPATH}
 	./build.sh -p $PY4APATH > /dev/null
 	popd
 	assertEquals "Build is failing" 0 $?
 }
 
 # Call and Run all Tests
-. "../shunit2-2.1.6/src/shunit2"
+. "./shunit2-2.1.6/src/shunit2"

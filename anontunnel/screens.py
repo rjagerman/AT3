@@ -31,6 +31,8 @@ class AnonTunnelScreen(Screen):
         """
         if self.is_running:
             self.tunnel_togglebutton.text = 'Off'
+            self.status_text.text = 'No anontunnels running...'
+            self.status_view.opacity = 0.0
             self.is_running = False
             self.service.stop()
 
@@ -40,6 +42,8 @@ class AnonTunnelScreen(Screen):
         """
         if not self.is_running:
             self.tunnel_togglebutton.text = 'On'
+            self.status_text.text = 'Running anontunnels'
+            self.status_view.opacity = 1.0
             self.is_running = True
             try:
                 self.start_anontunnel_android()

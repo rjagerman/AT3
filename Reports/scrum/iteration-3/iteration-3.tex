@@ -6,10 +6,11 @@
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
-			\item Update to the new Tribler code
-			\item Write unit tests for our Python code and application tests for our application
-			\item Investigate the segfaults and check for alternative solutions
-			\item Measure CPU usage and download rates of our application
+			\item Update to the new Tribler code (should: while it is not a critical feature, it is good practice to keep the code up to date).
+			\item Write unit tests for our Python code and application tests for our application (must: applications must be tested thoroughly to ensure all possible settings are working correctly). 
+			\item Investigate the segfaults and check for alternative solutions (should: as much as we love to see libtorrent becoming stable, we are not sure if we will succeed with this goal).
+			\item Measure CPU usage and download rates of our application (should: while it is not needed in order to run the application, it is good to have some performance measurements).
+			\itme Send our tests to the SIG (must: this is required by the bachelor thesis).
 		\end{enumerate}
 		
 	\section{RUTracker libtorrent}
@@ -38,4 +39,8 @@
 		Since our package is now a fork, future updates are more easy to merge into our package using the GitHub merge functionality.
 			
 	\section{Conclusion}
-		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)
+		This sprint was the most successful one so far. We managed to stabilize libtorrent, updated our Tribler package and made preparations to apply future updates more easy. Furthermore we managed to solve our download and relaying issue with multiple hops and multiple circuits. The stable environment and the option to download via multiple hops and circuits allowed us to gather data and generate graphs. These graphs will be used in our final report to explain \ref{chpt:experiments} certain characteristics we observe and will also be analyzed with respect to streaming content.
+		
+		The additional unit tests contributed to the stability and robustness of our application. These new tests along with the previous ones from iteration 2 are sent to the SIG for evaluation. The feedback of the evaluation will be processed in the next scrum iteration.
+		
+		Looking back we can conclude that this sprint was very successful. We made some big progress and most of our big problems are solved. In the next iteration we will focus on finalizing the report, create a solid demo application and tweak our code where necessary.

@@ -51,27 +51,10 @@ class AnonTunnelApp(App):
         
         osc.init()
         self.oscid = osc.listen(ipAddr='127.0.0.1', port=9000)
-        osc.bind(self.oscid, self.received_log, '/logger')
         osc.bind(self.oscid, self.received_status, '/status')
-        osc.bind(self.oscid, self.received_download, '/download')
         Clock.schedule_interval(lambda *x: osc.readQueue(), 0)
 
         return self.screen_manager
-
-    def received_log(self, message, *args):
-        """
-        When receiving log messages write them to the text view
-        """
-        pass
-        #self.screens['anontunnels'].log_textview.text += message[2]
-        # self.lines.append(message[2])
-        # text = ''
-        # if len(self.lines) > self.max_lines:
-        #     self.lines.popleft()
-        # for line in self.lines:
-        #     text += '%s' % line
-        # self.screens['anontunnels'].log_textview.text = text
-
 
     def received_status(self, status, *args):
         """
@@ -82,12 +65,9 @@ class AnonTunnelApp(App):
         self.screens['anontunnels'].enter_speed.text = '%.2f KB/s' % status[4]
         self.screens['anontunnels'].relay_speed.text = '%.2f KB/s' % status[5]
         self.screens['anontunnels'].exit_speed.text = '%.2f KB/s' % status[6]
-
-    def received_download(self, status, *args):
-        """
-        When receiving updates about the download
-        """
-        self.screens['anontunnels'].cpu.text = '%.2f %%' % abs(status[2])
+        self.screens['anontunnels'].download_speed.text = '%.2f KB/s' % status[7]
+        self.screens['anontunnels'].download_progress.text = '%.2f %%' % status[8]
+        self.screens['anontunnels'].cpu.text = '%.2f %%' % status[9]
 
     def on_pause(self):
         """

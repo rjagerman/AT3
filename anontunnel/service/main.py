@@ -81,9 +81,15 @@ class AnonTunnelService():
             self.timer = Timer(1, self.status).start()
             status = self.anon_tunnel.status()
             cpu = float(psutil.cpu_percent())
-            osc.sendMsg('/status', [status['circuits'], status['relays'], status['enter'], status['relay'], status['exit']],
-                        ipAddr='127.0.0.1', port=9000)
-            osc.sendMsg('/download', [cpu], ipAddr='127.0.0.1', port=9000)
+            array_status = [status['circuits'],
+                            status['relays'],
+                            status['enter'],
+                            status['relay'],
+                            status['exit'],
+                            status['download_speed'],
+                            status['download_progress'],
+                            cpu]
+            osc.sendMsg('/status', array_status, ipAddr='127.0.0.1', port=9000)
 
     def stop(self):
         """

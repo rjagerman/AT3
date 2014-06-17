@@ -6,10 +6,11 @@
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
-			\item Update to the new Tribler code
-			\item Write unit tests for our Python code and application tests for our application
-			\item Investigate the segfaults and check for alternative solutions
-			\item Measure CPU usage and download rates of our application
+			\item Update to the new Tribler code (should: while it is not a critical feature, it is good practice to keep the code up to date).
+			\item Write unit tests for our Python code and application tests for our application (must: applications must be tested thoroughly to ensure all possible settings are working correctly). 
+			\item Investigate the segfaults and check for alternative solutions (should: as much as we love to see libtorrent becoming stable, we are not sure if we will succeed with this goal).
+			\item Measure CPU usage and download rates of our application (should: while it is not needed in order to run the application, it is good to have some performance measurements).
+			\item Send our tests to the SIG (must: this is required by the bachelor thesis).
 		\end{enumerate}
 		
 	\section{RUTracker libtorrent}
@@ -37,5 +38,18 @@
 		
 		Since our package is now a fork, future updates are more easy to merge into our package using the GitHub merge functionality.
 			
+	\section{Relaying and downloading over multiple hops/multiple circuits}
+		In our last sprint, we had some issues with downloading and relaying over multiple hops/multiple circuits. Downloading the 50M test file was working correctly over one circuit with one hop, however, adjusting the values of the minimum amount of circuits required for the downloading and the length of the hop would not work.
+		
+		To debug this issue, we got in contact with Rutger and Chris, the original authors of the anontunnels code. They suggested us to place loggers when receiving messages from other nodes and look closely to the incoming messages. We logged the messages but we could not find anything that could cause the application to reject circuits. The same code, when executed on a laptop, can successful download over multiple circuits with multiple hops.
+		
+		At this time, we were quite some commits behind the devel branch of Tribler. After updating and merging our package with the newest code, we tried again and for some reason, it is now possible to build more circuits. We immediately tried to download the anonymous test file over four circuits and three hops and it worked fine. Also other lengths and other amounts of circuits were working correctly.
+		
+		In order to verify the stability of relaying and downloading, we decided to write a test application that can keep running overnight. We can start some anontunnel instances on our own computers and let the test application download the torrent. After the download is finished, the application restarts and the process starts over. The output is redirected to a log file so we can see issues or problems that occurred during the download.
+			
 	\section{Conclusion}
-		Hier komen onze conclusies over deze sprint (wat ging er goed/fout, wat willen we anders doen, wat gaan we volgende sprint doen etc.)
+		This sprint was the most successful one so far. We managed to stabilize libtorrent, updated our Tribler package and made preparations to apply future updates more easy. Furthermore we managed to solve our download and relaying issue with multiple hops and multiple circuits. The stable environment and the option to download via multiple hops and circuits allowed us to gather data and generate graphs. These graphs will be used in our final report to explain \ref{chpt:experiments} certain characteristics we observe and will also be analyzed with respect to streaming content.
+		
+		The additional unit tests contributed to the stability and robustness of our application. These new tests along with the previous ones from iteration 2 are sent to the SIG for evaluation. The feedback of the evaluation will be processed in the next scrum iteration.
+		
+		Looking back we can conclude that this sprint was very successful. We made some big progress and most of our big problems are solved. In the next iteration we will focus on finalizing the report, create a solid demo application and tweak our code where necessary.

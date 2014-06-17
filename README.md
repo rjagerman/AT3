@@ -24,5 +24,5 @@ To build this app, one needs to execute the following steps:
 4. Run configure as following: `./configure -p <YOUR-PATH-TO-PYTHON-FOR-ANDROID> -a anontunnel`
 5. Call the `./build.sh` script.
 6. If all goes well, the app should be created in the AT3/app folder.
-7. To install, make sure your device is connected to your computer and call ``adb install app/<.apk file>``
+7. To install, make sure your device is connected to your computer and call ``adb install app/<.apk file>`` or run the `./install.sh` script.
  

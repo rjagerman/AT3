@@ -67,7 +67,7 @@ class AnonTunnelApp(App):
         self.screens['anontunnels'].exit_speed.text = '%.2f KB/s' % status[6]
         self.screens['anontunnels'].download_speed.text = '%.2f KB/s' % status[7]
         self.screens['anontunnels'].download_progress.text = '%.2f %%' % status[8]
-        self.screens['anontunnels'].cpu.text = '%.2f %%' % status[9]
+        self.screens['anontunnels'].cpu.text = '%s' % status[9]
 
     def on_pause(self):
         """

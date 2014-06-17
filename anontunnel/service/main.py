@@ -80,7 +80,7 @@ class AnonTunnelService():
         if self.running_updates:
             self.timer = Timer(1, self.status).start()
             status = self.anon_tunnel.status()
-            cpu = float(psutil.cpu_percent())
+            cpu = ', '.join([str(abs(core)) for core in psutil.cpu_percent(percpu=True)])
             array_status = [status['circuits'],
                             status['relays'],
                             status['enter'],

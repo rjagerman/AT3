@@ -7,12 +7,15 @@
     enter_speed: enterSpeedLabel
     relay_speed: relaySpeedLabel
     exit_speed: exitSpeedLabel
+    cpu: cpuLabel
+    download_text: downloadText
+    download_view: downloadView
 
-    log_textview: logTextView
+#    log_textview: logTextView
     tunnel_togglebutton: tunnelToggleButton
 
     BoxLayout:
-        log_textview: logTextView
+#        log_textview: logTextView
         tunnel_togglebutton: tunnelToggleButton
 
         orientation: 'vertical'
@@ -137,7 +140,7 @@
                 Label:
                     text: ''
         Label:
-            text: 'Log'
+            text: 'Test download'
             size_hint: None, None
             size: root.width, root.size[1] * 0.05
             bgcolor: 0.4,0.4,0.4,1
@@ -148,23 +151,72 @@
                     size: self.size
                     pos: self.pos
             color: 1,1,1,1
-        ScrollableLabel:
-            size_hint: 1, 1
-            bgcolor: 1,1,1,0.4
-            canvas.before:
-                Color:
-                    rgb: self.bgcolor
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+        BoxLayout:
+            orientation: 'vertical'
             Label:
-                id: logTextView
-                size_hint_y: None
-                font_name: 'DroidSansMono.ttf'
-                font_size: '12sp'
-                height: self.texture_size[1]
-                text_size: self.width, None
-                color: 0,0,0,1
+                id: downloadText
+                text: 'Downloading test download of 50 Megabyte'
+                color: 0.1,0.1,0.1,1
+            BoxLayout:
+                id: downloadView
+                opacity: 0.0
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: 'CPU'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Download speed'
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: 'Progress'
+                        color: 0.1,0.1,0.1,1
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: '0'
+                        id: cpuLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0.0 KB/s'
+                        id: downloadLabel
+                        color: 0.1,0.1,0.1,1
+                    Label:
+                        text: '0.0 %'
+                        id: progressLabel
+                        color: 0.1,0.1,0.1,1
+                Label:
+                    text: ''
+#        Label:
+#            text: 'Log'
+#            size_hint: None, None
+#            size: root.width, root.size[1] * 0.05
+#            bgcolor: 0.4,0.4,0.4,1
+#            canvas.before:
+#                Color:
+#                    rgb: self.bgcolor
+#                Rectangle:
+#                    size: self.size
+#                    pos: self.pos
+#            color: 1,1,1,1
+#        ScrollableLabel:
+#            size_hint: 1, 1
+#            bgcolor: 1,1,1,0.4
+#            canvas.before:
+#                Color:
+#                    rgb: self.bgcolor
+#                Rectangle:
+#                    size: self.size
+#                    pos: self.pos
+#            Label:
+#                id: logTextView
+#                size_hint_y: None
+#                font_name: 'DroidSansMono.ttf'
+#                font_size: '12sp'
+#                height: self.texture_size[1]
+#                text_size: self.width, None
+#                color: 0,0,0,1
 <SettingsScreen>:
 
     checkbox_wifi: checkboxWifi

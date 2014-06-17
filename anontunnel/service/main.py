@@ -16,15 +16,16 @@ from kivy.clock import Clock
 from Tribler.community.anontunnel.community import ProxySettings
 from Tribler.community.anontunnel.atunnel import AnonTunnel
 from threading import Timer
+import psutil
 
 
-class StdoutRedirector(object): # A class for redirecting stdout to this Text widget.
-    def __init__(self):
-        pass
-    def write(self, string):
-        sys.stdout.write(string)
-        sys.stdout.flush()
-        osc.sendMsg('/logger', [string], ipAddr='127.0.0.1', port=9000)
+#class StdoutRedirector(object): # A class for redirecting stdout to this Text widget.
+#    def __init__(self):
+#        pass
+#    def write(self, string):
+#        sys.stdout.write(string)
+#        sys.stdout.flush()
+#        osc.sendMsg('/logger', [string], ipAddr='127.0.0.1', port=9000)
 
 
 class AnonTunnelService():
@@ -41,9 +42,9 @@ class AnonTunnelService():
         log_handlers = [h for h in self.log.handlers]
         for log_handler in log_handlers:
             self.log.removeHandler(log_handler)
-        ch = logging.StreamHandler(StdoutRedirector())
+        ch = logging.StreamHandler(sys.stdout)
         ch.setLevel(logging.INFO)
-        ch.setFormatter(logging.Formatter('%(levelname)-8s  %(message)s'))
+        ch.setFormatter(logging.Formatter('%(levelname)-8s %(message)s'))
         self.log.addHandler(ch)
 
     def start(self, blocking=True):
@@ -78,9 +79,10 @@ class AnonTunnelService():
             self.running_updates = False
         if self.running_updates:
             self.timer = Timer(1, self.status).start()
-            status = self.anon_tunnel.status()
+            cpu = float(psutil.cpu_percent())
             osc.sendMsg('/status', [status['circuits'], status['relays'], status['enter'], status['relay'], status['exit']],
                         ipAddr='127.0.0.1', port=9000)
+            osc.sendMsg('/download', [cpu], ipAddr='127.0.0.1', port=9000)
 
     def stop(self):
         """

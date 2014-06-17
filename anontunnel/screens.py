@@ -6,6 +6,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
 from kivy.lib import osc
 from kivy.uix.anchorlayout import AnchorLayout
+import logging
 
 
 class ScrollableLabel(ScrollView):
@@ -33,6 +34,8 @@ class AnonTunnelScreen(Screen):
             self.tunnel_togglebutton.text = 'Off'
             self.status_text.text = 'No anontunnels running...'
             self.status_view.opacity = 0.0
+            self.download_text.text = 'Currently inactive'
+            self.download_view.opacity = 0.0
             self.is_running = False
             self.service.stop()
 
@@ -44,6 +47,8 @@ class AnonTunnelScreen(Screen):
             self.tunnel_togglebutton.text = 'On'
             self.status_text.text = 'Running anontunnels'
             self.status_view.opacity = 1.0
+            self.download_text.text = 'Currently downloading a 50M test file'
+            self.download_view.opacity = 1.0
             self.is_running = True
             try:
                 self.start_anontunnel_android()

@@ -1,9 +1,9 @@
 \section{Setting up the environment}
-	To cross compile libtorrent for Android, we first need to setup a custom toolchain. Before we do that, make sure you have the Android ndk and sdk installed. We compiled with ndk r9d 32-bit. We also installed sdk version 14. We are not sure whether other versions of the ndk/sdk are working. The compilation has been executed on a 64-bit Ubuntu 14.04 machine. Please note that if you are compiling on a 64-bit machine, you need some 32-bit packages:
+	To cross compile libtorrent for Android, we first need to create a custom toolchain. Before we do that, please make sure you have the Android ndk and sdk installed. We compiled with ndk r9d 32-bit and we also installed sdk version 14. We are not sure whether other versions of the ndk/sdk are working. The compilation has been executed on a 64-bit Ubuntu 14.04 machine. Please note that if you are compiling on a 64-bit machine, youd some 32-bit support packages which can be installed with the following command.
 	\begin{lstlisting}
 sudo apt-get install ia32-libs
 	\end{lstlisting}
-	This should install the required libraries for cross compilation. The next step is to install Python for Android because we need the Python library from that. We cannot use the system Python because that is compiled for another architecture. The Python for Android comes with a distribute script that creates a distribution with the supplied libraries. Executing the following commands should build Python:
+	This should install the required 32-bit libraries needed for the cross compilation. The next step is to install Python for Android because we need the Python library from that library. We cannot use the Python distribution the system is using because that is compiled for a incompatible architecture. The Python for Android framework comes with a distribute script that creates a distribution with the supplied libraries. Executing the following commands from the Python for Android folder should build the Python distribution that will eventually run on the device.
 	\begin{lstlisting}
 export ANDROIDSDK='<path to your sdk folder>'
 export ANDROIDNDK='<path to your ndk folder>'
@@ -11,14 +11,14 @@ export ANDROIDNDKVER=r9d
 export ANDROIDAPI=14
 ./distribute.sh -m kivy
 	\end{lstlisting}
-	An additional step is required: copy the pyconfig.h file to your Include folder in the build directory of hostpython. This is needed for the compilation of the Python bindings.\\
-	The next step is to setup the custom toolchain we create from the Android ndk.
+	An additional step is required: copy the \emph{pyconfig.h} file to the Include folder in the build directory of hostpython. This file is required by the compilation process of the Python bindings.\\
+	The next step is to install the custom toolchain we create from the Android ndk. Execute the following command. Your toolchain location can be anywhere on the computer but it is recommended to install it in a location where you can access it easily.
 	\begin{lstlisting}
 <path to your ndk folder>/build/tools/make-standalone-toolchain.sh \
---platform=android-5 --install-dir=<your new toolchain location>
+--platform=android-14 --install-dir=<your new toolchain location>
 	\end{lstlisting}
 	This command should generate a custom toolchain in the location specified by the install-dir argument.\\
-	Several export variables are required, these are listed below. The \$ANDROIDNDK variable should already be defined from the previous steps.
+	Several export variables are required for compiling Boost and libtorrent, these are listed below. The \emph{\$ANDROIDNDK} variable should already be defined from the previous steps.
 	\begin{lstlisting}
 # Custom paths
 export ANDROIDNDK='<path to your ndk folder>'
@@ -37,5 +37,5 @@ export CXX=arm-linux-androideabi-g++
 export CROSSHOST=arm-linux-androideabi
 export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 	\end{lstlisting}
-	These variables will be needed by the compilation process. It is recommended to create a shell script file with these exports and load it using the source command.\\
-	You should now have a custom toolchain and the right environment variables setup.
+	It is recommended to create a shell script file with these exports and load it using the source command.\\
+	You should now have a custom toolchain ready to be used and the right environment variables setup.

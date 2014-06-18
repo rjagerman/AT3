@@ -1,5 +1,5 @@
 \chapter{Software architecture}
-Much of our work is focussed on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a software product which is traditionally done for the bachelor end project. Instead we have developed an Android application called AT3 that we use to test the ported libraries. Additionally this software allows us to perform experiments such as bandwidth or CPU measurements.
+Much of our work is focussed on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a software product which is traditionally done for the bachelor project. Instead we have developed an Android application called AT3 that we have used to test the ported libraries. Additionally this software allows us to perform experiments such as bandwidth or CPU measurements.
 In this chapter the software architecture of the AT3 application will be described. We will provide an overview of the different components and how they interact.
 
 \section{Overview}
@@ -15,7 +15,7 @@ The main functionality is contained within the Tribler package, where we have cr
 \end{figure}
 
 \section{Kivy and Python for Android}
-Kivy is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that run Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore this framework offers the most seamless integration with existing code. Kivy handles everything related to the user-interface. It hides away all the complexity of handling user input and displaying output.
+Kivy is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that runs Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore this framework offers the most seamless integration with existing code. Kivy handles everything related to the user-interface. It hides away all the complexity of handling user input and displaying output.
 
 \section{Tribler}
 Tribler handles everything related to managing torrent downloads. The anontunnels, which are a part of Tribler, handle the anonymous tunnels over which we will download. These two components form the core part of our application.

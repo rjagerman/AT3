@@ -6,12 +6,15 @@
 		This sprint, we had the following goals:
 	
 		\begin{enumerate}
-			\item Update to the new Tribler code (should: while it is not a critical feature, it is good practice to keep the code up to date).
 			\item Write unit tests for our Python code and application tests for our application (must: applications must be tested thoroughly to ensure all possible settings are working correctly). 
-			\item Investigate the segfaults and check for alternative solutions (should: as much as we love to see libtorrent becoming stable, we are not sure if we will succeed with this goal).
-			\item Measure CPU usage and download rates of our application (should: while it is not needed in order to run the application, it is good to have some performance measurements).
 			\item Send our tests to the SIG (must: this is required by the bachelor thesis).
+			\item Investigate the segfaults and check for alternative solutions (should: as much as we love to see libtorrent becoming stable, we are not sure if we will succeed with this goal).
+			\item Update to the new Tribler code (should: while it is not a critical feature, it is good practice to keep the code up to date).
+			\item Measure CPU usage and download rates of our application (should: while it is not needed in order to run the application, it is good to have some performance measurements).
 		\end{enumerate}
+		
+	\section{Application tests}
+		In order to verify the application is working correctly we have implemented automated testing. Using the default unittest framework provided by python and the Kivy recorder we were able to setup basic user interface tests. These tests run the application, perform a series of user actions such as clicking buttons and finally assert the state of the application. The tests currently run successfully on Jenkins, which means that future additions to the code will automatically be tested.
 		
 	\section{RUTracker libtorrent}
 		Since we would like to have a stable libtorrent library that downloads a torrent without segmentation faults, we decided to try out the libtorrent that Jaap used in his Bachelor thesis. This is an older version of libtorrent but has proven to be successful in his project. Jaap provided us with a link to a GitHub page that contains instructions on how to build libtorrent from source (https://github.com/pepibumur/Torrent-Movies). This libtorrent version is used in an Android application called RUTracker, an Android application that allows users to download and upload torrent files in the background. We thought it would be a good idea to try out this libtorrent because it seemed to be quite stable.

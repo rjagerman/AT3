@@ -16,5 +16,5 @@ using gcc : android : arm-linux-androideabi-g++ :
  --with-system --with-filesystem --with-python install \
  --prefix=<path to your custom toolchain>
 	\end{lstlisting}
-	The b2 command builds and install the system, filesystem and Python libraries in the directory specified by the prefix. We create a static library with support for multi threading. The include files and binaries are copied to your custom toolchain.\\
+	The b2 command builds and install the system, filesystem and Python libraries in the directory specified by the prefix. We create a static library with support for multithreading. The include files and binaries are copied to your custom toolchain.\\
 	At this point, Boost should be installed in your custom toolchain. Please verify the presence of Boost in you toolchain because these files are needed for the compilation of libtorrent in the next step.

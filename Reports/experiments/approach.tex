@@ -1,2 +1,18 @@
 \section{Our approach}
-	TODO
+	\label{sec:approach}
+	To measure the performance of our device running the anontunnels, we decided to make use of the Tribler test torrent that was setup earlier. This test downloads a 50 MB test file. Running multiple times, each with a different setting of variables such as amount of hops or circuits, we can measure how these variables impact the performance of the CPU usage and download rates.
+	
+	We came up with the following five configurations to test both the CPU usage and the download rates:
+	
+	\begin{enumerate}
+		\item Measure the CPU when the application is searching for circuits but does not download anything.
+		\item Download the test file with the anontunnels off, directly from the source.
+		\item Download the test file with 1 hop and 1 circuit, providing security but not anonymity.
+		\item Download the test file with 1 hop and 3 circuits. We expect higher download rates here in comparison to the third run.
+		\item Download the test file with 3 hops and 1 circuit, providing both security and anonymity.
+		\item Download the test file with 3 hops and 3 circuits, providing both security and anonymity. We expect a higher download rate in comparison to the fifth run.
+	\end{enumerate}
+	
+	To measure the CPU we make use of the \emph{adb shell top} command. Which provides a list of all current running processes. Per process, the CPU usage in percentage is given. From this list we extract our two processes: the application itself  and the anontunnel service where the anontunnels run on. During the test run, we measure the CPU usage each second and write this to a log file. This file is then parsed using a Python script to generate a graph.
+	
+	To measure the download rates, we modified the test file to report the current download speed in the callback which is called every second. These speeds are also written to a log file which gets parsed by the same Python script used for parsing the CPU logs.

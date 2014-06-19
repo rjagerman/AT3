@@ -22,7 +22,7 @@
 			The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}\footnote{https://github.com/Tribler/tribler/tree/devel/Tribler/community/anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
 			
 			\begin{itemize} 
-				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in Subsection \ref{sec:m2crypto}, is used for the Diffie-Hellman protocol.
+				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in Subsection \ref{sec:security}, is used for the Diffie-Hellman protocol.
 				\item The experimental code is using the Socks5\footnote{http://www.ietf.org/rfc/rfc1928.txt} protocol for communication with other nodes (see figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
 				\item Dispersy is used as synchronization system. 
 				\item A circuit can be in four states: ready, extending, to be extended or broken.
@@ -39,7 +39,8 @@
 			\end{figure*}
 
 	\subsection{Security}
-		Tribler makes use of cryptographic functions to encrypt data and make secure communication possible. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Confidentiality and integrity are important when communicating. When we are sending confidential data over the internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
+	\label{sec:security}
+		Tribler makes use of cryptographic functions to encrypt data and make secure communication possible. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties or the network. Confidentiality and integrity are important when communicating. When we are sending confidential data over the internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
 		
 		Some popular open source frameworks exists for these cryptographic tasks. A popular project is OpenSSL \cite{openssl}. OpenSSL implements the popular SSL and TLS protocols\footnote{http://tools.ietf.org/html/rfc5246}. These are cryptographic protocols that provides security when communicating over the internet. Besides that, OpenSSL provides libraries for various encryption and decryption protocols such as 3DES\footnote{http://tools.ietf.org/html/rfc2420}, RSA \footnote{http://www.ietf.org/rfc/rfc2437.txt} and RC4 \footnote{http://tools.ietf.org/html/rfc4757}. OpenSSL also supports key exchange protocols such as Diffie-Hellman\footnote{http://www.ietf.org/rfc/rfc2631.txt}.
 		

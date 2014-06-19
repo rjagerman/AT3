@@ -44,7 +44,7 @@
 			PyCrypto is a Python library which implements certain cryptography functions used by the tribler\_core\_minimal package. PyCrypto itself depends on functionality of the OpenSSL package.
 		
 			\item Boost\footnote{http://www.boost.org/}\\
-			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile the Boost library with Python bindings enabled so we can invoke the library from Python code.
+			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the Boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile the Boost library with Python bindings enabled so we can invoke the library from Python code.
 		
 			\item netifaces\\
 			netifaces allows to easily get the address(es) of the machine's network interfaces from Python. It is therefore dependent on Python and used by the Dispersy package.
@@ -81,12 +81,12 @@
 	\section{Attempt to compile Libtorrent for Android}
 		To get libtorrent working on Android there are several big obstacles:
 		\begin{itemize}
-			\item Compiling boost for the ARM architecture
+			\item Compiling Boost for the ARM architecture
 			\item Compiling libtorrent for the ARM architecture
 			\item Compiling libtorrent Python bindings for the ARM architecture
 		\end{itemize}
 		
-		The official documentation of libtorrent states multiple ways to build libtorrent. The first is using boost's build system \emph{Jam}. The second is using \emph{automake}. However, before we can compile the libtorrent source code with either of these methods, several modifications had to be applied.
+		The official documentation of libtorrent states multiple ways to build libtorrent. The first is using Boost's build system \emph{Jam}. The second is using \emph{automake}. However, before we can compile the libtorrent source code with either of these methods, several modifications had to be applied.
 		
 		\subsection{Source code modifications}
 				
@@ -106,11 +106,11 @@
 		\end{itemize}
 		
 		\subsection{Boost Jam}
-		Boost jam is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
+		Boost jam is a build environment created specifically for Boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on Boost, such as libtorrent.
 		
-		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the android device and work.
+		Running Boost jam is straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the android device and work.
 		
-		Compiling libtorrent using this method is far more difficult. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because Android's ARM compiler and libraries differ from the normal GNU compiler and libraries. After modifying the source code, the build still fails. Linker errors start to creep in when you try to compile the Python-bindings. The standard Unix libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the Python-bindings compilation. Due to the complexity of boost's jam build environment we decided to try using automake.
+		Compiling libtorrent using this method is far more difficult. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because Android's ARM compiler and libraries differ from the normal GNU compiler and libraries. After modifying the source code, the build still fails. Linker errors start to creep in when you try to compile the Python-bindings. The standard Unix libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the Boost jam environment forces these options for the Python-bindings compilation. Due to the complexity of Boost's jam build environment we decided to try using automake.
 		
 		\subsection{Automake}
 		Automake is a standard set of tools for Unix-based systems that makes it easy to configure and compile software on a wide variety of systems. The tools are designed such that it is possible to configure the build process using a simple script.

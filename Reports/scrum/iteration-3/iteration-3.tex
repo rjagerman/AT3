@@ -1,6 +1,6 @@
 \chapter{Scrum iteration 3: stabilizing libtorrent and experiments}
 \label{cpt:iteration3}
-	In this chapter we describe our third sprint, starting in week 4.5 (19$^{th}$ of May) and ending in week 4.6 (30$^{th}$ of May).
+	In this chapter we describe our third sprint that lasted two weeks.
 
 	\section{Goals}
 		This sprint, we had the following goals:
@@ -42,7 +42,7 @@
 		Since our package is now a fork, future updates are more easy to merge into our package using the GitHub merge functionality.
 			
 	\section{Relaying and downloading over multiple hops/multiple circuits}
-		In our last sprint, we had some issues with downloading and relaying over multiple hops/multiple circuits. Downloading the 50 MB test file was working correctly over one circuit with one hop, however, adjusting the values of the minimum amount of circuits required for the downloading and the length of the hop would not work.
+		In our last sprint, we had some issues with downloading and relaying over multiple hops / multiple circuits. Downloading the 50 MB test file was working correctly over one circuit with one hop, however, adjusting the values of the minimum amount of circuits required for the downloading and the length of the hop would not work.
 		
 		To debug this issue, we got in contact with Rutger and Chris, the original authors of the anontunnels code. They suggested us to place loggers when receiving messages from other nodes and look closely to the incoming messages while disabling the encryption. We logged the messages but we could not find anything that could cause the application to reject circuits. The same code, when executed on a laptop, can successful download over multiple circuits with multiple hops.
 		
@@ -50,7 +50,7 @@
 		
 		In order to verify the stability of relaying and downloading, even with encryption disabled, we decided to write a test application that can keep running overnight. We can start some anontunnel instances on our own computers and let the test application download the torrent. After the download is finished, the application restarts and the process starts over. The output is redirected to a log file so we can see issues or problems that occurred during the download.
 			
-	\section{Conclusion}
+	\section{Sprint evaluation}
 		This sprint was the most successful one so far. We managed to stabilize libtorrent, updated our Tribler package and made preparations to apply future updates more easy. Furthermore we managed identify the problem with our download and relaying issue with multiple hops and multiple circuits. The stable environment and the option to download via multiple hops and circuits allowed us to gather data and generate graphs. These graphs will be used in our final thesis to explain certain characteristics we observe and will also be analyzed with respect to streaming content.
 		
 		The additional unit tests contributed to the stability and robustness of our application. These new tests along with the previous ones from iteration 2 are sent to the SIG for evaluation. The feedback of the evaluation will be processed in the next scrum iteration.

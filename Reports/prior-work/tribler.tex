@@ -14,8 +14,13 @@
 	In this section an overview of Tribler and its components is presented. We describe the new version that uses anonymous tunnels in depth. Furthermore, we look at what specific dependencies Tribler relies on.
 
 	Tribler is a fully decentralized peer-to-peer file sharing system developed by the Parallel and Distributed Systems group at Delft University of Technology. It has been in development for over nine years and has a very mature and well-established code base. It allows users to search for and share files in a fully decentralized way. This decentralized nature of Tribler has several advantages over existing file sharing systems. The lack of a centralized component makes it very scalable and practically impossible to bring down.
+
+	An experimental version of Tribler is currently available that includes a Python implementation of a Tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location.
+	
+	\subsection{Downloading files}
+		Tribler uses the torrent protocol\footnote{http://www.bittorrent.org/beps/bep\_0003.html} for downloading files.Torrent files contain metadata about the files that will be downloaded. The torrent protocol is peer-to-peer and this means that an user downloads from multiple seeders. Information about possible seeders is maintained by a tracker that can be queried about the available seeders. Tribler is using the libtorrent library as implementation of the torrent protocol. This library is licensed as open source software and we are allowed to use or modify it.
 		
-	An experimental version of Tribler is currently available that includes a Python implementation of a Tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location. More details about these anontunnels can be found in section \ref{sec:anonymoustunnels}.
+		Torrent files can be found using the graphical user interface (GUI) of Tribler. Users enters their search query in a search bar and Tribler will return the results matching the search criteria. A family filter has been added to Tribler to filter out adult content. The underlying search is done using Dispersy which will be described in Section \ref{sec:dispersy}.
 	
 	\subsection{Anonymous tunnels}
 		\label{sec:anonymoustunnels}
@@ -40,18 +45,15 @@
 				\label{fig:onion_encryption_decryption_socks5}
 			\end{figure*}
 
-	\subsection{M2Crypto}
-		Tribler makes use of cryptographic functions to encrypt data and make secure communication possible. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the Internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
+	\subsection{Security}
+		Tribler makes use of cryptographic functions to encrypt data and make secure communication possible. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Confidentiality and integrity are important when communicating. When we are sending confidential data over the internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
 		
-		Some popular open source frameworks exists for these cryptographic tasks. A popular project is OpenSSL \cite{openssl}. OpenSSL implements the popular SSL and TLS protocols. These are cryptographic protocols that provides security when communicating over the internet. Besides that, OpenSSL provides libraries for various encryption and decryption protocols such as DES, RSA and RC4. OpenSSL also supports key exchange protocols such as Diffie-Hellman.
+		Some popular open source frameworks exists for these cryptographic tasks. A popular project is OpenSSL \cite{openssl}. OpenSSL implements the popular SSL and TLS protocols\footnote{http://tools.ietf.org/html/rfc5246}. These are cryptographic protocols that provides security when communicating over the internet. Besides that, OpenSSL provides libraries for various encryption and decryption protocols such as 3DES\footnote{http://tools.ietf.org/html/rfc2420}, RSA \footnote{http://www.ietf.org/rfc/rfc2437.txt} and RC4 \footnote{http://tools.ietf.org/html/rfc4757}. OpenSSL also supports key exchange protocols such as Diffie-Hellman\footnote{http://www.ietf.org/rfc/rfc2631.txt}.
 		
-		OpenSSL is written in C. To use the OpenSSL libraries in Python, one could use pyopenssl \cite{pyopensslgithub}, a interface for OpenSSL or M2Crypto \cite{m2cryptogithub} (M2Crypto stands for 'Me Too Crypto'), an OpenSSL wrapper. Tribler makes use of the M2Crypto library. The old homepage of the M2Crypto project explains what M2Crypto is:
-		
-		\begin{quote}
-		"M2Crypto is the most complete Python wrapper for OpenSSL featuring RSA, DSA, DH, HMACs, message digests, symmetric ciphers (including AES); SSL functionality to implement clients and servers; HTTPS extensions to Python's httplib, urllib, and xmlrpclib; unforgeable HMAC'ing AuthCookies for web session management; FTP/TLS client and server; S/MIME; ZServerSSL: A HTTPS server for Zope and ZSmime: An S/MIME messenger for Zope. M2Crypto can also be used to provide SSL for Twisted." \cite{m2crypto}
-		\end{quote}
+		OpenSSL is written in the C programming language. To use the OpenSSL libraries in Python, one could use pyopenssl \cite{pyopensslgithub}, a interface for OpenSSL or M2Crypto \cite{m2cryptogithub} (M2Crypto stands for 'Me Too Crypto'), an OpenSSL wrapper. Tribler makes use of the M2Crypto library. The M2Crypto library provides many implementations of popular cryptographic protocols that are used for secure communication.
 		
 	\subsection{Dispersy}
+	\label{sec:dispersy}
 		Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a challenging network environment. Such an environment is often characterized by:
 		\begin{itemize}
 			\item Nodes randomly joining and leaving.

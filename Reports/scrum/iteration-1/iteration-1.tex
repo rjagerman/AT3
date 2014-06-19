@@ -1,3 +1,14 @@
+% under the arm architecture -> under het juiste woord?
+% in section 6.2 duidelijker het arm build proces beschrijven
+% packages duidelijker beschrijven hoe ze gebruikt worden en wat ze inhouden
+% porting the anonymous tunnels to Android korter of weg
+% duidelijker het verschil aangeven tussen GNU en ARM compiler
+% creep in anders verwoorden
+% letten op de tijden in 6.4.2
+% link bij automake / Unix
+% graphical user interface definieren
+% conclusion - we hebben niet alle goals bereikt
+% evaluatie in plaats van conclusie aan het einde van elke sprint?
 \chapter{Scrum iteration 1 - creating a basic application}
 \label{cpt:iteration1}
 	In this chapter we describe our first sprint, starting in week 4.3 (5$^{th}$ of May) and ending in week 4.4 (16$^{th}$ of May).
@@ -8,7 +19,7 @@
 		\begin{enumerate}
 			\item Get python code working on Android. Evaluate and set up Python for Android (must have feature because this is the basis of our whole project).
 			\item Get all packages that are needed to run the anonymous tunnels working on Android (should have, we should have most packages working but if there are some package that do not work yet, it is not that bad).
-			\item Implement a basic GUI to test with. This GUI should be created with Kivy (could have, we can use logcat if we don not have a GUI available).
+			\item Implement a basic GUI to test with. This GUI should be created with Kivy (could have, we can use logcat if we do not not have a GUI available).
 		\end{enumerate}
 	
 	\section{Python for Android}
@@ -35,7 +46,7 @@
 			PyCrypto is a Python library which implements certain cryptography functions used by the tribler\_core\_minimal package. PyCrypto itself depends on functionality of the OpenSSL package.
 		
 			\item Boost\\
-			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile Libboost with Python bindings enabled so we can invoke the library from Python code.
+			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile the Boost library with Python bindings enabled so we can invoke the library from Python code.
 		
 			\item netifaces\\
 			netifaces allows to easily get the address(es) of the machine's network interfaces from Python. It is therefore dependent on Python and used by the Dispersy package.
@@ -63,7 +74,7 @@
 	\section{Porting the anonymous tunnels to Android}
 		One of our first challenges was to port the code that setup the anonymous communication to the Android device, using Python for Android. We started by inspecting the current code from pull request 525 and dived into the dependencies this code has with the Tribler core and Dispersy. We decided to create three packages: one package with the Dispersy code, one package with the files we needed from the Tribler core and one package containing the anonymous tunnels code.
 		
-		After we created these packages, we had to find out which other packages we needed to run everything. We did this, by putting many imports in our main.py file which is being run on the device. Each test run, we looked at the error which was being thrown. Most of the time, this was an import error, indicating we missed some code from other packages. These issues were very easy to fix. We used various packages that The Global Square has ported such as M2Crypto and netifaces.
+		After we created these packages, we had to find out which other packages we needed to run everything. We did this, by putting many imports in our main.py file which is being run on the device. Each test run, we looked at the error which was being thrown. Most of the time, this was an import error, indicating we missed some code from other packages. We used various packages that The Global Square has ported such as M2Crypto and netifaces.
 		
 		Import errors were not the only issues we ran into: we had some problems with the netifaces package. Since this package is copied into the final APK file as a Python egg, it will be extracted on the device. The default location of this extraction is not writable by the Python process. This means we had to find another writable directory on the device. We decided to extract the files to the cache directory of the application which is writable. This was accomplished by adjusting the PYTHON\_EGG\_CACHE environment variable in Python.
 		
@@ -99,7 +110,7 @@
 		\subsection{Boost Jam}
 		Boost jam is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
 		
-		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. This file contains particular compiler flags and instructions for the android ARM gnu compiler. The resulting .so or .a files are compatible with the android device and work.
+		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the android device and work.
 		
 		Compiling libtorrent using this method is far more difficult. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because Android's ARM compiler and libraries differ from the normal GNU compiler and libraries. After modifying the source code, the build still fails. Linker errors start to creep in when you try to compile the python-bindings. The standard Unix libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the python-binding compilation. Due to the complexity of boost's jam build environment we decided to try using automake.
 		
@@ -137,5 +148,5 @@ export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		
 		As Rolf has made a start with getting libtorrent to work and is already deep in the compiler flags etc. we decided that Rolf continues to work on libtorrent while the other two members of the group continue working on the GUI and anontunnels.
 		
-		We have talked with Jaap, a member of the Tribler team. He told us that in his 20 weeks of work, he never managed to get libtorrent to compile for Android.
+		We have talked with Jaap, a member of the Tribler team. He told us that in his 20 weeks of work, he never managed to get the newest libtorrent to compile for Android.
 		Currently he runs an old and modified libtorrent version. Since we managed to get in contact with Steeve, who got the latest version of libtorrent working with Go bindings on Android, we remain hopeful. He gave us advise on compiling libtorrent on Android, possibly with Python bindings. We have set the libtorrent package as a separate goal for the next sprint.

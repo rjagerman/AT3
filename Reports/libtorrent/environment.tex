@@ -3,7 +3,7 @@
 	\begin{lstlisting}
 sudo apt-get install ia32-libs
 	\end{lstlisting}
-	This should install the required 32-bit libraries needed for the cross compilation. The next step is to install Python for Android because we need the Python library from it. We cannot use the Python distribution the system is using because that is compiled for an incompatible architecture. The Python for Android framework comes with a distribute script that creates a distribution with the supplied libraries. Executing the following commands from the Python for Android folder should build the Python distribution that will eventually run on the device.
+	This should install the required 32-bit libraries needed for the cross-compilation. The next step is to install Python for Android because we need the Python library from it. We cannot use the Python distribution the system is using because that is compiled for an incompatible architecture. The Python for Android framework comes with a distribute script that creates a distribution with the supplied libraries. Executing the following commands from the Python for Android folder should build the Python distribution that will eventually run on the device.
 	\begin{lstlisting}
 export ANDROIDSDK='<path to your SDK folder>'
 export ANDROIDNDK='<path to your NDK folder>'

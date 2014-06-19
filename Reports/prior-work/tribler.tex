@@ -19,7 +19,7 @@
 	
 	\subsection{Anonymous tunnels}
 		\label{sec:anonymoustunnels}
-			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request\footnote{http://oss-watch.ac.uk/resources/pullrequest} 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achieved by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
+			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request\footnote{http://oss-watch.ac.uk/resources/pullrequest} 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achieved by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Three-hop means that data travels over three nodes before it reaches the destination, to add anonymity. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
 			
 			The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
 			

@@ -24,7 +24,16 @@ Our focus within this question is on anonymous communication. We want to get Tri
 \item We must be able to successfully download a file over the anonymous tunnels using the ported code.
 \end{enumerate}
 
-\section{Motivation}
+	\section{Motivation}
 	\label{sec:motivation}
 		In this section we will motivate the research question. Worldwide the amount of smartphones is growing fast. Android had a share of 81\% in the third quarter of 2013\cite{forbesandroidmarket}. As stated in the introduction, there are more than one billion active mobile users. This means Tribler can reach a huge audience by going Android. Moreover, this application can scale by using Dispersy, where Tor is restricted to 1.2 million nodes \cite{mclachlan2009scalable}. If mobile devices would start to serve as relay nodes, Tribler is ready for it.
 		
+	\section{Tribler Play}
+		During our thesis, another bachelor thesis group is working on an application that is closely related to our application. This application is called Tribler Play and more information about the project can be found on the GitHub repository\footnote{https://github.com/wtud/tsap}. This application allows searching for torrent files using the decentralized Dispersy network. Media files can be streamed using the torrent protocol and the built-in VLC for Android player\footnote{http://www.videolan.org/vlc/download-android.html}.
+		
+		To create the ultimate anonymous experience, our two applications could be merged at the end of the project. This final application could make anonymous streaming of torrent files on the Android smartphone possible.
+		
+	\section{Android}
+		In our preceding research question, we specifically want to research the possibility of such an application on Android. Android is one of the most popular mobile operating systems available and shipped in many different phones and tablets. The reason why we are choosing for Android, is because the platform is open source: the possibilities on the Android platform are bigger and Android is less restricted than closed source systems such as iOS\footnote{http://www.apple.com/ios/}.
+		
+		Writing application for Android can be done in either native C or Java. Google provides the Android SDK which contains the necessary tools to compile and build Android application packages (APKs). Several popular Integrated Development Environments (IDEs) are available such as Eclipse and Android Studio which should make the development process easier. An IDE allows developers to have a clear overview of the code and dependencies. However, it is also possible to build applications from the command line.

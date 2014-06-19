@@ -44,7 +44,7 @@
 			PyCrypto is a Python library which implements certain cryptography functions used by the tribler\_core\_minimal package. PyCrypto itself depends on functionality of the OpenSSL package.
 		
 			\item Boost\footnote{http://www.boost.org/}\\
-			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile the Boost library with Python bindings enabled so we can invoke the library from Python code.
+			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the Boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile the Boost library with Python bindings enabled so we can invoke the library from Python code.
 		
 			\item netifaces\\
 			netifaces allows to easily get the address(es) of the machine's network interfaces from Python. It is therefore dependent on Python and used by the Dispersy package.
@@ -81,12 +81,12 @@
 	\section{Attempt to compile Libtorrent for Android}
 		To get libtorrent working on Android there are several big obstacles:
 		\begin{itemize}
-			\item Compiling boost for the ARM architecture
+			\item Compiling Boost for the ARM architecture
 			\item Compiling libtorrent for the ARM architecture
 			\item Compiling libtorrent Python bindings for the ARM architecture
 		\end{itemize}
 		
-		The official documentation of libtorrent states multiple ways to build libtorrent. The first is using boost's build system \emph{Jam}. The second is using \emph{automake}. However, before we can compile the libtorrent source code with either of these methods, several modifications had to be applied.
+		The official documentation of libtorrent states multiple ways to build libtorrent. The first is using Boost's build system \emph{Jam}. The second is using \emph{automake}. However, before we can compile the libtorrent source code with either of these methods, several modifications had to be applied.
 		
 		\subsection{Source code modifications}
 				

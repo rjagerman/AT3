@@ -6,7 +6,7 @@
 --enable-static --disable-shared --enable-debug --enable-logging \
 --enable-python-binding
 	\end{lstlisting}
-	This command configures the makefiles and configuration scripts. We specify that we are using our Android host and we tell the script where boost can be found. We also specify that we are creating a static library and not a shared library. Debug symbols and logging are turned on and we pass the enable-python-binding flag to the script so we can use the libtorrent library in Python. We also need to set compiler flags again so Boost is not using the spinlock mechanics.
+	This command configures the makefiles and configuration scripts. We specify that we are using our Android host and we tell the script where Boost can be found. We also specify that we are creating a static library and not a shared library. Debug symbols and logging are turned on and we pass the enable-python-binding flag to the script so we can use the libtorrent library in Python. We also need to set compiler flags again so Boost is not using the spinlock mechanics.
 	\begin{lstlisting}
 export CFLAGS="-g -DBOOST_SP_USE_PTHREADS -DBOOST_AC_USE_PTHREADS"
 export CXXFLAGS=$CLFAGS

@@ -2,8 +2,17 @@
 \label{sec:cpu-usage}
 	The anontunnels create a Tribler session, run multiple cryptographic functions and are relaying and downloading data. Each of these operations require CPU utilization. As mobile devices often have less resources than computers, we have to make sure that the CPU can handle the required operations.
 	
+	% FEEDBACK
+	% Process CPU usage erbij zetten
+	% Duidelijk uitleggen wat de grafiek is
+	% Aanduidingen wanneer wat gebeurt (wanneer start tribler/dispersy? wanneer de app? etc)
+	 % Alle grafieken hiervoor nagaan
+	 % Hoe downloaden? Via libtorrent? Tribler?
+	 % Verklaar pieken en dalen in de grafieken! Of "admit defeat" en dat we het niet kunnen verklaren.
+	 % 1 duidelijk punt maken (je conclusie) met minder grafiekjes, misschien samenvoegen in 1 grafiek.
+	 % 
 	\subsection{CPU usage when idle}
-		We first measured the CPU usage when the application is idle. The CPU usage is shown in figure \ref{fig:cpu_idle_graph}. The first characterize we can see is the peak after about 20 seconds. This is the startup of a Tribler session and as we can see, it is quite CPU heavy. When starting up Tribler, we initialize the database, start Dispersy and load the so called proxy community. Starting up Tribler does not take long (it takes about one or two seconds) and after the startup, the average CPU usage is about 16\%. We see small peaks when a the anontunnels attempt to make connection to an existing circuit or tries to create a new one.
+		We first measured the CPU usage when the application is idle. The CPU usage is shown in figure \ref{fig:cpu_idle_graph}. The first characterize we can see is the peak after about 23 seconds. This is the startup of a Tribler session and as we can see, it is quite CPU heavy. When starting up Tribler, we initialize the database, start Dispersy and load the so called proxy community. Starting up Tribler does not take long (it takes about one or two seconds) and after the startup, the average CPU usage is about 16\%. We see small peaks when a the anontunnels attempt to make connection to an existing circuit or tries to create a new one.
 	
 		\begin{figure*}[!htb]
 			\centering

@@ -11,7 +11,7 @@
 	An experimental version of Tribler is currently available that includes a Python implementation of a Tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location.
 	
 	\subsection{Downloading files}
-		Tribler uses the torrent protocol\footnote{http://www.bittorrent.org/beps/bep\_0003.html} for downloading files.Torrent files contain metadata about the files that will be downloaded. The torrent protocol is peer-to-peer and this means that an user downloads from multiple seeders. Information about possible seeders is maintained by a tracker that can be queried about the available seeders. Tribler is using the libtorrent library as implementation of the torrent protocol. This library is licensed as open source software and we are allowed to use or modify it.
+		Tribler uses the torrent protocol\footnote{http://www.bittorrent.org/beps/bep\_0003.html} for downloading files. Torrent files contain metadata about the files that will be downloaded. The torrent protocol is peer-to-peer and this means that a user downloads from multiple seeders. Information about possible seeders is maintained by a tracker that can be queried about the available seeders. Tribler is using the libtorrent library as an implementation of the torrent protocol. This library is licensed as open source software and we are allowed to use or modify it.
 		
 		Torrent files can be found using the graphical user interface (GUI) of Tribler. Users enters their search query in a search bar and Tribler will return the results matching the search criteria. A family filter has been added to Tribler to filter out adult content. The underlying search is done using Dispersy which will be described in Section \ref{sec:dispersy}.
 	
@@ -23,7 +23,7 @@
 			
 			\begin{itemize} 
 				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in Subsection \ref{sec:security}, is used for the Diffie-Hellman protocol.
-				\item The experimental code is using the Socks5\footnote{http://www.ietf.org/rfc/rfc1928.txt} protocol for communication with other nodes (see figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
+				\item The experimental code is using the Socks5\footnote{http://www.ietf.org/rfc/rfc1928.txt} protocol for communication with other nodes (see Figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
 				\item Dispersy is used as synchronization system. 
 				\item A circuit can be in four states: ready, extending, to be extended or broken.
 				\item There are nine different messages that can be send amongst nodes.

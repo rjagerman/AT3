@@ -20,13 +20,20 @@
 			
 			\begin{itemize} 
 				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in the next section, is used for the Diffie-Hellman protocol.
-				\item The experimental code is using the Socks5 protocol for communication with other nodes. This code has been written by the Tribler team.
+				\item The experimental code is using the Socks5 protocol for communication with other nodes (see figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
 				\item Dispersy is used as a cache system to keep track of the outstanding PING and EXTEND requests and of candidates used in CREATE and CREATED requests.
 				\item A circuit can be in four states: ready, extending, to be extended or broken.
 				\item There are nine different messages that can be send amongst nodes: create, created, extend, extended, data, ping, pong, puncture and stats.
 			\end{itemize}
 			
 			In order to test the anonymous connections and the download speed, a special anonymous tab has been built into Tribler. Clicking on this tab brings up a graph of the current anonymous network as a graph. It also logs the circuit events such as the extend or creation of a circuit. When enough anonymous proxies are online, a 50 MB test download file should start to download.
+			
+			\begin{figure*}[!htb]
+				\centering
+				\includegraphics[width=\textwidth]{graphics/onion_encryption_decryption_socks5.png}
+				\caption{The onion encryption and decryption used by the anontunnels. Taken from https://github.com/Tribler/tribler/wiki/Anonymous-Downloading-and-Streaming-specifications}
+				\label{fig:onion_encryption_decryption_socks5}
+			\end{figure*}
 
 	\subsection{M2Crypto}
 		Tribler makes use of cryptographic functions to encrypt data and make their application secure. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the Internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.

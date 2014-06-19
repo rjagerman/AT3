@@ -67,7 +67,7 @@
 		\begin{enumerate}
 			\item First it selects a node from its candidate list.
 			\item It then selects a range of bundles to synchronize.
-			\item The node creates a Bloomfilter \footnote{"A Bloom filter is a space-efficient probabilistic data structure, conceived by Burton Howard Bloom in 1970, that is used to test whether an element is a member of a set.", cited from http://en.wikipedia.org/wiki/Bloom\_filter} by hashing the selected bundles.
+			\item The node creates a Bloomfilter \footnote{"A Bloom filter is a space-efficient probabilistic data structure, conceived by Burton Howard Bloom in 1970, that is used to test whether an element is a member of a set.", quoted from http://en.wikipedia.org/wiki/Bloom\_filter} by hashing the selected bundles.
 			\item Then the node sends the created Bloomfilter to the selected node.
 			\item Finally, it pauses for a fixed interval to go back to step 1.
 		\end{enumerate}

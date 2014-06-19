@@ -53,7 +53,7 @@
 			Zope is a open source web framework for object-oriented web application servers. The Twisted package makes use of this framework for asynchronous networking.
 		
 			\item Twisted\footnote{https://twistedmatrix.com/trac/}\\
-			Twisted is an extensible framework for asynchronous networking written in Python. The framework has special focus on event-based network programming and multi-protocol integration. It has dependencies on the Zope framework.
+			Twisted is an extensible framework for asynchronous networking written in Python. The framework has special focus on event-based network programming and multi-protocol integration. It has dependencies on the Zope framework. In the Tribler software, Twisted is used for callbacks of network events.
 		
 			\item anontunnels\\
 			This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler GitHub.
@@ -61,11 +61,11 @@
 			We made some minor changes to this code: the Main.py file has been removed from the package and the class definition of AnonTunnel has been moved to its own file (androidinterface.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
 			
 			\item Tribler\\
-			This is a package made from the Tribler main branch\footnote{https://github.com/Tribler/tribler}. Some files are modified to make them compatible for Android.
+			This package has been created from the Tribler main branch\footnote{https://github.com/Tribler/tribler}. Some files are modified to make the library run without problems for Android.
 			
 			\item Dispersy\\
 			Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we have created a Python package with all the code thats needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.\\
-			The files we have bundled are from pull request 525 on the Tribler GitHub. We did not use the files from the official Dispersy GitHub because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
+			The files we have bundled are from pull request 525 on the Tribler GitHub. We did not use the files from the official Dispersy GitHub because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes in the pull request have been made to the Dispersy core to add support for the anonymous tunnels.
 		
 		\end{itemize}
 	
@@ -74,7 +74,7 @@
 		
 		After we created these packages, we had to find out which other packages we needed to run everything. We did this, by putting many imports in our main.py file which is being run on the device. Each test run, we looked at the error which was being thrown. Most of the time, this was an import error, indicating we missed some code from other packages. We used various packages that The Global Square has ported such as M2Crypto and netifaces.
 		
-		Import errors were not the only issues we ran into: we had some problems with the netifaces package. Since this package is copied into the final APK file as a Python egg, it will be extracted on the device. The default location of this extraction is not writable by the Python process. This means we had to find another writable directory on the device. We decided to extract the files to the cache directory of the application which is writable. This was accomplished by adjusting the PYTHON\_EGG\_CACHE environment variable in Python.
+		Import errors were not the only issues we ran into: we had some problems with the netifaces package. Since this package is copied into the final APK file as a Python egg\footnote{http://mrtopf.de/blog/en/a-small-introduction-to-python-eggs/}, it will be extracted on the device.
 		
 		We also found out that some files were missing and not copied into the APK. The curves.ec file was missing and is needed by the cryptography classes found in the Tribler core. We also needed the configuration file of the logger, logger.conf. To make sure these files are part of the application, we copy them into the final application in our build script.
 		
@@ -106,16 +106,16 @@
 		\end{itemize}
 		
 		\subsection{Boost Jam}
-		Boost jam is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
+		Boost jam\footnote{http://www.boost.org/boost-build2/doc/html/bbv2/jam.html} is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
 		
-		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the android device and work.
+		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the Android device.
 		
-		Compiling libtorrent using this method is far more difficult. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because Android's ARM compiler and libraries differ from the normal GNU compiler and libraries. After modifying the source code, the build still fails. Linker errors start to creep in when you try to compile the python-bindings. The standard Unix libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the python-binding compilation. Due to the complexity of boost's jam build environment we decided to try using automake.
+		Compiling libtorrent using this method is more advanced. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because the ARM compiler and libraries differ from the normal GNU\footnote{http://gcc.gnu.org} compiler. After modifying the source code, the build still fails. Linker errors are occurring when you try to compile the Python bindings. The standard Unix\footnote{http://www.unix.org} libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the Python bindings compilation. Due to the complexity of boost jam build environment, we decided to try using automake.
 		
 		\subsection{Automake}
 		Automake is a standard set of tools for Unix-based systems that makes it easy to configure and compile software on a wide variety of systems. The tools are designed such that it is possible to configure the build process using a simple script.
 		
-		Following libtorrent's official documentation we first run \texttt{bootstrap.sh}. Now, in order to configure and compile we will have to set up an environment in which it will use the Android GNU ARM compiler. To do this, we set the following environment variables:
+		Following libtorrent's official documentation\footnote{http://libtorrent.org/manual.html} we first run \texttt{bootstrap.sh}. Now, in order to configure and compile we will have to set up an environment in which it will use the Android GNU ARM compiler. To do this, we set the following environment variables:
 		
 		\begin{lstlisting}
 export SYSROOT=$ANDROIDNDK/platforms/android-14/arch-arm
@@ -128,23 +128,21 @@ export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		
 		Note that we have set up a custom NDK toolchain under /usr/local/gcc-4.8.0-arm-linux-androideabi. 
 		
-		Compiling libtorrent under this setup works, but the python-bindings still gives linker errors. These are the same as the boost jam errors. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
+		Compiling libtorrent with this setup works, but the Python bindings still give linker errors. These are the same as errors Boost jam is using. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
 		
 		We will move several items involving libtorrent to the next scrum iterations:
 		\begin{itemize}
-		\item Compiling python-bindings for libtorrent
-		\item Creating a proof-of-concept application to test if libtorrent works natively and with python-bindings.
+		\item Compiling Python bindings for libtorrent
+		\item Creating a proof-of-concept application to test if libtorrent works natively and with Python bindings.
 		\end{itemize}
 	
 	\section{Creating a GUI with Kivy}
-		The first version of the anonymous tunnels used the standard output for printing information about what is going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That is why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what is happening.
+		The first version of the anonymous tunnels used the standard output for printing information about what is going on. This required the phone to be connected to a computer so we can examine the log with the adb logcat tool. That is why we decided to create a graphical user interface for our application. The purpose of this application is to provide a button to start the tunneling and a log to see on the screen what the status of the application is.
 	
 		Creating a GUI was a small step for us: we already included the Kivy package in our Python for Android distribution. Since Kivy is a GUI framework for desktop (but has been ported to Python for Android), we first tried to create a desktop interface. Creating interfaces in Kivy is quite straightforward and is related to creating user interfaces in Android: you specify your layout elements in Kivy files which have the kv extension. In the main Python file, you load this interface file and you can access properties of the UI elements.
 	
-	\section{Conclusion}
-		Our first sprint was a good start. We have managed to complete all the goals -- with the exception of one package -- set for this sprint, and could even start with some tasks we had set for the next sprint.
-		
-		As Rolf has made a start with getting libtorrent to work and is already deep in the compiler flags etc. we decided that Rolf continues to work on libtorrent while the other two members of the group continue working on the GUI and anontunnels.
+	\section{Sprint evaluation}
+		In this sprint, we have managed to complete almost all the goals -- with the exception of one creating one package package -- set for this sprint, and could even start with some tasks we had set for the next sprint.
 		
 		We have talked with Jaap, a member of the Tribler team. He told us that in his 20 weeks of work, he never managed to get the newest libtorrent to compile for Android.
 		Currently he runs an old and modified libtorrent version. Since we managed to get in contact with Steeve, who got the latest version of libtorrent working with Go bindings on Android, we remain hopeful. He gave us advise on compiling libtorrent on Android, possibly with Python bindings. We have set the libtorrent package as a separate goal for the next sprint.

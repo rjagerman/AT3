@@ -3,9 +3,9 @@
 % Periodically the application -> application wil geen informatie!!
 \chapter{Software architecture}
 \label{cpt:softwarearchitecture}
-Much of our work is focused on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a software product which is traditionally done for the bachelor project. Instead, this bachelor project is more research-oriented. For testing purposes we have developed an Android application called AT3 a throw-away research prototype that we use to test the ported libraries. Additionally this software allows us to perform experiments such as bandwidth or CPU measurements.
+Much of our work is focused on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a typical software product. Instead, this bachelor project is more research-oriented. That means that we try to research our problem definition described in Chapter \ref{cpt:problemdefinition}, with the help of a prototype application. We have developed an Android application called AT3, a research prototype that we use to test Tribler and especially the anontunnels on Android. Additionally, this software allows us to perform experiments such as bandwidth or CPU measurements.
 
-The general overview of the application is given in figure \ref{fig:overview}. The AT3 application is a very simple application used to test Tribler and the anontunnels on Android.
+The general overview of the application is given in Figure \ref{fig:overview}. The AT3 application is a very simple application used to test Tribler and the anontunnels on Android.
 
 The main functionality is contained within the Tribler package, where we have created an extra \texttt{androidinterface.py} script. This script serves as an interface between the AT3 application and Tribler. It is used by the application's android service to start the anontunnels, download torrents using Tribler and obtain status information about the torrent files that are being downloaded. 
 
@@ -16,13 +16,13 @@ The main functionality is contained within the Tribler package, where we have cr
 	\label{fig:overview}
 \end{figure}
 
-Kivy is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that runs Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore, this framework offers the most seamless integration with existing code. Kivy handles everything related to the user-interface. It hides away all the complexity of handling user input and displaying output.
+Kivy\footnote{http://kivy.org/} is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that runs Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore, this framework offers the most seamless integration with existing code. Kivy handles everything related to the user-interface. It hides away all the complexity of handling user input and displaying output.
 
 Tribler handles everything related to managing torrent downloads. The anontunnels, which are a part of Tribler, handle the anonymous tunnels over which we will download. These two components form the core part of our application.
 
 Tribler is dependent on several python modules. You can find a package dependency graph for Tribler in appendix \ref{chp:dependency-tree}. One of the most important dependencies here is libtorrent, which is the library that handles torrent downloads.
 
-The AT3 application's main functionality is running the anontunnels and starting a test download. To do this, the application contains a start button which starts the anonymous tunnels and triggers a test download of 50 Megabyte. The sequence of this process is displayed in figure \ref{fig:sequencestart}.
+The AT3 application's main functionality is running the anontunnels and starting a test download. To do this, the application contains a start button which starts the anonymous tunnels and triggers a test download of 50 Megabyte. The sequence of this process is displayed in Figure \ref{fig:sequencestart}.
 
 \begin{figure}[!h]
 	\centering
@@ -31,7 +31,7 @@ The AT3 application's main functionality is running the anontunnels and starting
 	\label{fig:sequencestart}
 \end{figure}
 
-Periodically the application will want to obtain information about the status of the test download. Using a timer the application will request this information every second from the Android interface. Because the AT3 application and the android service run as different processes, the communication between them is facilitated by the Kivy OSC library. The sequence diagram of this process is displayed in figure \ref{fig:sequenceinfo}.
+Periodically, we want to obtain information about the status of the test download. Using a timer, the application will request this information every second from the Android interface. Because the AT3 application and the Android service run as different processes, the communication between them is facilitated by the Kivy OSC library. The sequence diagram of this process is displayed in Figure \ref{fig:sequenceinfo}.
 
 \begin{figure}[!t]
 	\centering

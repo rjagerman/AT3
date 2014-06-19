@@ -1,11 +1,12 @@
 \chapter{Problem Definition}
 \label{cpt:problemdefinition}
 % uitleggen wat streaming, downloading/anonymous is
+% linkjes bij de bullets maken
 
 In this bachelor project we want to answer the following question:
 
 \begin{quote}
-\emph{Can we anonymously download and stream videos on Android?}
+\emph{Can we anonymously download and stream videos on Android\footnote{http://www.android.com/about/}?}
 \end{quote}
 
 Our focus within this question is on anonymous communication. We want to get Tribler, anonymous communication and all necessary dependencies working on Android smartphones. For the project to succeed, the following criteria must be met:
@@ -14,11 +15,11 @@ Our focus within this question is on anonymous communication. We want to get Tri
 \item We must compile the following necessary dependencies to run on Android devices using the ARM architecture:
 \begin{itemize}
 \item libtorrent
-\item OpenSSL
-\item M2Crypto
-\item PyCrypto
-\item APSW
-\item netifaces
+\item OpenSSL\footnote{http://www.openssl.org/}
+\item M2Crypto\footnote{https://pypi.python.org/pypi/M2Crypto}
+\item PyCrypto\footnote{https://www.dlitz.net/software/pycrypto/}
+\item APSW\footnote{https://github.com/rogerbinns/apsw}
+\item netifaces\footnote{https://pypi.python.org/pypi/netifaces}
 \end{itemize}
 \item We must be able to successfully download a file over the anonymous tunnels using the ported code.
 \end{enumerate}

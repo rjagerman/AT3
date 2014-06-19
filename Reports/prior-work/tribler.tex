@@ -1,13 +1,6 @@
 % https://github.com/tribler/Tribler/wiki
 % https://github.com/Tribler/tribler/wiki/Anonymous-Downloading-and-Streaming-specifications
 % Screenshots voor tribler anonymous tunnels
-% make secure communication possible anders
-% uitleggen waarom we anonimiteit willen
-% uitleggen wat een hash is, diffie hellman etc, linkje erbij!
-% uitleggen wat data bundle synchronization is + bloomfilter uitleggen
-% after benchmarking Cassandra... -> moet linkje bij, they vervangen door researchers
-% uitleggen wat een pull request is
-% uitleggen wat een hop is, linkje bij socks5
 
 \section{Tribler}
 	\label{scc:tribler}
@@ -24,16 +17,16 @@
 	
 	\subsection{Anonymous tunnels}
 		\label{sec:anonymoustunnels}
-			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achieved by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
+			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request\footnote{http://oss-watch.ac.uk/resources/pullrequest} 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achieved by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Three-hop means that data travels over three nodes before it reaches the destination, to add anonymity. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
 			
 			The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
 			
 			\begin{itemize} 
-				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in the next section, is used for the Diffie-Hellman protocol.
-				\item The experimental code is using the Socks5 protocol for communication with other nodes (see figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
-				\item Dispersy is used as a cache system to keep track of the outstanding PING and EXTEND requests and of candidates used in CREATE and CREATED requests.
+				\item The circuit setup is using the Diffie-Hellman key exchange protocol to establish a secure connection. The M2Crypto library which is explained in Subsection \ref{sec:m2crypto}, is used for the Diffie-Hellman protocol.
+				\item The experimental code is using the Socks5\footnote{http://www.ietf.org/rfc/rfc1928.txt} protocol for communication with other nodes (see figure \ref{fig:onion_encryption_decryption_socks5}). This code has been written by the Tribler team.
+				\item Dispersy is used as synchronization system. 
 				\item A circuit can be in four states: ready, extending, to be extended or broken.
-				\item There are nine different messages that can be send amongst nodes: create, created, extend, extended, data, ping, pong, puncture and stats.
+				\item There are nine different messages that can be send amongst nodes.
 			\end{itemize}
 			
 			In order to test the anonymous connections and the download speed, a special anonymous tab has been built into Tribler. Clicking on this tab brings up a graph of the current anonymous network as a graph. It also logs the circuit events such as the extend or creation of a circuit. When enough anonymous proxies are online, a 50 MB test download file should start to download.
@@ -54,7 +47,7 @@
 		
 	\subsection{Dispersy}
 	\label{sec:dispersy}
-		Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization used by Tribler. The system is designed in such a way that it is capable of running in a challenging network environment. Such an environment is often characterized by:
+		Tribler makes use of Dispersy. As elaborated by Zeilemaker et al; Dispersy \cite{zeilemaker2013dispersy} is a fully decentralized system for data bundle synchronization. This means that data is exchanged between peers to make sure they are up-to-date with the same information. The system is designed in such a way that it is capable of running in a challenging network environment. Such an environment is often characterized by:
 		\begin{itemize}
 			\item Nodes randomly joining and leaving.
 			\item Delays in the network.
@@ -62,14 +55,14 @@
 			\item Nodes often being behind routers with Network Address Translating (NAT) firewalls.
 		\end{itemize}
 		
-		All communication done by Dispersy uses UDP. Because up to 64\% of the internet is behind a NAT, they can use UDP firewall-NAT puncturing mechanisms\cite{zeilemaker2013dispersy}.
+		All communication done by Dispersy uses UDP. Because up to 64\% of the Internet is behind a NAT, they can use UDP NAT-firewall puncturing mechanisms\cite{zeilemaker2013dispersy}.
 		
 		In Dispersy, each node has a candidate list. A candidate list is a list of active connections within the node's overlay. A Dispersy node synchronizes in five steps:
 		
 		\begin{enumerate}
 			\item First it selects a node from its candidate list.
 			\item It then selects a range of bundles to synchronize.
-			\item The node creates a Bloomfilter by hashing the selected bundles.
+			\item The node creates a Bloomfilter \footnote{"A Bloom filter is a space-efficient probabilistic data structure, conceived by Burton Howard Bloom in 1970, that is used to test whether an element is a member of a set.", quoted from http://en.wikipedia.org/wiki/Bloom\_filter} by hashing the selected bundles.
 			\item Then the node sends the created Bloomfilter to the selected node.
 			\item Finally, it pauses for a fixed interval to go back to step 1.
 		\end{enumerate}
@@ -78,7 +71,7 @@
 		
 		A Bloomfilter uses a hash area consisting of \emph{N} bits, initially all set to zero. For each item that needs to be stored in the Bloomfilter, \emph{K} distinct addresses are generated using a hash of the item. The bits addressed in the Bloomfilter are then set to one. To check if an item is part of a Bloomfilter, one only has to generate the hash of that item and check if the addresses that are generated by the hash are one in the Bloomfilter.
 		
-		After benchmarking Dispersy against Cassandra (the database system used by Facebook), they came to the conclusion that Dispersy performs better than Cassandra. By using Bloomfilters, Dispersy can scale to over 100,000 bundles to synchronize.
+		After benchmarking Dispersy against Cassandra\cite{zeilemaker2013dispersy} (the database system used by Facebook), Zeilemaker et al. came to the conclusion that Dispersy performs better than Cassandra. By using Bloomfilters, Dispersy can scale to over 100,000 bundles to synchronize.
 	
 		\begin{figure*}[!t]
 			\centering

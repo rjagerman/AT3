@@ -11,7 +11,7 @@
 % evaluatie in plaats van conclusie aan het einde van elke sprint?
 \chapter{Scrum iteration 1 - creating a basic application}
 \label{cpt:iteration1}
-	In this chapter we describe our first sprint, starting in week 4.3 (5$^{th}$ of May) and ending in week 4.4 (16$^{th}$ of May).
+	In this chapter we describe our first sprint that lasted two weeks.
 
 	\section{Goals}
 		This sprint, we had the following goals:
@@ -19,13 +19,13 @@
 		\begin{enumerate}
 			\item Get python code working on Android. Evaluate and set up Python for Android (must have feature because this is the basis of our whole project).
 			\item Get all packages that are needed to run the anonymous tunnels working on Android (should have, we should have most packages working but if there are some package that do not work yet, it is not that bad).
-			\item Implement a basic GUI to test with. This GUI should be created with Kivy (could have, we can use logcat if we do not not have a GUI available).
+			\item Implement a basic GUI to test with. This GUI should be created with Kivy (could have, we can use logcat if we do not have a GUI available).
 		\end{enumerate}
 	
 	\section{Python for Android}
 		The Python for Android framework allows developers to add existing Python packages by creating recipes (for more information about recipes, see Section \ref{sec:pythonforandroid}). As most of the packages were not available or were custom made, we had to build a lot of these recipes ourselves.
 	
-		Python for Android allows to build these packages under the ARM architecture so they will not compile for the desktop architecture which is not suitable for Android development. By simply using the \emph{push arm} and \emph{pop arm} commands in the recipe files this can be achieved. Because of this easy integration and the fact that Tribler and the code for the anonymous tunnels was written in Python, this is a good environment to develop our application.
+		Python for Android allows to build these packages for the ARM architecture so they will not compile for the desktop architecture. This desktop architecture is not suitable for Android development. By simply using the \emph{push arm} and \emph{pop arm} commands in the recipe files, compilation for the ARM architecture can be triggered.
 	
 		Below are the packages described we use in our application and in most cases had to create a recipe for. We describe the functionality of the package in our application and which dependencies this package has.
 	

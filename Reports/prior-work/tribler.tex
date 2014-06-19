@@ -1,20 +1,25 @@
 % https://github.com/tribler/Tribler/wiki
 % https://github.com/Tribler/tribler/wiki/Anonymous-Downloading-and-Streaming-specifications
 % Screenshots voor tribler anonymous tunnels
-
-% What is tribler niet als los sub hoofdstuk
+% make secure communication possible anders
+% uitleggen waarom we anonimiteit willen
+% uitleggen wat een hash is, diffie hellman etc, linkje erbij!
+% uitleggen wat data bundle synchronization is + bloomfilter uitleggen
+% after benchmarking Cassandra... -> moet linkje bij, they vervangen door researchers
+% uitleggen wat een pull request is
+% uitleggen wat een hop is, linkje bij socks5
 
 \section{Tribler}
 	\label{scc:tribler}
-	In this section an overview of Tribler and its components is presented. We describe the new version that uses anonymous tunnels in depth. Furthermore we look at what specific dependencies Tribler relies on.
+	In this section an overview of Tribler and its components is presented. We describe the new version that uses anonymous tunnels in depth. Furthermore, we look at what specific dependencies Tribler relies on.
 
 	Tribler is a fully decentralized peer-to-peer file sharing system developed by the Parallel and Distributed Systems group at Delft University of Technology. It has been in development for over nine years and has a very mature and well-established code base. It allows users to search for and share files in a fully decentralized way. This decentralized nature of Tribler has several advantages over existing file sharing systems. The lack of a centralized component makes it very scalable and practically impossible to bring down.
 		
-	An experimental version of Tribler is currently available that includes a Python implementation of a tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location. More details about these anontunnels can be found in section \ref{sec:anonymoustunnels}.
+	An experimental version of Tribler is currently available that includes a Python implementation of a Tor-like protocol. This enables users to share files anonymously and securely. By encrypting and routing traffic over a circuit of nodes, it ensures the communicating parties are oblivious of each other's virtual and physical location. More details about these anontunnels can be found in section \ref{sec:anonymoustunnels}.
 	
 	\subsection{Anonymous tunnels}
 		\label{sec:anonymoustunnels}
-			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achived by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
+			Recently, the research team of Tribler started to work on the implementation of anonymous downloads. Pull request 525 on the Tribler Github page \cite{pullrequest525} is an experimental build of Tribler with the implementation of anonymous communications. The anonymous communication is achieved by using a Tor-like protocol. This protocol has been implemented in Python and uses a three-hop circuit for anonymous communication. Note that Tribler does not use the Tor network, only a Tor-like protocol with UDP connections.
 			
 			The anonymous tunnels are implemented in the Python module \emph{Tribler.community.anontunnel}. Taking the code as reference, we now describe various details of the anonymous tunnels.
 			
@@ -36,7 +41,7 @@
 			\end{figure*}
 
 	\subsection{M2Crypto}
-		Tribler makes use of cryptographic functions to encrypt data and make their application secure. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the Internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
+		Tribler makes use of cryptographic functions to encrypt data and make secure communication possible. Security is a big issue in the world of peer-to-peer networks. Not only do we want anonymous downloads, we also want confidentiality and integrity of our data. Confidentiality means that unauthorized parties cannot see the exact content of the information. This could be achieved by encrypting the data. Integrity of the data means that the data is protected from being modified by other parties. Integrity can be achieved taking the hash of the data you receive and comparing it by taking the hash of the original message. If the hashes are not equal, the message has been modified. Confidentiality and integrity are important. When we are sending confidential data over the Internet, it would not be beneficial if everyone has access to the message and can read what is being send. Integrity can play a role when transferring money to another bank account: we do not want an adversary to temper with the amount of money that is being transferred.
 		
 		Some popular open source frameworks exists for these cryptographic tasks. A popular project is OpenSSL \cite{openssl}. OpenSSL implements the popular SSL and TLS protocols. These are cryptographic protocols that provides security when communicating over the internet. Besides that, OpenSSL provides libraries for various encryption and decryption protocols such as DES, RSA and RC4. OpenSSL also supports key exchange protocols such as Diffie-Hellman.
 		

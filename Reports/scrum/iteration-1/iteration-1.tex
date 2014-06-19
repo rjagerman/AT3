@@ -37,8 +37,8 @@
 			\item Boost\\
 			The Libtorrent library is used to download torrent files with the Tor protocol. To compile Libtorrent, the boost package is required. Boost is a huge C++ library which adds code for multithreading, regex, math and asynchronous operations. We have to compile Libboost with Python bindings enabled so we can invoke the library from Python code.
 		
-			\item Netifaces\\
-			Netifaces allows to easily get the address(es) of the machine's network interfaces from Python. It is therefore dependent on Python and used by the Dispersy package.
+			\item netifaces\\
+			netifaces allows to easily get the address(es) of the machine's network interfaces from Python. It is therefore dependent on Python and used by the Dispersy package.
 		
 			\item Zope\\
 			Zope is a open source web framework for object-oriented web application servers. The Twisted package makes use of this framework for asynchronous networking.
@@ -46,17 +46,17 @@
 			\item Twisted\\
 			Twisted is an extensible framework for asynchronous networking written in Python. The framework has special focus on event-based network programming and multi-protocol integration. It has dependencies on the Zope framework.
 		
-			\item Anontunnels\\
+			\item anontunnels\\
 			This package is the core of our application and contains the code needed for the anonymous tunnels. This package actually contains another package: the support for the Socks5 proxies. The files for this package come from pull request 525 on the Tribler GitHub.
 			
-			We made some minor changes to this code: the Main.py file has been removed from the package and the class definition of AnonTunnel has been moved to it’s own file (atunnel.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
+			We made some minor changes to this code: the Main.py file has been removed from the package and the class definition of AnonTunnel has been moved to its own file (androidinterface.py). We import this file in our main.py so we can use the AnonTunnel class. We also adjusted the master key in community.py so we have our own community to test communication between devices.
 			
 			\item Tribler\_core\_minimal\\
-			The anonymous tunnels are using some parts of the core of Tribler. These files have been bundled in the tribler\_core\_minimal package. We’ve looked closely to the various imports the code for the anonymous tunnels is using and when a script imports a script from the Tribler core, it is added to the tribler\_core\_minimal package. For example, this package contains the RawServer and the SocketHandler classes. It also contains the code needed for the cryptography such as support for elliptic curve cryptography and ELGamal.
+			The anonymous tunnels are using some parts of the core of Tribler. These files have been bundled in the tribler\_core\_minimal package. We have looked closely to the various imports the code for the anonymous tunnels is using and when a script imports a script from the Tribler core, it is added to the tribler\_core\_minimal package. For example, this package contains the RawServer and the SocketHandler classes. It also contains the code needed for the cryptography such as support for elliptic curve cryptography and ELGamal.
 			
 			\item Dispersy\\
-			Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we’ve created a Python package with all the code that’s needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.\\
-			The files we have bundled are from pull request 525 on the Tribler GitHub. We didn’t use the files from the official Dispersy GitHub because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
+			Since the code of the anonymous tunnels are using Dispersy for node discovery and data synchronization, we have created a Python package with all the code thats needed for Dispersy. This package does not depend on other custom packages we made and can be used standalone.\\
+			The files we have bundled are from pull request 525 on the Tribler GitHub. We did not use the files from the official Dispersy GitHub because this build was missing some classes we needed (for example, the decorator.py). Besides that, some changes have been made to the Dispersy core to add support for the anonymous tunnels.
 		
 		\end{itemize}
 	

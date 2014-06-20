@@ -15,11 +15,11 @@
 		\item Download the test file with 3 hops and 3 circuits.
 	\end{enumerate}
 	
-	CPU usage is measured with the psutil Python module\footnote{https://pypi.python.org/pypi/psutil}. During the tests we shut down all other applications running on the smartphone. This ensures that the CPU measurements are not impacted by other application's activities.
+	CPU usage is measured with the \emph{psutil} Python module\footnote{https://pypi.python.org/pypi/psutil}. During the tests we shut down all other applications running on the smartphone. This minimizes the impact other applications have on the CPU measurements.
 	
 	Bandwidth is measured using the download status obtained from Tribler. This provides us with information about the test file we are downloading. This includes current speed (in KB/s) and the current progress (in percentage) of the download.
 	
-	We run 10 stand alone anontunnels on a MacBook Pro 7.1 running Ubuntu 14.04. This computer is connected to the Internet over an ethernet cable with a speed of 100 Mb/s. 
+	We run 10 stand-alone anontunnels on a MacBook Pro 7.1 running Ubuntu 14.04. This computer is connected to the Internet over an ethernet cable with a speed of 100 Mb/s. 
 	
 	During our experiments we found that the download would not start when enabling cryptography. CPU usage during these attempts would stay at 100\%. This means that either the implementation of the cryptography is bad or the device's hardware is not powerful enough. For this reason we were forced to run the experiments with cryptography disabled.
 	

@@ -11,7 +11,7 @@ export ANDROIDNDKVER=r9d
 export ANDROIDAPI=14
 ./distribute.sh -m kivy
 	\end{lstlisting}
-	An additional step is required: copy the \emph{pyconfig.h} file to the Include folder in the build directory of hostpython. This file is required by the compilation process of the Python bindings.\\
+	An additional step is required: copy the \emph{pyconfig.h} file to the \emph{Include} folder in the build directory of \emph{pythoninstall/Python2.7.2}. This file is required by the compilation process of the Python bindings.\\
 	The next step is to install the custom toolchain we create from the Android NDK. Execute the following command. Your toolchain location can be anywhere on the computer but it is recommended to install it in a location where you can access it easily.
 	\begin{lstlisting}
 <path to your NDK folder>/build/tools/make-standalone-toolchain.sh \

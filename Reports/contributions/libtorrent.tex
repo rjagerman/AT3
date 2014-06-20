@@ -1,7 +1,4 @@
-% weglaten van de russische libtorrent
 \section{Libtorrent}
 	Our work was greatly dependent on one of the worlds most popular libraries: libtorrent. Since so much time and effort has gone into libtorrent  we decided to create a separate tutorial about the compilation process. This guide is available as an appendix. This means that other people can extend our work and use our building process to compile libtorrent for their own purposes. In the future, a recipe that performs the compilation process of libtorrent can be made.
 	
-	% label erbij
-	% weg of niet
-	When compiling libtorrent, we used the Boost library that provides advanced C++\footnote{http://www.cplusplus.com} features such as memory management and support for multi threading. libtorrent-rasterbar was used to create our libtorrent library we can use in Python for Android. During the project, we also tried a Russian version of libtorrent that a member of the Tribler group successfully used in his bachelor project\footnote{https://github.com/javto/Tribler-streaming}. This version is an older version of the official libtorrent.
+	When compiling libtorrent, we used the Boost library that provides advanced C++\footnote{http://www.cplusplus.com} features such as memory management and support for multi threading. libtorrent-rasterbar was used to create our libtorrent library we can use in Python for Android. We made use of the included Python bindings to invoke the libtorrent library in Python code.

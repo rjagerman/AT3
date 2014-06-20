@@ -1,10 +1,5 @@
-% under the arm architecture -> under het juiste woord?
-% in section 6.2 duidelijker het arm build proces beschrijven
-% packages duidelijker beschrijven hoe ze gebruikt worden en wat ze inhouden
-% porting the anonymous tunnels to Android korter of weg
 % duidelijker het verschil aangeven tussen GNU en ARM compiler
-% creep in anders verwoorden
-% letten op de tijden in 6.4.2
+% letten op de tijden in 5.4.2
 % link bij automake / Unix
 % graphical user interface definieren
 % conclusion - we hebben niet alle goals bereikt
@@ -108,7 +103,7 @@
 		\subsection{Boost Jam}
 		Boost jam\footnote{http://www.boost.org/boost-build2/doc/html/bbv2/jam.html} is a build environment created specifically for boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on boost, such as libtorrent.
 		
-		Running boost jam is pretty straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the Android device.
+		Running boost jam is straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} file. The resulting .so or .a files are compatible with the Android device.
 		
 		Compiling libtorrent using this method is more advanced. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because the ARM compiler and libraries differ from the normal GNU\footnote{http://gcc.gnu.org} compiler. After modifying the source code, the build still fails. Linker errors are occurring when you try to compile the Python bindings. The standard Unix\footnote{http://www.unix.org} libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the Python bindings compilation. Due to the complexity of boost jam build environment, we decided to try using automake.
 		

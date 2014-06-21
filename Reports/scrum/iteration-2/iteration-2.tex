@@ -14,7 +14,7 @@
 	
 	\section{Jenkins}
 		\label{sec:jenkins}
-		In this sprint we decided to make use of the continuous integration system called Jenkins\footnote{http://jenkins-ci.org}, which is already in use by the Tribler development team. Jenkins automatically runs specified tests when a build has been changed or a pull request comes in / has changed. This is a good addition to improve and maintain the (code) quality of our application.
+		In this sprint we decided to make use of the continuous integration system called Jenkins\footnote{\url{http://jenkins-ci.org}}, which is already in use by the Tribler development team. Jenkins automatically runs specified tests when a build has been changed or a pull request comes in / has changed. This is a good addition to improve and maintain the (code) quality of our application.
 		
 		Jenkins provides an environment to run tests in, which is perfect for our setup. Currently Jenkins executes the following steps:
 		
@@ -22,7 +22,7 @@
 			\item Jenkins cleans the environment when a build starts, so previous test runs do not influence the outcome of the test.
 			\item It then clones our repository and the Python for Android framework from GitHub.
 			\item If one of the tests fail, Jenkins will mark the build as failed. Otherwise the build succeeds.
-			\item Finally, once the tests are done, the Tribler IRC\footnote{http://tools.ietf.org/html/rfc1459.html} bot (an automated program that can insert message into an IRC chat group) reports the results of the test in our IRC chat group.
+			\item Finally, once the tests are done, the Tribler IRC\footnote{\url{http://tools.ietf.org/html/rfc1459.html}} bot (an automated program that can insert message into an IRC chat group) reports the results of the test in our IRC chat group.
 		\end{enumerate} 
 		
 		Because this is done for every change and pull request, we can closely monitor if changes have unexpected side effects. If they do, we can address them immediately to prevent the problem from spreading or growing more complex if the number of dependencies increase.
@@ -32,19 +32,19 @@
 		We have continued working on libtorrent in this sprint and have made major progress in getting it to work on Android devices. Using Steeve's help from last sprint we were able to get a basic version of libtorrent to compile and link for Android. In this sprint we wanted to test the compiled version and build Python bindings.
 		
 		\subsection{Testing libtorrent with a simple application}
-			We have built a simple test application with JNI\footnote{http://docs.oracle.com/javase/7/docs/technotes/guides/jni/} C++ bindings in order to test whether libtorrent actually works. This application does the minimal work required for downloading a torrent:
+			We have built a simple test application with JNI\footnote{\url{http://docs.oracle.com/javase/7/docs/technotes/guides/jni/}} C++ bindings in order to test whether libtorrent actually works. This application does the minimal work required for downloading a torrent:
 			\begin{itemize}
 				\item It sets up a session.
 				\item It starts listening.
 				\item It opens a torrent file.
 				\item It keeps looping while requesting status updates to keep track of the progress.
 			\end{itemize}
-			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu\footnote{http://www.ubuntu.com} 14.04 distribution without problems. By manually checking the MD5\footnote{http://www.ietf.org/rfc/rfc1321.txt} checksum of the file we were able to verify that it was downloaded successfully. We have chosen to download this particular torrent because it has many seeders and is big enough for a good test run.
+			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu\footnote{\url{http://www.ubuntu.com}} 14.04 distribution without problems. By manually checking the MD5\footnote{\url{http://www.ietf.org/rfc/rfc1321.txt}} checksum of the file we were able to verify that it was downloaded successfully. We have chosen to download this particular torrent because it has many seeders and is big enough for a good test run.
 		
 		\subsection{Compiling python bindings}
 			To compile Python bindings, one has to add the \texttt{--enable-python-binding} to the \texttt{configure} call. However, doing that in our case causes the configure process to fail. The gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}.
 			
-			After more investigation we have found out what causes this. Essentially the configure process calls a bunch of \emph{.m4}\footnote{https://www.gnu.org/software/m4/m4.html} files which try to find out the Python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils\footnote{https://docs.python.org/2/library/distutils.html}. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This does not match the same settings of Python for Androids its interpreter. To solve this we had to set some environment variables to point to the Python for Android interpreter:
+			After more investigation we have found out what causes this. Essentially the configure process calls a bunch of \emph{.m4}\footnote{\url{https://www.gnu.org/software/m4/m4.html}} files which try to find out the Python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils\footnote{\url{https://docs.python.org/2/library/distutils.html}}. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This does not match the same settings of Python for Androids its interpreter. To solve this we had to set some environment variables to point to the Python for Android interpreter:
 			
 			\begin{itemize}
 				\item \texttt{PYTHON = /path/to/python-for-android/build/python/Python2.7.2/hostpython}
@@ -68,7 +68,7 @@
 	\section{Shell script unit tests}
 		As we make use of shell scripts to set up variables, run checks and build the application with, we created unit tests.
 		
-		The first thing we had to do is look for a shell script test framework. As no official test framework is available, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2\footnote{http://shunit.sourceforge.net} test framework. This framework is lightweight and has some of the standard testing functions such as \emph{AssertEqual}, \emph{AssertTrue} and \emph{AssertFalse} which are all we need. 
+		The first thing we had to do is look for a shell script test framework. As no official test framework is available, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2\footnote{\url{http://shunit.sourceforge.net}} test framework. This framework is lightweight and has some of the standard testing functions such as \emph{AssertEqual}, \emph{AssertTrue} and \emph{AssertFalse} which are all we need. 
 		
 		In total we have created fourteen tests that checks the following points:
 		

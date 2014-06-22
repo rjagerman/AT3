@@ -3,7 +3,7 @@
 	In this chapter we describe our second sprint that lasted two weeks.
 
 	\section{Goals}
-		This sprint, we had the following goals:
+		During this sprint, we had the following goals:
 	
 		\begin{enumerate}
 			\item Get libtorrent from the first sprint working (must have, libtorrent is a high priority and we need libtorrent for our further work).
@@ -41,7 +41,7 @@
 			\end{itemize}
 			This very simple torrent client turned out to work well on a Galaxy S2 device. We were able to download the official Ubuntu\footnote{\href{http://www.ubuntu.com}{www.ubuntu.com}} 14.04 distribution without problems. By manually checking the MD5\footnote{\href{http://www.ietf.org/rfc/rfc1321.txt}{www.ietf.org/rfc/rfc1321.txt}} checksum of the file we were able to verify that it was downloaded successfully. We have chosen to download this particular torrent because it has many seeders and is big enough for a good test run.
 		
-		\subsection{Compiling python bindings}
+		\subsection{Compiling Python bindings}
 			To compile Python bindings, one has to add the \texttt{--enable-python-binding} to the \texttt{configure} call. However, doing that in our case causes the configure process to fail. The gcc-arm toolchain can not link with \texttt{-lpthread} and \texttt{-lutil}.
 			
 			After more investigation we have found out what causes this. Essentially the configure process calls a bunch of \emph{.m4}\footnote{\href{https://www.gnu.org/software/m4/m4.html}{www.gnu.org/software/m4/m4.html}} files which try to find out the Python compilation settings automatically. This is done by running a Python interpreter and printing specific values obtained from distutils\footnote{\href{https://docs.python.org/2/library/distutils.html}{docs.python.org/2/library/distutils.html}}. However, it turns out that the python process that gets run is the system Python installation (from Ubuntu). This does not match the same settings of Python for Androids its interpreter. To solve this we had to set some environment variables to point to the Python for Android interpreter:
@@ -70,7 +70,7 @@
 		
 		The first thing we had to do is look for a shell script test framework. As no official test framework is available, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2\footnote{\href{http://shunit.sourceforge.net}{shunit.sourceforge.net}} test framework. This framework is lightweight and has some of the standard testing functions such as \emph{AssertEqual}, \emph{AssertTrue} and \emph{AssertFalse} which are all we need. 
 		
-		In total we have created fourteen tests that checks the following points:
+		In total we have created fourteen tests that check the following points:
 		
 		\begin{itemize}
 			\item The required export variables.
@@ -83,4 +83,4 @@
 	\section{Sprint evaluation}
 		This sprint was a setback for us. Even though libtorrent throws a segmentation fault from time to time, we still managed to complete some download runs. Now that we have Jenkins up and running, we can focus on writing more automatic tests to measure changes and maintain a working prototype. The shell script tests we wrote during this sprint should provide a good way to ensure that our builds are correctly configured.
 		
-		For the next sprint, we will look into the issue of the segmentation faults. As for Jenkins, we will write unit tests to test our written Python code and using the Kivy recorder to apply application tests on our application. These tests will also be sent to the Software Improvement Group (SIG) for evaluation.
+		For the next sprint, we will look into the issue of the segmentation faults. As for Jenkins, we will write unit tests to test our written Python code and we will use the Kivy recorder to apply application tests on our application. These tests will also be sent to the Software Improvement Group (SIG) for evaluation.

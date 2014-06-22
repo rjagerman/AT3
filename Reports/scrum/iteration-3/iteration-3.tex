@@ -3,11 +3,11 @@
 	In this chapter we describe our third sprint that lasted two weeks.
 
 	\section{Goals}
-		This sprint, we had the following goals:
+		During this sprint, we had the following goals:
 	
 		\begin{enumerate}
 			\item Write unit tests for our Python code and application tests for our application (must have: applications must be tested thoroughly to ensure all possible settings are working correctly). 
-			\item Send our tests to SIG (must have: this is required by the bachelor project).
+			\item Send our tests to SIG (must have: this is required for the bachelor project).
 			\item Investigate the segmentation fault and check for alternative solutions (should have: libtorrent is close to being stable, but due to time constraints we give priority to writing tests for SIG).
 			\item Update our application to use the new Tribler code (should have: while it is not a critical feature, it is good practice to keep the code up to date).
 			\item Measure CPU usage and download rates of our application (should have: while it is not needed in order to run the application, it is good to have some performance measurements).
@@ -29,7 +29,7 @@
 	\section{Libtorrent RC2 progress}
 		While we were working on the Russian libtorrent version, we also kept working on the second Release Candidate (RC2\footnote{\href{http://sourceforge.net/projects/libtorrent/files/libtorrent/}{www.sourceforge.net/projects/libtorrent/files/libtorrent/}}) of libtorrent we originally tried. The first step we took, was to compile libtorrent with asserts on. We did this to gain a better understanding in why the segmentation fault occurred. An assert had indeed triggered: in the destructor of the Torrent class, the m\_abort variable should be true but it was false. This could mean that the Torrent object is released too soon.
 		
-		We decided to post the issue to the official libtorrent bug tracker\footnote{\href{https://code.google.com/p/libtorrent/issues/detail?id=627}{code.google.com/p/libtorrent/issues/detail?id=627}} where we got in contact with a libtorrent developer named Arvid Norberg. He helped us fix the error and gave us the advice to compile with the \texttt{BOOST\_SP\_USE\_PTHREADS} flag. When we tried to compile with this flag but we still got the segmentation fault. We took a closer look at what this flag exactly does. It turns out that this flag is responsible for the shared pointers: according to Arvid Norberg, with this define, the shared pointers are using mutex operations instead of atomic operations. He had some bad experience with atomic operations on embedded devices. Using this flag we were able to compile a stable version of libtorrent.
+		We decided to post the issue to the official libtorrent bug tracker\footnote{\href{https://code.google.com/p/libtorrent/issues/detail?id=627}{code.google.com/p/libtorrent/issues/detail?id=627}} where we got in contact with a libtorrent developer named Arvid Norberg. He helped us fix the error and gave us the advice to compile with the \texttt{BOOST\_SP\_USE\_PTHREADS} flag. When we tried to compile with this flag we still got the segmentation fault. We took a closer look at what this flag exactly does. It turns out that this flag is responsible for the shared pointers: according to Arvid Norberg, with this define, the shared pointers are using mutex operations instead of atomic operations. He had some bad experience with atomic operations on embedded devices. Using this flag we were able to compile a stable version of libtorrent.
 				
 	\section{Updating the Tribler package}
 		One of the goals of this sprint was to update the Tribler package we are using. The Tribler repository was updated. Twisted was updated to version 14.0.0, certain callbacks were removed and a Twisted Reactor\footnote{\href{https://twistedmatrix.com/documents/12.0.0/core/howto/reactor-basics.html}{twistedmatrix.com/documents/12.0.0/core/howto/reactor-basics.html}} was introduced.
@@ -42,7 +42,7 @@
 	\section{Relaying and downloading over multiple hops/multiple circuits}
 		In our last sprint, we had some issues with downloading and relaying over multiple hops / multiple circuits. Downloading the 50 MB test file was working correctly over one circuit with one hop, however, adjusting the values of the minimum amount of circuits required for the downloading and the length of the hop would not work.
 		
-		To debug this issue, we got in contact with the original authors of the anontunnels code. They suggested to place loggers when receiving messages from other nodes and look closely to the incoming messages while disabling the encryption. We logged the messages but we could not find anything that could cause the application to reject circuits. The same code, when executed on a laptop, can successful download over multiple circuits with multiple hops.
+		To debug this issue, we got in contact with the original authors of the anontunnels code. They suggested to place loggers when receiving messages from other nodes and look closely to the incoming messages while disabling the encryption. We logged the messages but we could not find anything that could cause the application to reject circuits. The same code, when executed on a laptop, can successfully download over multiple circuits with multiple hops.
 		
 		At this time, we were quite some commits behind the devel branch of Tribler. After updating and merging our package with the newest code, we tried again and the downloads were starting. We immediately tried to download the anonymous test file over four circuits and three hops and it worked fine. Also other lengths and other amounts of circuits were working correctly. During the tests (see Chapter \ref{cpt:experiments}) we came to the conclusion that three hop encryption is too heavy for a smartphone.
 		

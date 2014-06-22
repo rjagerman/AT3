@@ -3,7 +3,7 @@
 	In this chapter we describe our first sprint that lasted two weeks.
 
 	\section{Goals}
-		This sprint, we had the following goals:
+		During this sprint, we had the following goals:
 	
 		\begin{enumerate}
 			\item Get Python code working on Android. We must evaluate and set up Python for Android (must have feature because this is the foundation of our whole project).
@@ -95,11 +95,11 @@
 		\end{itemize}
 		
 		\subsection{Boost Jam}
-		Boost jam\footnote{\href{http://www.boost.org/boost-build2/doc/html/bbv2/jam.html}{www.boost.org/boost-build2/doc/html/bbv2/jam.html}} is a build environment created specifically for Boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on Boost, such as libtorrent.
+		Boost Jam\footnote{\href{http://www.boost.org/boost-build2/doc/html/bbv2/jam.html}{www.boost.org/boost-build2/doc/html/bbv2/jam.html}} is a build environment created specifically for Boost. However, it can be used to build other software. It is often included as a build option for software that is dependent on Boost, such as libtorrent.
 		
-		Running Boost jam is straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} configuration file. The resulting compiled library files are compatible with the ARM architecture.
+		Running Boost Jam is straight forward. After executing \texttt{bootstrap.sh} we can run \texttt{b2} or \texttt{bjam} to compile Boost itself. With this command we specify the architecture which is described in more detail in the \texttt{user-config.jam} configuration file. The resulting compiled library files are compatible with the ARM architecture.
 		
-		Compiling libtorrent using this method is more advanced. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because the ARM compiler and libraries differ from the normal GNU\footnote{\href{http://gcc.gnu.org}{gcc.gnu.org}} compiler. After modifying the source code, the build still fails. Linker errors occur when we try to compile the Python bindings. The standard Unix\footnote{\href{http://www.unix.org}{www.unix.org}} libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the boost jam environment forces these options for the Python bindings compilation. Due to the complexity of Boost jam build environment, we decided to try using automake.
+		Compiling libtorrent using this method is more advanced. We again specify a \texttt{user-config.jam} with appropriate settings. However, the build process fails during compilation. The source for libtorrent will have to be modified in several places, because the ARM compiler and libraries differ from the normal GNU\footnote{\href{http://gcc.gnu.org}{gcc.gnu.org}} compiler. After modifying the source code, the build still fails. Linker errors occur when we try to compile the Python bindings. The standard Unix\footnote{\href{http://www.unix.org}{www.unix.org}} libraries \texttt{pthread} and \texttt{util} do not have to be linked on Android, yet the Boost Jam environment forces these options for the Python bindings compilation. Due to the complexity of Boost Jam build environment, we decided to try using automake.
 		
 		\subsection{Automake}
 		Automake is a standard set of tools for Unix-based systems that makes it more convenient to configure and compile software on a wide variety of systems. The tools are designed in such a way that it is possible to configure the build process using a simple script.
@@ -117,7 +117,7 @@ export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		
 		Note that we have set up a custom NDK toolchain under \emph{/usr/local/gcc-4.8.0-arm-linux-androideabi}. More information about setting up a custom toolchain can be found in Appendix \ref{cpt:libtorrent}.
 		
-		Compiling libtorrent with this setup works, but the Python bindings still gives linker errors. These are the same errors as Boost jam is showing. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
+		Compiling libtorrent with this setup works, but the Python bindings still gives linker errors. These are the same errors as Boost Jam is showing. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
 		
 		We will move two items involving libtorrent to the next scrum iterations:
 		\begin{itemize}
@@ -134,4 +134,4 @@ export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		During this sprint, we did not manage to complete all the goals set for this sprint. We did not succeed in compiling the libtorrent library. However, because we worked in parallel, we did start with some tasks we had set for the next sprint.
 		
 		We have talked with Jaap van Touw, a member of the Tribler team. He told us that in his 20 weeks of work, he never managed to get the latest libtorrent to compile for Android.
-		Currently he runs an old and modified libtorrent version. We managed to get in contact with Steeve Morin. He got the latest version of libtorrent working with Go bindings on Android. He gave us advise on compiling libtorrent on Android, possibly with Python bindings. We have set the libtorrent package as a separate goal for the next sprint.
+		Currently he runs an old and modified libtorrent version. We managed to get in contact with Steeve Morin. He got the latest version of libtorrent working with Go bindings on Android. He gave us advice on compiling libtorrent on Android, possibly with Python bindings. We have set the libtorrent package as a separate goal for the next sprint.

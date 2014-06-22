@@ -1,6 +1,6 @@
 \section{Conclusion}
 \label{sec:experiments:conclusion}
-	We come to the conclusion that most of our expectations are plausible. Increasing the number of circuits while keeping the amount of hops the same results in a high average download speed. % Increasing the hops indeed cause a negative impact on the download rates as there is a higher change of packet loss or a bottleneck in the circuit.
+	We come to the conclusion that streaming video over the anonymous tunnels is possible, as long as cryptography is disabled. The average download speed is capable of providing the necessary bitrate for videos with a 720p resolution. % Increasing the hops indeed cause a negative impact on the download rates as there is a higher change of packet loss or a bottleneck in the circuit.
 	
 	The unforeseen CPU bound that we encountered means that either the cryptographical implementation is bad or the current generation smartphones are not powerful enough. By compiling and running gmpy\footnote{\url{http://www.gmpy.org/}}, a fast large number library for Python, we could see a large speedup during the Diffie-Hellman handshake. Due to time constraints we were unable to compile and implement this in the current version of the AT3 application.
 	

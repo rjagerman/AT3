@@ -13,7 +13,7 @@ The main functionality is contained within the Tribler package, where we have cr
 	\label{fig:overview}
 \end{figure}
 
-The AT3 application uses Kivy. Kivy\footnote{\url{http://kivy.org/}} is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that run Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore, this framework offers the most seamless integration with existing code. Kivy handles everything related to the user interface. It hides all the complexity of handling user input and displaying output.
+The AT3 application uses Kivy. Kivy\footnote{\href{http://kivy.org/}{www.kivy.org}} is a cross-platform application development framework written in Python. Kivy includes Python for Android, a build tool that can generate standalone Android applications that run Python code. We chose to use Kivy for the development of the application because all existing Tribler and anontunnel code is written in Python. Therefore, this framework offers the most seamless integration with existing code. Kivy handles everything related to the user interface. It hides all the complexity of handling user input and displaying output.
 
 Tribler handles everything related to managing torrent downloads. The anontunnels, which are a part of Tribler, handle the anonymous tunnels over which we will download a test file. These two components form the core part of our application. Tribler is dependent on several Python modules. A package dependency graph for Tribler can be found in Appendix \ref{chp:dependency-tree}. One of the most important dependencies here is libtorrent, which is the library that handles torrent downloads.
 
@@ -26,7 +26,7 @@ The main functionality of the AT3 application is running the anontunnels and sta
 	\label{fig:sequencestart}
 \end{figure}
 
-Periodically, we want to obtain information about the status of the test download. Using a timer, the application will request this information every second from the Android interface. Because the AT3 application and the Android service run as different processes, the communication between them is facilitated by the Kivy OSC library\footnote{\url{https://github.com/kivy/kivy/blob/master/kivy/lib/osc/oscAPI.py}}. The sequence diagram of this process is displayed in Figure \ref{fig:sequenceinfo}.
+Periodically, we want to obtain information about the status of the test download. Using a timer, the application will request this information every second from the Android interface. Because the AT3 application and the Android service run as different processes, the communication between them is facilitated by the Kivy OSC library\footnote{\href{https://github.com/kivy/kivy/blob/master/kivy/lib/osc/oscAPI.py}{www.github.com/kivy/kivy/blob/master/kivy/lib/osc/oscAPI.py}}. The sequence diagram of this process is displayed in Figure \ref{fig:sequenceinfo}.
 
 \begin{figure}[!t]
 	\centering

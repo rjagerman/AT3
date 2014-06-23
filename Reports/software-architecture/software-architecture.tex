@@ -1,6 +1,13 @@
 \chapter{Software architecture}
 \label{cpt:softwarearchitecture}
-Much of our work is focused on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a typical software product. Instead, this bachelor project is more research-oriented. That means that we try to research our problem definition described in Chapter \ref{cpt:problemdefinition}, with the help of a prototype application. We have developed an Android application called Android Tor Tribler Tunneling (AT3), a research prototype that we use to test Tribler and especially the anontunnels on Android. Additionally, this software makes it possible to perform experiments such as bandwidth or CPU measurements, see Chapter \ref{cpt:experiments}.
+Much of our work is focused on porting software libraries such as the Tribler core, the anontunnels and libtorrent to Android. We are not developing a typical software product. Instead, this bachelor project is more research-oriented. That means that we try to research our problem definition described in Chapter \ref{cpt:problemdefinition}, with the help of a prototype application. We have developed an Android application called Android Tor Tribler Tunneling (AT3), a research prototype that we use to test Tribler and especially the anontunnels on Android (see Figure \ref{fig:at3screenshot}). Additionally, this software makes it possible to perform experiments such as bandwidth or CPU measurements, see Chapter \ref{cpt:experiments}.
+
+\begin{figure}[!h]
+	\centering
+	\fbox{\includegraphics[width=0.8\textwidth]{graphics/at3_gui.png}}
+	\caption{The AT3 application.}
+	\label{fig:at3screenshot}
+\end{figure}
 
 The general overview of the application is given in Figure \ref{fig:overview}. The AT3 application is a simple application used to test Tribler and the anontunnels on Android. It uses an Android service to run the anontunnels in the background. The service is a separate process and continues running even when the application is closed.
 

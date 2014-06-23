@@ -83,14 +83,14 @@
 		
 		\begin{itemize}
 		\item \texttt{INT64\_MAX} is not defined for Android, so we have to specifically define it.
-		\item Multiple environments are defined in \emph{include/libtorrent/config.hpp}. We add an environment for \texttt{ANDROID}, which sets the following options:
+		\item Multiple environments are defined in \texttt{include/libtorrent/config.hpp}. We add an environment for \texttt{ANDROID}, which sets the following options:
 			\begin{itemize}
 				\item \texttt{FALLOCATE} is disabled
 				\item \texttt{ICONV} is disabled
 				\item \texttt{IFADDRS} is disabled
 				\item \texttt{MEMALIGN} is enabled
 			\end{itemize}
-		\item Instead of \emph{<sys/statvfs.h>} we include \emph{<sys/vfs.h>}, and redefine \texttt{statvfs} and \texttt{fstatvfs}. This is necessary because the Android libraries only have \emph{sys/vfs.h} and not \emph{sys/statvfs}.
+		\item Instead of \texttt{<sys/statvfs.h>} we include \texttt{<sys/vfs.h>}, and redefine \texttt{statvfs} and \texttt{fstatvfs}. This is necessary because the Android libraries only have \texttt{sys/vfs.h} and not \texttt{sys/statvfs}.
 		\item Finally, we add an include for \texttt{<sys/syscall.h>} and redefine \texttt{lseek} to \texttt{lseek64}.
 		\end{itemize}
 		

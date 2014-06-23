@@ -1,0 +1,38 @@
+\chapter{Problem Definition}
+\label{cpt:problemdefinition}
+
+In this bachelor project we want to answer the following question:
+
+\begin{quote}
+\emph{Can we anonymously download and stream videos on Android smartphones?}
+\end{quote}
+
+Our focus within this question is on anonymous communication. We want to get Tribler, the anontunnels and all necessary dependencies working on Android smartphones. For the project to succeed, the following criteria must be met:
+\begin{enumerate}
+\item We must be able to run Python code on Android because Tribler is written in the Python programming language.
+\item We must compile the following necessary dependencies to run on Android devices using the ARM\footnote{\href{http://www.arm.com/}{www.arm.com}} architecture:
+\begin{itemize}
+\item libtorrent\footnote{\href{http://www.rasterbar.com/products/libtorrent/}{www.rasterbar.com/products/libtorrent/}}
+\item OpenSSL\footnote{\href{http://www.openssl.org/}{www.openssl.org}}
+\item M2Crypto\footnote{\href{https://pypi.python.org/pypi/M2Crypto}{pypi.python.org/pypi/M2Crypto}}
+\item PyCrypto\footnote{\href{https://www.dlitz.net/software/pycrypto/}{www.dlitz.net/software/pycrypto/}}
+\item APSW\footnote{\href{https://github.com/rogerbinns/apsw}{www.github.com/rogerbinns/apsw}}
+\item netifaces\footnote{\href{https://pypi.python.org/pypi/netifaces}{pypi.python.org/pypi/netifaces}}
+\end{itemize}
+\item We must be able to successfully download a file over the anonymous tunnels using the ported code.
+\end{enumerate}
+
+	\section{Motivation}
+	\label{sec:motivation}
+		The reason why we are choosing Android, is because the platform is open source. Android is less restricted than closed source systems such as iOS\footnote{\href{http://www.apple.com/ios/}{www.apple.com/ios/}}. Additionally, Android had a market share of 81\% in the third quarter of 2013\cite{forbesandroidmarket}. As stated in the introduction, there are more than one billion active mobile users. This means Tribler can reach a huge audience by going Android. Moreover, Tribler can scale because it uses Dispersy, where Tor is restricted to 1.2 million nodes \cite{mclachlan2009scalable}. If mobile devices would start to serve as relay nodes, Tribler is ready for it.
+		
+	\section{Tribler Play}
+	\label{sec:triblerplay}
+		Another bachelor project group is working on an application that is closely related to our application. This application is called Tribler Play. It can search for torrent files using the decentralized Dispersy network. Media files can be streamed using the torrent protocol and the built-in VLC for Android player\footnote{\href{http://www.videolan.org/vlc/download-android.html}{www.videolan.org/vlc/download-android.html}}. More information about the project can be found on their GitHub repository\footnote{\href{https://github.com/wtud/tsap}{www.github.com/wtud/tsap}}.
+		
+		To create the ultimate anonymous experience, our two applications will be merged at the end of the project. This final application could make anonymous streaming of video on the Android smartphone possible.
+		
+	\section{Android}
+		In our preceding research question, we specifically want to research the possibility of an anonymous video streaming application on Android. Android is one of the most popular mobile operating systems available. 
+		
+		Writing applications for Android is traditionally done in Java. Google provides the Android SDK\footnote{\href{http://developer.android.com/sdk/index.html}{developer.android.com/sdk/index.html}} and Android NDK\footnote{\href{https://developer.android.com/tools/sdk/ndk/index.html}{developer.android.com/tools/sdk/ndk/index.html}} which contain the necessary tools to compile and build Android application packages (APKs). Several popular Integrated Development Environments (IDEs) are available such as Eclipse and Android Studio which should make the development process easier. An IDE allows developers to have a clear overview of the code and dependencies.

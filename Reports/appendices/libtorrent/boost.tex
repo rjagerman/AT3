@@ -1,0 +1,20 @@
+\section{Compiling Boost}
+	Libtorrent is using the Boost library for threading and memory management. This means that we first need to cross compile Boost for Android. The Boost for Android project on GitHub looked promising but we decided to use our custom toolchain and manually compile Boost so we have more control over the compilation process. First, download the official Boost source code and save it to your computer (we used Boost 1.55). Navigate to the folder containing Boost and execute the following command.
+	\begin{lstlisting}
+./bootstrap.sh
+	\end{lstlisting}
+	This command will execute the bootstrap and configures the Boost building environment for the compilation. Libtorrent is using shared pointers that are using spinlocks, however, these spinlock shared pointers are not working correctly on embedded devices. To disable spinlock mechanics, some additional compilation flags are needed. Edit the \emph{user\_config.jam} file in your Boost directory, located in \emph{build/tools/v2} to contain the following:
+	\begin{lstlisting}
+using gcc : android : arm-linux-androideabi-g++ : 
+  <compileflags>-DBOOST_SP_USE_PTHREADS 
+  <compileflags>-DBOOST_AC_USE_PTHREADS
+;
+	\end{lstlisting}
+	Now we can build the required Boost libraries with \emph{b2}.
+	\begin{lstlisting}
+./b2 toolset=gcc-android architecture=arm link=static threading=multi \
+ --with-system --with-filesystem --with-python install \
+ --prefix=<path to your custom toolchain>
+	\end{lstlisting}
+	The b2 command builds and installs the system, filesystem and Python libraries in the directory specified by the prefix. We create a static library with support for multithreading. The include files and binaries are copied to your custom toolchain.\\
+	At this point, Boost should be installed in your custom toolchain. Please verify the presence of Boost in your toolchain because these files are needed for the compilation of libtorrent in the next step.

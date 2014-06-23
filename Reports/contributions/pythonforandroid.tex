@@ -1,0 +1,7 @@
+\section{Python for Android}
+\label{sec:pythonforandroid}
+	Python for Android enabled us to run Python code on Android. We made use of many Python for Android recipes. A recipe downloads a package, extracts the contents and applies operations on them when required. In addition, we updated some recipes and created our own. For example, when Tribler started using the newest version of Twisted, we updated the Twisted recipe to version 14.0.0.
+	
+	Examples of recipes we created are libtorrent and Tribler. The libtorrent recipe contains the shared object file that is being copied to the final Python distribution on the Android device. The Tribler package contains all Tribler code with some minor modifications to make it work on Android. These two packages and our updated packages will be submitted to the official Python for Android repository via a pull request because they have the potential to be used in other Python for Android projects in the future.
+	
+	Because of the separated nature of the recipe system of Python for Android, it is easy for developers to add their own recipes. Several widely used packages such as gmpy, which is an optional dependency of Tribler, are not available as a recipe yet. In the future, a contribution could be to make a recipe of gmpy and submit it to the Python for Android repository via a pull request.

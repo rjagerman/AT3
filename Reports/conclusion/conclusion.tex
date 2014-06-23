@@ -1,0 +1,57 @@
+\chapter{Conclusion}
+\label{cpt:conclusion}
+	We come to the conclusion that the current generation smartphones are not ready yet for anontunnels. The project itself was successful; we managed to cross-compile all required libraries. The anontunnels are running and downloading when the hop count is low. Downloading over multiple circuits is possible and relaying of data works too. By creating a pull request, we provide Python for Android with some useful recipes, contributing to the open source community. 
+	All of our work, including this thesis, is open source and can be extended. Jaap van Touw, a master student currently working for the Tribler team, will merge our project with the other bachelor project group Tribler Play, creating an application that allows anonymous and encrypted streaming of movies, with a search and playback option.
+	
+	We also contributed to the open source community. In particular we contributed to the following open source projects:
+	\begin{itemize}
+		\item Python for Android
+		\item Tribler
+		\item libtorrent
+	\end{itemize}
+	
+	
+	Once smartphones running on ARMv8 become available or if gmpy is integrated in the project, we foresee that this application will be able to run with 3 hops and multiple circuits wile having cryptography enabled. Once that is possible, Tribler takes a censorship-free internet to a new level.
+	
+	\section{Future work}
+		If one wishes to extend our work, we recommend to try and get gmpy to compile by creating a recipe for it. This might speed up the cryptographic part, allowing for multiple hop with encryption downloading.
+		
+		We would also recommend working closely together with the Tribler team, as the application integrates the code of the Tribler main code base. The Tribler team often can help with questions or advise you on best practice regarding their code.
+		
+		Finally, we recommend to keep up-to-date with dependencies whenever you can. The Tribler code base changes regularly, so it is good practice to keep up-to-date. Other libraries such as OpenSSL have had some fixes regarding the famous Heartbleed bug\footnote{\href{http://heartbleed.com/}{www.heartbleed.com}}. Applying patches like these might be critical in terms of functionality or security.
+		
+	\section{Reflections}
+	
+		\subsection{Reflection Rolf}
+			In contrast to a traditional Bachelor project where one goes through a software development process, we have decided to take a more research oriented approach. As I aim for an academic career, this bachelor project fits my personal goals very well.
+		
+			The team worked together excellently with no problems in cooperation. Despite working on separate components simultaneously, everyone was kept up to date with the latest developments. Throughout the project each member shifted focus to different parts of the problem. This allowed every one of us to grasp different aspects of the project.
+		
+			Our project was about porting and running bleeding edge experimental code on exotic devices and systems. This was challenging in particular because it was uncharted territory. At the start of the project it was not sure if it would be possible to get all Tribler code and dependencies working on Android. I am glad that through hard work and effort we were able to accomplish this. Parts of our work are going to be contributed to open source software and Tribler. Contributing to an open and censorship-free Internet in this way is worth all the work we have put into this and I am happy to have been a part of it.
+		
+		\subsection{Reflection Laurens}
+			This project was interesting and challenging on certain points. We worked well together as a team and it was very interesting to be in uncharted territory. This project was more of a research project than a software development process.
+			
+			I think some advice in a reflection could prove to be helpful. My first piece of advice would be to not be afraid of asking for help.
+			Just as we did libtorrent and the anontunnel code, ask the authors or developers for help. If you are stuck on a certain area where expertise is required, you can save a lot of time if you ask the right persons.
+			Since you show interest in their project they are often more than happy to help you. Without Arvid and Steeve, we most likely would still have an unstable libtorrent library.
+			
+			
+			We chose to have a switch from time to time in tasks, so that every member is forced to look into at least one other subject he is not currently working on. For example, I switched from shell scripting and setting up Jenkins to the anontunnel code and measuring performance. In turn, Martijn who has been working on the anontunnel code switched to investigating the Russian version of libtorrent and Rolf took over Jenkins. This way, we all learned more about the system and were forced to get an understanding of what the other was doing. If something was unclear we made sure it was immediately fixed, commentated and if needed, refactored.
+			
+			
+			One thing we probably should have done more often, is asking for feedback on written work. We had our thesis reviewed three times by our client. I believe more reviews allowed for more smaller changes rather than a large amount of work towards the end. Since the client only has a high level goal in mind, he / she often provides complementary feedback.
+			
+			
+			Concluding, I think this has been a huge step towards our client's ultimate goal. It was a real pleasure to work with Rolf and Martijn as well as the Tribler team. Since our project will be merged with the other work of the other bachelor project group soon, our effort and work will continue, which gives a content feeling. Once the encryption and decryption of data becomes viable for smartphones, Tribler will take a censorship-free internet to a new level.
+		
+		\subsection{Reflection Martijn}
+			Working together with the Tribler team was interesting and fun. Tribler is an interesting system to work on and we had some challenging issues. The most important issue we had, was compiling libtorrent for Android. When performing the cross-compilation, I learned more about the compilation process and gained more insights in what exactly is going on when compiling. I think this is a valuable experience because this knowledge can be used in other projects as well.
+		
+			The Tribler team was always willing to lend us a hand. Our client visited us regularly and introduced new people to us who might be interested in our work. During the project, I started to realize how important it is to communicate clearly with other team members and the Tribler team. In the past, several issues have emerged because there was no clear communication between members. We wanted to avoid that so we did everything to keep the Tribler team up to date with our latest progress and updates. They also got in contact with us when they had a new version of Tribler or when a bug was introduced which could affect our work.
+		
+			Working with bleeding edge code was sometimes a bit frustrating because there were some bugs we had to deal with. Furthermore the code was updated quite frequently so we had to update and modify our code too to be able to run it on Android. During the process, we tried to automate these code updates so it became easier for us to keep up to date with the latest code. I recommend everyone who works with very new code, to automate the code update process: in the long run, it could save you a lot of time and effort.
+		
+	  		Working with Python was a new experience for me: when I started with the project, I preferred languages like C and Java but during the project, I started to see the power of using Python. Changes to the code were very easy to make and could be integrated in our application quite fast. I learned a few tricks about the library and package structure Python is using and this knowledge can also be used in further projects. Working through the import errors learned us about the libraries that Python for Android already included and which not. Creating our own recipes was very fun to do and we were always glad when a new package was functioning correctly on the Android phone, especially when we had a stable version of libtorrent running.
+	 	
+	 		Overall, I liked the project. We did some very interesting tasks such as the compilation of libtorrent and the code analysis of Tribler. I recommend students with a prior experience in software engineering and those who are interested in doing research in new fields to work on the team and do their thesis on the Tribler system. I hope that our application will eventually be integrated with the application of the other bachelor thesis group. After all, our project will be part of another greater system where Android users can use our applications to anonymously stream movies.

@@ -14,7 +14,7 @@
 	\section{Python for Android}
 		The Python for Android framework allows developers to add existing Python packages by creating recipes (for more information about recipes, see Section \ref{sec:pythonforandroid}). As most of the packages were not available, we had to build a lot of these recipes ourselves.
 	
-		Python for Android builds these packages for the ARM architecture. By using the \emph{push arm} and \emph{pop arm} commands in the recipe files, compilation for the ARM architecture can be triggered.
+		Python for Android builds these packages for the ARM architecture. By using the \texttt{push arm} and \texttt{pop arm} commands in the recipe files, compilation for the ARM architecture can be triggered.
 	
 		Below are the packages described we use in our application and in most cases had to create a recipe for. We describe the functionality of each package in our application and which dependencies it has.
 	
@@ -65,7 +65,7 @@
 		
 		Import errors were not the only issue we ran into: we had some problems with the netifaces package. Since this package is copied into the final APK file as a Python egg\footnote{\href{http://mrtopf.de/blog/en/a-small-introduction-to-python-eggs/}{www.mrtopf.de/blog/en/a-small-introduction-to-python-eggs}}, it will be extracted on the device. This failed because the application did not have writing permissions. To solve this, we specified the egg extraction path and made sure the application has writing permissions to that path.
 		
-		We also found out that some files were missing and not copied into the APK. The \emph{curves.ec} file was missing and is needed by the cryptography classes found in the Tribler core. We also needed the configuration file of the logger, \emph{logger.conf}. To make sure these files are part of the application, we copied them into the final application in our build script.
+		We also found out that some files were missing and not copied into the APK. The \texttt{curves.ec} file was missing and is needed by the cryptography classes found in the Tribler core. We also needed the configuration file of the logger, \texttt{logger.conf}. To make sure these files are part of the application, we copied them into the final application in our build script.
 		
 	\section{Attempt to compile libtorrent for Android}
 		To get libtorrent working on Android there are several big obstacles:
@@ -115,7 +115,7 @@ export CROSSHOST=arm-linux-androideabi
 export CROSSHOME=/usr/local/gcc-4.8.0-arm-linux-androideabi
 		\end{lstlisting}
 		
-		Note that we have set up a custom NDK toolchain under \emph{/usr/local/gcc-4.8.0-arm-linux-androideabi}. More information about setting up a custom toolchain can be found in Appendix \ref{cpt:libtorrent}.
+		Note that we have set up a custom NDK toolchain. More information about setting up a custom toolchain can be found in Appendix \ref{cpt:libtorrent}.
 		
 		Compiling libtorrent with this setup works, but the Python bindings still gives linker errors. These are the same errors as Boost Jam is showing. The linker tries to link \texttt{pthread} and \texttt{util}, which are not required on Android.
 		

@@ -51,7 +51,7 @@
 				\item \texttt{PYTHON\_CPP\_FLAGS="-I/path/to/python-for-android/python/Python2.7.2/Include"}
 			\end{itemize}
 			
-			After setting this, the configure and compilation process runs fine and is able to create a \emph{libtorrent.so} file with Python bindings. The compiled library works on a Galaxy S2 device. We created a simple Python application that downloads the Ubuntu distribution. This application runs without problems on a Samsung Galaxy S2.
+			After setting this, the configure and compilation process runs fine and is able to create a \texttt{libtorrent.so} file with Python bindings. The compiled library works on a Galaxy S2 device. We created a simple Python application that downloads the Ubuntu distribution. This application runs without problems on a Samsung Galaxy S2.
 			
 		\subsection{Segmentation faults on other devices}
 			Running libtorrent, either the native JNI/C++ or the Python bindings version results in segmentation faults on some devices. For example, the Sony Xperia Z throws segmentation faults frequently, whereas this never occurs on the Samsung Galaxy S2.  After a lot of debugging it is still not exactly clear what triggers these segmentation faults.
@@ -68,7 +68,7 @@
 	\section{Shell script unit tests}
 		As we make use of shell scripts to set up variables, run checks and build the application with, we created unit tests.
 		
-		The first thing we had to do is look for a shell script test framework. As no official test framework is available, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2\footnote{\href{http://shunit.sourceforge.net}{shunit.sourceforge.net}} test framework. This framework is lightweight and has some of the standard testing functions such as \emph{AssertEqual}, \emph{AssertTrue} and \emph{AssertFalse} which are all we need. 
+		The first thing we had to do is look for a shell script test framework. As no official test framework is available, we had to search for one that suits our needs. After comparing some frameworks, we decided to go with the shUnit2\footnote{\href{http://shunit.sourceforge.net}{shunit.sourceforge.net}} test framework. This framework is lightweight and has some of the standard testing functions such as \texttt{AssertEqual}, \texttt{AssertTrue} and \texttt{AssertFalse} which are all we need. 
 		
 		In total we have created fourteen tests that check the following points:
 		

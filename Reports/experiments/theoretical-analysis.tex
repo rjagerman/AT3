@@ -13,6 +13,6 @@
 		
 		When downloading over anontunnels, an important factor is the amount of circuits. When we download over more circuits, the download should be faster. In general, the length of the circuits negatively impacts the download speed. When circuits are longer, there is a higher chance that there is a bottleneck in the circuit. The maximum speed of the download over one circuit is as fast as the slowest hop.
 		
-		Another important factor we should take into account, is the possibility of random disconnects of peers during the download. When a seeding peer disconnects, the download speed of the torrent will decrease. When a circuit drops, our application will try to setup a new circuit or connect to an existing one. During this period, a decrease in download speed will occur.
+		Another important factor we should take into account, is the possibility of random disconnects of peers during the download. When a seeding peer disconnects, the download speed of the torrent will decrease. When a circuit drops, our application will try to set up a new circuit or connect to an existing one. During this period, a decrease in download speed will occur.
 		
 		Since there are many variables that influences the download speed, we cannot expect the speed rate to be stable. When streaming movies, these changing download rates could be problematic. A video should buffer to take these variable download speeds into consideration.

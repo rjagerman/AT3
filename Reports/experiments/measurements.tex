@@ -1,7 +1,7 @@
 \section{Measurements}
 \label{sec:experiments:measurements}
 
-Using the setup described in section \ref{sec:experiments:approach}, we have performed several experiments.
+Using the set-up described in section \ref{sec:experiments:approach}, we have performed several experiments.
 
 \begin{figure}[t]
 	\centering
@@ -12,9 +12,9 @@ Using the setup described in section \ref{sec:experiments:approach}, we have per
 
 By looking at the CPU usage we can determine whether running the anontunnels is too computationally expensive for the application of video streaming. Even without cryptography, we are seeing a CPU utilization of about 75\% when downloading (see Figure \ref{fig:cpu_measurements}). Due to the fact that we are not using cryptography, the amount of hops or circuits does not impact the CPU performance.
 
-It is also interesting to look at the download speed of the application. This indicates whether we can accomplish the necessary bitrate to stream video, which is about 1000 Kb/s (see Subsection \ref{sec:experiments:theoretical:bitrates}). We managed to achieve a download speed on our test setup of around 500 - 600 KB/s, which corresponds to 4000 - 4800 Kb/s (see Figure \ref{fig:download_measurements}). This is sufficient for the application of video streaming. Due to the fact that all stand-alone anontunnels are running on the same computer, they will all perform equally well. Not a single tunnel will act as a bottleneck. Additionally, the computer running the anontunnels is connected to the internet with a high speed connection of 100 Mb/s. Because of these factors, the impact of the amount of circuits or hops is negligible. The computer is capable of relaying data fast enough to not impact the download speed of the Android device.
+It is also interesting to look at the download speed of the application. This indicates whether we can accomplish the necessary bitrate to stream video, which is about 1000 Kb/s (see Subsection \ref{sec:experiments:theoretical:bitrates}). We managed to achieve a download speed on our test set-up of around 500 - 600 KB/s, which corresponds to 4000 - 4800 Kb/s (see Figure \ref{fig:download_measurements}). This is sufficient for the application of video streaming. Due to the fact that all stand-alone anontunnels are running on the same computer, they will all perform equally well. Not a single tunnel will act as a bottleneck. Additionally, the computer running the anontunnels is connected to the internet with a high speed connection of 100 Mb/s. Because of these factors, the impact of the amount of circuits or hops is negligible. The computer is capable of relaying data fast enough to not impact the download speed of the Android device.
 
-The time between when the download is triggered and when it actually receives its first byte is about 140 - 150 seconds when using one circuit. With three circuits, this takes about 180 - 190 seconds. This difference can be explained by the fact that more circuits take more time to setup.
+The time between when the download is triggered and when it actually receives its first byte is about 140 - 150 seconds when using one circuit. With three circuits, this takes about 180 - 190 seconds. This difference can be explained by the fact that more circuits take more time to set up.
 
 \begin{figure}[t]
 	\centering

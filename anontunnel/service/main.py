@@ -10,13 +10,15 @@ import logging.config
 import sys
 import Tribler
 sys.path.append(os.path.dirname(Tribler.__file__))
-from time import sleep
+from time import sleep, clock
 from kivy.lib import osc
 from kivy.clock import Clock
 from Tribler.community.anontunnel.community import ProxySettings
 from Tribler.community.anontunnel.atunnel import AnonTunnel
 from threading import Timer
 import psutil
+import pickle
+import base64
 
 
 #class StdoutRedirector(object): # A class for redirecting stdout to this Text widget.
@@ -60,14 +62,43 @@ class AnonTunnelService():
         proxy_settings = ProxySettings()
         crawl = False
 
-        self.anon_tunnel = AnonTunnel(socks5_port, proxy_settings, crawl)
+        self.tribler_start = clock()
+        self.cpu_status(setup=True)
+
+        self.NRHOPS = 3
+        self.NRCIRCUITS = 3
+
+        self.anon_tunnel = AnonTunnel(socks5_port, proxy_settings, crawl, hops=self.NRHOPS, circuits=self.NRCIRCUITS)
         self.anon_tunnel.run()
 
+        self.cpu_status(stop=True)
+        self.tribler_end = clock()
+
+        # Store the basic setup
+        self.startup_cpu_benchmark = self.cpu_benchmark
+
+        # During download, run the cpu_status 
+        self.download_start = clock()
+        self.cpu_status(setup=True)
         self.status(setup=True)
 
         while blocking:
             osc.readQueue()
             sleep(1)
+
+    def cpu_status(self, setup=False, stop=False):
+        if setup:
+            self.running_cpu_updates = True
+            self.cpu_benchmark = []
+        if stop:
+            self.running_cpu_updates = False
+            if self.cpu_timer is not None:
+                self.cpu_timer.stop()
+        if self.running_cpu_updates:
+            self.cpu_timer = Timer(1, self.cpu_status).start()
+            self.cpu_usage = psutil.cpu_percent(percpu=True)
+            self.cpu_benchmark.append((clock(), sum(self.cpu_usage)/4.0))
+
 
     def status(self, setup=False, stop=False):
         """
@@ -75,12 +106,17 @@ class AnonTunnelService():
         """
         if setup:
             self.running_updates = True
+            self.download_benchmark = []
+            self.download_first_byte = None
+            self.printed_results = False
         if stop:
             self.running_updates = False
+            if self.timer is not None:
+                self.timer.stop()
         if self.running_updates:
             self.timer = Timer(1, self.status).start()
             status = self.anon_tunnel.status()
-            cpu = ', '.join([str(abs(core)) for core in psutil.cpu_percent(percpu=True)])
+            cpu = ', '.join([str(abs(core)) for core in self.cpu_usage])
             array_status = [status['circuits'],
                             status['relays'],
                             status['enter'],
@@ -89,6 +125,34 @@ class AnonTunnelService():
                             status['download_speed'],
                             status['download_progress'],
                             cpu]
+            self.download_benchmark.append((clock(), status['download_speed']))
+            if status['download_speed'] > 0.0 and self.download_first_byte is None:
+                self.download_first_byte = clock()
+            if status['download_progress'] >= 100.0 and not self.printed_results:
+                self.printed_results = True
+                self.download_end = clock()
+                self.output = {'timings':
+                                  {'tribler_start': self.tribler_start,
+                                   'tribler_end': self.tribler_end,
+                                   'download_start': self.download_start,
+                                   'download_first_byte': self.download_first_byte,
+                                   'download_end': self.download_end},
+                               'cpu': self.cpu_benchmark,
+                               'speed': self.download_benchmark}
+                results_file = open('/sdcard/experiments/%d_hops_%d_circuits.pickle' % (self.NRHOPS, self.NRCIRCUITS), 'w')
+                results_file.write(base64.urlsafe_b64encode(pickle.dumps(self.output)))
+                results_file.close()
+
+                print '--- IMPORTANT TIMESTAMPS ---'
+                print 'Start Tribler/Dispersy startup at    %.2f' % self.tribler_start
+                print 'Finished Tribler/Dispersy startup at %.2f' % self.tribler_end
+                print 'Start download                       %.2f' % self.download_start
+                print 'First byte downloaded                %.2f' % self.download_first_byte
+                print 'Finished download                    %.2f' % self.download_end
+                print '--- CPU ---'
+                print self.cpu_benchmark
+                print '--- KB/S ---'
+                print self.download_benchmark
             osc.sendMsg('/status', array_status, ipAddr='127.0.0.1', port=9000)
 
     def stop(self):

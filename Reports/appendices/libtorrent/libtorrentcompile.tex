@@ -6,7 +6,7 @@
 --enable-static --disable-shared --enable-debug --enable-logging \
 --enable-python-binding
 	\end{lstlisting}
-	This command configures the makefiles and configuration scripts. We specify that we are using our Android host and we tell the script where boost can be found. We also specify that we are creating a static library and not a shared library. Debug symbols and logging are turned on and we pass the enable-python-binding flag to the script so we can use the libtorrent library in Python. We also need to set compiler flags again so Boost is not using the spinlock mechanics.
+	This command configures the makefiles and configuration scripts. We specify that we are using our Android host and we tell the script where Boost can be found. We also specify that we are creating a static library and not a shared library. Debug symbols and logging are turned on and we pass the enable-python-binding flag to the script so we can use the libtorrent library in Python. We also need to set compiler flags again so Boost is not using the spinlock mechanics.
 	\begin{lstlisting}
 export CFLAGS="-g -DBOOST_SP_USE_PTHREADS -DBOOST_AC_USE_PTHREADS"
 export CXXFLAGS=$CLFAGS
@@ -17,7 +17,7 @@ make clean
 make
 make install
 	\end{lstlisting}
-	For faster execution, you can pass the \emph{j} flag to compile on multiple cores. For instance, if your computer has four cores, you can execute "make -j 4" to speed up the compilation process.\\
+	For faster execution, you can pass the \texttt{j} flag to compile on multiple cores. For instance, if your computer has four cores, you can execute \texttt{make -j 4} to speed up the compilation process.\\
 	The libtorrent shared object file is now located in your custom toolchain and is ready to be used in Python for Android or other (Android) applications. We have created our own recipe that copies the precompiled library to the site-packages directory of Python for Android. Due to limitations in time, the compilation process is not executed in our recipe script.\\
-	The final libtorrent shared object file can also be used in a native Java Native Interface (JNI) application however, to decrease the final application size, it is recommended to leave out the Python bindings. Compilation without the Python bindings can be achieved by leaving out the \emph{enable-python-binding} flag when running the configuration script of libtorrent. When compiling Boost, the \emph{with-python} flag is not necessary anymore.\\
+	The final libtorrent shared object file can also be used in a native Java Native Interface (JNI) application however, to decrease the final application size, it is recommended to leave out the Python bindings. Compilation without the Python bindings can be achieved by leaving out the \texttt{enable-python-binding} flag when running the configuration script of libtorrent. When compiling Boost, the \texttt{with-python} flag is not necessary anymore.\\
 	A basic JNI application that loads and uses libtorrent can be found on our GitHub repository we created for this purpose \cite{hellolibtorrentgithub}.

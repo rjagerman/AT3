@@ -117,6 +117,7 @@ class AnonTunnelService():
             self.timer = Timer(1, self.status).start()
             status = self.anon_tunnel.status()
             cpu = ', '.join([str(abs(core)) for core in self.cpu_usage])
+            print 'REALTIME {"cpu": %f, "speed": %f, "progress": %f, "circuits": %d}' % (sum(self.cpu_usage), status['download_speed'], status['download_progress'], status['circuits'])
             array_status = [status['circuits'],
                             status['relays'],
                             status['enter'],
